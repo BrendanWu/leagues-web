@@ -21,9 +21,9 @@ import {
   Chip,
 } from "@material-ui/core";
 import UrbanTorontoListings from "../../components/UrbanTorontoListings";
-import { Button2 } from "../../design-system/Button2";
-import Button from "../../design-system/Button";
-import { FlexDiv } from "../../design-system/FlexDiv";
+import { Button2 } from "../../react-design-system/Button2";
+import Button from "../../react-design-system/Button";
+import { FlexDiv } from "../../react-design-system/FlexDiv";
 import AddSiteDialog from "../../components/AddSiteDialog";
 import { useHistory } from "react-router";
 

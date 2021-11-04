@@ -3,7 +3,7 @@ import { MapData } from "../interfaces/pages/Home";
 import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
 import MapDrawer from "./MapDrawer";
-import { FlexDiv } from "../design-system/FlexDiv";
+import { FlexDiv } from "../react-design-system/FlexDiv";
 import { useSelector } from "react-redux";
 import { RootState } from "../interfaces/redux/store";
 import img from "../../src/assets/location.png";

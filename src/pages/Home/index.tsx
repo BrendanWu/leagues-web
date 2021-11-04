@@ -5,16 +5,16 @@ import Typography from "@material-ui/core/Typography";
 import { IHomeUser } from "../../interfaces/pages/Home";
 import { API } from "../../constants";
 // import GameFeedCarousel from './components'
-import { Text } from "../../design-system/Text";
+import { Text } from "../../react-design-system/Text";
 import { RootState } from "../../interfaces/redux/store";
 import { useSelector } from "react-redux";
 import { Container } from "@material-ui/core";
 import UrbanTorontoListings from "../../components/UrbanTorontoListings";
-// import { Button2 } from "../../react-design-system/src/Button2";
-import { Button2 } from "../../design-system/Button2";
-import Button from "../../design-system/Button";
-import { FlexDiv } from "../../design-system/FlexDiv";
-import { Input } from "../../design-system/Input";
+// import { Button2 } from "../../react-react-design-system/src/Button2";
+import { Button2 } from "../../react-design-system/Button2";
+import Button from "../../react-design-system/Button";
+import { FlexDiv } from "../../react-design-system/FlexDiv";
+import { Input } from "../../react-design-system/Input";
 import Stars from "../../components/StarsComponent";
 import hero from "../../assets/hero-bg.svg";
 import LeaguesMap from "../../components/LeaguesMap";
@@ -77,7 +77,7 @@ const Home = () => {
       >
         <Container style={{ color: "white", marginTop: -20 }}>
           <div style={{ width: 400, paddingTop: 50 }}>
-            <Text text="FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW"/>
+            <Text text="FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW" />
             <Text text="my text with different font" />
             <Button label="Get Started"></Button>
           </div>

@@ -78,25 +78,6 @@ const data: BasketballCourtT | any = [
   },
 
   {
-    _id: 3,
-    hours: {
-      monday: "Temporarily Closed",
-      tuesday: "Temporarily Closed",
-      wednesday: "Temporarily Closed",
-      thursday: "Temporarily Closed",
-      friday: "Temporarily Closed",
-      saturday: "Temporarily Closed",
-      sunday: "Temporarily Closed",
-      Hoursofoperation: "Temporarily Closed",
-    },
-    description: "Outdoor Public",
-    location: { latitude: 41.701822, longitude: -73.930615 },
-    title: "Church Street Basketball Court",
-    website:
-      "https://www.google.com/maps/dir/43.6358258,-79.3966951/43.635787,-79.397768/@43.636169,-79.3993219,17z/am=t/data=!3m1!4b1",
-    imageUrl: "https://goo.gl/maps/B5tVNKEmWeoVorEA7",
-  },
-  {
     _id: 4,
     hours: {
       monday: "8AM�11PM",
