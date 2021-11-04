@@ -1,7 +1,9 @@
 import React from "react";
 // import { useSubscription } from "@apollo/react-hooks";
 // import { SSCB_ALL_QUESTIONS } from "../../graphql/subscriptions";
-import {FlexDiv} from 'lifted-design-system'
+// import {FlexDiv} from 'lifted-design-system/dist/FlexDiv'
+// import Button from 'lifted-design-system'
+
 import {
   Chip,
   CircularProgress,
@@ -25,7 +27,7 @@ import {
 } from "@material-ui/icons";
 import ReactStars from "react-stars";
 import NaturePeopleIcon from "@material-ui/icons/NaturePeople";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import { useHistory } from "react-router-dom";
 // import { useComponentQuestionListStyles } from "../../styles";
@@ -194,10 +196,11 @@ function QuestionList() {
             <div
               style={{ padding: 16, display: "flex", justifyContent: "center" }}
             >
+              <Button label="test"/>
               
               {
                 <FlexDiv
-                  // card
+                  card
                   style={{
                     width: 400,
                     height: 200,
