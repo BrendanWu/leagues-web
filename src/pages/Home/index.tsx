@@ -77,8 +77,8 @@ const Home = () => {
       >
         <Container style={{ color: "white", marginTop: -20 }}>
           <div style={{ width: 400, paddingTop: 50 }}>
-            <Text text="FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW" />
-            <Text text="my text with different font" />
+            <Text>FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW</Text>
+
             <Button label="Get Started"></Button>
           </div>
         </Container>
