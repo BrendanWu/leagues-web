@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import basketballdata from "../../../basketballdata";
-import { FlexDiv } from "../../../design-system/FlexDiv";
+import { FlexDiv } from "../../../react-design-system/FlexDiv";
 import BasketballCourtT from "../../../../src/basketballdata";
 import { useDispatch } from "react-redux";
 import { setLocation } from "../../../redux/actions/location";

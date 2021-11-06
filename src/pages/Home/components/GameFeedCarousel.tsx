@@ -6,6 +6,7 @@ import React from "react";
 
 import {
   Chip,
+  Card,
   CircularProgress,
   Dialog,
   DialogActions,
@@ -35,7 +36,7 @@ import TimerOffIcon from "@material-ui/icons/TimerOff";
 import Carousel from "react-multi-carousel";
 // import Logo from "../../images/logo.png"
 import "react-multi-carousel/lib/styles.css";
-// import { FlexDiv } from "../../../design-system/FlexDiv";
+import { FlexDiv } from "../../../react-design-system/FlexDiv";
 // function ConfirmationDialogRaw(props) {
 //   const { onClose, value: valueProp, open, ...other } = props;
 //   const [value, setValue] = React.useState(valueProp);
@@ -196,11 +197,8 @@ function QuestionList() {
             <div
               style={{ padding: 16, display: "flex", justifyContent: "center" }}
             >
-              <Button label="test"/>
-              
               {
-                <FlexDiv
-                  card
+                <Card
                   style={{
                     width: 400,
                     height: 200,
@@ -213,7 +211,7 @@ function QuestionList() {
                   <p>Click to join</p>
                   <Divider style={{ marginTop: 8 }} />
                   <h3 style={{ color: "gray" }}>{q.text}</h3>
-                </FlexDiv>
+                </Card>
               }
             </div>
           );
