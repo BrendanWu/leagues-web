@@ -24,6 +24,7 @@ import LeaguesMap from "../../components/LeaguesMap";
 import LeaguesTableMap from "./components/LeaguesTableMap";
 import data from "../../basketballdata";
 import GameFeedCarousel from "./components/GameFeedCarousel";
+import { Console } from "console";
 const Home = () => {
   const [allUsers, setAllUsers] = useState<IHomeUser[]>([]);
   const classes = useStyles();
@@ -104,12 +105,10 @@ const Home = () => {
             label="Enter state name"
             image="https://thumbs.dreamstime.com/z/red-maps-pin-location-map-icon-location-pin-pin-icon-vector-red-maps-pin-location-map-icon-location-pin-pin-icon-vector-vector-144267433.jpg"
           />
-          <Select>
-            <option onChange={(i) => console.log(i)} value="">
-              Indoor/OutDoor
-            </option>
-            <option value="">Indoor</option>
-            <option value="">OutDoor</option>
+          <Select onChange={(e: any) => setSelected(e.target.value)}>
+            <option value="">Indoor/OutDoor</option>
+            <option value="in">Indoor</option>
+            <option value="out">OutDoor</option>
           </Select>
           <Select style={{ width: 97 }}>
             <option value="">Price</option>
@@ -140,7 +139,7 @@ const Home = () => {
               borderLeft: 0,
             }}
           >
-            <LeaguesTableMap />
+            <LeaguesTableMap type={selected} />
           </FlexDiv>
         </FlexDiv>
       </Container>

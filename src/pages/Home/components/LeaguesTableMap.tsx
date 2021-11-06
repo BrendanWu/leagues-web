@@ -6,12 +6,18 @@ import { useDispatch } from "react-redux";
 import { setLocation } from "../../../redux/actions/location";
 import { Text } from "../../../react-design-system/Text";
 
-const LeaguesTableMap = () => {
+const LeaguesTableMap = (props: { type?: string }) => {
   const dispatch = useDispatch();
   // const [rowId, setRowId] = useState < number || null > null;
+  const tableData =
+    props.type === "in"
+      ? basketballdata.filter((item: any) => item?.description === "Indoor")
+      : props.type === "out"
+      ? basketballdata.filter((item: any) => item?.description !== "Indoor")
+      : basketballdata;
   return (
     <FlexDiv vert>
-      {basketballdata.map((court: any) => {
+      {tableData.map((court: any) => {
         return (
           <FlexDiv
             style={{
