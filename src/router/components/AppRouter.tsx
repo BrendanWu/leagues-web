@@ -146,7 +146,7 @@ const AppRouter = () => {
               <ListItemIcon>
                 <TableChartOutlined />
               </ListItemIcon>
-              <ListItemText primary="MyPlayer" />
+              <ListItemText primary="Find arenas" />
             </ListItem>
           </Link>
           <Link style={{ textDecoration: "none", color: "black" }} to="/sites">

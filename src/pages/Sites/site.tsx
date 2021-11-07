@@ -19,6 +19,7 @@ import {
   Checkbox,
   Badge,
   Chip,
+  Container,
 } from "@material-ui/core";
 import UrbanTorontoListings from "../../components/UrbanTorontoListings";
 import { Button2 } from "../../react-design-system/Button2";
@@ -84,7 +85,7 @@ const Site = () => {
 
   console.log(allUsers);
   return (
-    <>
+    <Container>
       <div className={classes.root}>
         <FlexDiv justify="space-between">
           <h3>My gateways</h3>
@@ -198,7 +199,7 @@ const Site = () => {
         </Card> */}
       </div>
       {/* <h1>api documentation</h1> */}
-    </>
+    </Container>
   );
 };
 const useStyles = makeStyles((theme: Theme) =>

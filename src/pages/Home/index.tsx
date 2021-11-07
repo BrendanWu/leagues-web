@@ -94,7 +94,7 @@ const Home = () => {
       <Container>
         <FlexDiv
           align="center"
-          style={{ width: "60%" }}
+          style={{ width: "50%" }}
           justify="space-between"
           container
         >
@@ -106,10 +106,10 @@ const Home = () => {
           />
           <Select>
             <option onChange={(i) => console.log(i)} value="">
-              Indoor/OutDoor
+              Indoor/Outdoor
             </option>
             <option value="">Indoor</option>
-            <option value="">OutDoor</option>
+            <option value="">Outdoor</option>
           </Select>
           <Select style={{ width: 97 }}>
             <option value="">Price</option>
