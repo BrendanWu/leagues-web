@@ -14,6 +14,7 @@ const StyledSelect = styled.select`
 interface Props {
   style?: React.CSSProperties;
   children?: any;
+  onChange?: any;
 }
 
 export const Select: React.FC<Props> = (props) => {

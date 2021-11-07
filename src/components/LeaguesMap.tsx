@@ -7,6 +7,7 @@ import { FlexDiv } from "../react-design-system/FlexDiv";
 import { useSelector } from "react-redux";
 import { RootState } from "../interfaces/redux/store";
 import img from "../../src/assets/location.png";
+import { useNavigator } from "../costumHooks/currentLocation";
 
 import {
   MISSISSAUGA_BOUNDS,
@@ -33,6 +34,8 @@ const LeaguesMap = () => {
   const [map, setMap] = useState<any>(null);
   const [maps2, setMaps2] = useState<any>(null);
   const [map2, setMap2] = useState<any>(null);
+  const { currentLat, currentLng, error } = useNavigator();
+  console.log(currentLat, currentLng, error);
   // console.log(location);
   const mapStyles = [
     {
@@ -406,6 +409,15 @@ const LeaguesMap = () => {
             lng={lng}
             text={title}
           />
+
+          <AnyReactComponent
+            onSubmit={() => {
+              console.log("Current Location");
+            }}
+            lat={currentLat || 0}
+            lng={currentLng || 0}
+            text={"Current Location"}
+          />
           {/* {data?.map((item) => (
             <AnyReactComponent
               key={item?._id}
@@ -460,7 +472,11 @@ const AnyReactComponent = (props: {
     }}
     onClick={() => props.onSubmit()}
   >
-    <img style={{ height: 50, width: 50 }} src={img} />
+    {props?.text === "Current Location" ? (
+      props?.text
+    ) : (
+      <img style={{ height: 50, width: 50 }} src={img} />
+    )}
     {/* {props?.text} */}
   </FlexDiv>
 );

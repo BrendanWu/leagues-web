@@ -7,6 +7,9 @@ import React from "react";
 import {
   Chip,
   Card,
+  CardActions,
+  CardMedia,
+  CardContent,
   CircularProgress,
   Dialog,
   DialogActions,
@@ -17,7 +20,10 @@ import {
   Typography,
 } from "@material-ui/core";
 // import { formatDateToNow } from "../../utils/formatDate";
+import Button from "../../../react-design-system/Button";
+import { Text } from "../../../react-design-system/Text";
 import {
+  ArrowForward,
   AttachFile,
   CachedOutlined,
   CheckBox,
@@ -26,6 +32,7 @@ import {
   CheckCircleOutline,
   DoneOutlineOutlined,
 } from "@material-ui/icons";
+import courtImage from "../../../assets/court.jpg";
 import ReactStars from "react-stars";
 import NaturePeopleIcon from "@material-ui/icons/NaturePeople";
 // import Button from "@material-ui/core/Button";
@@ -139,25 +146,6 @@ function QuestionList() {
     },
   ];
 
-  //   if (loading) {
-  //     return (
-  //       <div
-  //         style={{
-  //           display: "flex",
-  //           flexDirection: "column",
-  //           alignItems: "center",
-  //           justifyContent:"center",
-  //           marginTop: 50,
-  //           marginBottom: 100,
-  //         }}
-  //       >
-  //         <CircularProgress />
-  //       </div>
-  //     );
-  //   }
-
-  //   if (error) return <div>Error fetching quesitons list...</div>;
-
   return (
     <div>
       {/* <h2
@@ -200,17 +188,83 @@ function QuestionList() {
               {
                 <Card
                   style={{
-                    width: 400,
-                    height: 200,
-                    borderRadius: 0,
-                    padding: 16,
-                    background: "white",
-                    border: "1px solid rgb(56, 151, 240)ellow",
+                    width: 270,
+                    height: 320,
+
+                    // padding: 16,
+                    background: "#FFFFFF 0% 0% no-repeat padding-box",
+                    boxShadow: "2px 2px 4px #27272733",
+                    borderRadius: "2px",
+                    opacity: 1,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    flexDirection: "column",
+                    // background: "white",
+                    // border: "1px solid rgb(56, 151, 240)ellow",
                   }}
                 >
-                  <p>Click to join</p>
-                  <Divider style={{ marginTop: 8 }} />
-                  <h3 style={{ color: "gray" }}>{q.text}</h3>
+                  <CardMedia
+                    component="img"
+                    height="130"
+                    image={courtImage}
+                    alt="Court"
+                  />
+                  <CardContent style={{ height: 130 }}>
+                    <FlexDiv style={{ height: 27 }} justify="space-between">
+                      <Text style={{ color: "gray" }}>BasketBall</Text>
+                      <Text style={{ color: "#DA3E17" }}>$10 Entry Fee</Text>
+                    </FlexDiv>
+                    <Text
+                      style={{
+                        color: "black",
+                        fontWeight: "bold",
+                        fontSize: 16,
+                        height: 10,
+                      }}
+                    >
+                      Pick-Up Game
+                    </Text>
+                    <Text
+                      style={{
+                        color: "#4695C6",
+                        fontWeight: "lighter",
+                        fontSize: 12,
+                        height: 5,
+                      }}
+                    >
+                      Indoor Gym | Full-Court{" "}
+                    </Text>{" "}
+                    <Text
+                      style={{
+                        color: "#4695C6",
+                        // fontWeight: "400",
+                        height: 5,
+                        fontSize: `12px`,
+                      }}
+                    >
+                      Today @ 2:00pm - 4:00pm
+                    </Text>{" "}
+                    <Text
+                      style={{
+                        color: "#4695C6",
+                        // fontWeight: "400",
+                        height: 5,
+                        fontSize: `12px`,
+                      }}
+                    >
+                      HoopDome | North York, ON{" "}
+                    </Text>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      style={{
+                        color: "#DA3E17",
+                        fontWeight: "bold",
+                        height: 20,
+                      }}
+                      label="HOP IN"
+                    />
+                  </CardActions>
                 </Card>
               }
             </div>
