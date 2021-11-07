@@ -23,6 +23,7 @@ import {
 import Button from "../../../react-design-system/Button";
 import { Text } from "../../../react-design-system/Text";
 import {
+  ArrowForward,
   AttachFile,
   CachedOutlined,
   CheckBox,

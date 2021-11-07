@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { IHomeUser } from "../../interfaces/pages/Home";
 import { API } from "../../constants";
 // import GameFeedCarousel from './components'
+import { useNavigator } from "../../costumHooks/currentLocation";
 import { Text } from "../../react-design-system/Text";
 import { RootState } from "../../interfaces/redux/store";
 import { useSelector } from "react-redux";
@@ -31,6 +32,7 @@ const Home = () => {
   const [selected, setSelected] = useState<string>("All");
   const token = useSelector<RootState>((state) => state?.auth?.token);
   const profile_Id = useSelector<RootState>((state) => state?.auth?.user_id);
+
   const getUsersProfiles = async () => {
     try {
       const { data } = await axios.get(`${API}getprofiles`, {
