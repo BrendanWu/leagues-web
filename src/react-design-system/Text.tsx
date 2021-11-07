@@ -6,7 +6,6 @@ const StyledText = styled.p`
   font-size: 14px;
   font-weight: 400;
 
-  color: white;
 `;
 
 interface Props {

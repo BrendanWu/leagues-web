@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FlexDiv } from "./FlexDiv";
 import { RippleWrapper } from "./WithRipple";
 import { VariantOptions, Icon } from "./Icon";
+import { Text } from "./Text";
 
 const StyledButton = styled.button<Props>`
   background-color: ${({ alt }) => (alt ? "#000" : "white")};
@@ -59,7 +60,7 @@ const Button: React.FC<Props> = (props) => {
       <RippleWrapper className="rippleWrapper">
         <StyledButton {...props}>
           <FlexDiv container justify="center" align="center">
-            <p style={{ margin: 0 }}>{props.label}</p>
+            <Text style={{ margin: 0 }}>{props.label}</Text>
             {props.icon ? <Icon variant={props.icon} size={10} /> : null}
           </FlexDiv>
         </StyledButton>
