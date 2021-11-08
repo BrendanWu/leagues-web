@@ -43,6 +43,7 @@ const AppRouter = () => {
     (state) => state?.profile?.name
   ) as string;
   const dispatch = useDispatch();
+  const history = useHistory();
   const handleMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -118,6 +119,9 @@ const AppRouter = () => {
                 }}
               >
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                <MenuItem onClick={() => history.push("/profile")}>
+                  My Profile
+                </MenuItem>
               </Popover>
             </div>
           </div>
