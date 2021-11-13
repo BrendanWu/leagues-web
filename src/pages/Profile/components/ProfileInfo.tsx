@@ -3,8 +3,9 @@ import { FlexDiv } from "../../../react-design-system/FlexDiv";
 import { Text } from "../../../react-design-system/Text";
 import { Avatar } from "../../../react-design-system/Avatar";
 import image from "../../../assets/player.png";
+import { IUserRegister } from "../../../interfaces/pages/Auth";
 
-const ProfileInfo = () => {
+const ProfileInfo = (props: { profile: IUserRegister }) => {
   return (
     <FlexDiv
       size={0.5}
@@ -13,8 +14,12 @@ const ProfileInfo = () => {
       align="center"
     >
       <Avatar src={image} alt="PRofile Pic" />
-      <Text style={{ color: "black" }}>Ishaq Ali</Text>
-      <Text style={{ color: "black" }}>johari9292@gmail.com</Text>
+      <Text style={{ color: "black" }}>
+        {props?.profile?.name || " User Name"}
+      </Text>
+      <Text style={{ color: "black" }}>
+        {props?.profile?.email || " User Email"}
+      </Text>
     </FlexDiv>
   );
 };

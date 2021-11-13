@@ -20,11 +20,11 @@ const LeaguesTableMap = (props: { type?: string }) => {
       {tableData.map((court: any) => {
         return (
           <FlexDiv
+            container
             style={{
               padding: 10,
               border: "1px solid orange",
               cursor: "pointer",
-              height: 60,
             }}
             justify="space-between"
             onClick={() =>
@@ -37,13 +37,16 @@ const LeaguesTableMap = (props: { type?: string }) => {
               )
             }
           >
-            {/* <FlexDiv container> */}
-            <div style={{ height: 60 }}>
+            <FlexDiv align="center" container>
               <p style={{ fontWeight: "bold" }}>{court.title}</p>
-              <p style={{ color: "#909298" }}>{court.description}</p>
+
               {/* <p style={{}}>Time Slots Available: N/A</p> */}
-            </div>
-            <Text style={{ color: "#DA3E17" }}> Free Entry </Text>
+            </FlexDiv>
+            <FlexDiv justify="center" vert>
+              {" "}
+              <p style={{ color: "#909298" }}>{court.description}</p>
+              <Text style={{ color: "#DA3E17" }}> Free Entry </Text>{" "}
+            </FlexDiv>
             {/* </FlexDiv> */}
           </FlexDiv>
         );
