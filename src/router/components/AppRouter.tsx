@@ -150,7 +150,7 @@ const AppRouter = () => {
               <ListItemIcon>
                 <TableChartOutlined />
               </ListItemIcon>
-              <ListItemText primary="MyPlayer" />
+              <ListItemText primary="Find arenas" />
             </ListItem>
           </Link>
           <Link style={{ textDecoration: "none", color: "black" }} to="/sites">
@@ -169,6 +169,15 @@ const AppRouter = () => {
                 <TableChartOutlined />
               </ListItemIcon>
               <ListItemText primary="Docs" />
+            </ListItem>
+          </Link>
+          <Link style={{ textDecoration: "none", color: "black" }} to="/posts">
+            {" "}
+            <ListItem button>
+              <ListItemIcon>
+                <TableChartOutlined />
+              </ListItemIcon>
+              <ListItemText primary="Posts" />
             </ListItem>
           </Link>
           {/* <Link

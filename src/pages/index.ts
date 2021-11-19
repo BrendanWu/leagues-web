@@ -5,4 +5,4 @@ export * from "./BitCoin";
 export * from "./Profile/index";
 export { Sites } from "./Sites/index";
 export { Site } from "./Sites/site";
-export { Docs } from "./Docs/index";
+export { AdminDocs } from "./Docs/index";

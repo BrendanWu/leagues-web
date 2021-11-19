@@ -19,6 +19,7 @@ import {
   Checkbox,
   Badge,
   Chip,
+  Container,
 } from "@material-ui/core";
 import UrbanTorontoListings from "../../components/UrbanTorontoListings";
 import { Button2 } from "../../react-design-system/Button2";
@@ -81,10 +82,10 @@ const Sites = () => {
     setSites([...sites, doc]);
   };
   return (
-    <>
-      <div className={classes.root}>
+    <Container>
+   
         <FlexDiv justify="space-between">
-          <h3>My sites</h3>
+          <h3>Games</h3>
           <AddSiteDialog handleClose={handleClose} />
         </FlexDiv>
         {/* <Button onClick={() => getQR()}> Send Qr </Button> */}
@@ -112,9 +113,9 @@ const Sites = () => {
             <TableHead>
               <TableRow>
                 {/* <TableCell>Member</TableCell> */}
-                <TableCell>Address</TableCell>
-                <TableCell align="right">Gateways</TableCell>
-                <TableCell align="right"> Last heartbeat</TableCell>
+                <TableCell>Court</TableCell>
+                <TableCell align="right">Address</TableCell>
+                <TableCell align="right"> Schedule</TableCell>
                 <TableCell align="right"> Status</TableCell>
 
                 {/* <TableCell align="right">Carbs&nbsp;(g)</TableCell> */}
@@ -199,9 +200,9 @@ const Sites = () => {
           ToggleButton Token TokenInput TokenInputDialog Tokenizer Toolbar Tree
           WindowShade withLabels ZeroState
         </Card> */}
-      </div>
+   
       {/* <h1>api documentation</h1> */}
-    </>
+    </Container>
   );
 };
 const useStyles = makeStyles((theme: Theme) =>
