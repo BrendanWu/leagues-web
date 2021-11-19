@@ -6,6 +6,7 @@ export interface IUserRegister {
   city?: string;
   state?: string;
   country?: string;
+  image?: string;
   address?: string;
 }
 

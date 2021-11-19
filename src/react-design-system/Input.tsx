@@ -54,6 +54,7 @@ interface Props {
   border?: boolean;
   style?: React.CSSProperties;
   image?: string;
+  ref?: any;
 }
 
 export const Input: React.FC<

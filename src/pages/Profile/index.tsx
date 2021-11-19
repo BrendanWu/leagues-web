@@ -31,7 +31,24 @@ const Profile = () => {
       // console.log(auth);
     } catch (error) {}
   };
+  const onImageUpload = async (file: any) => {
+    try {
+      const formData = new FormData();
+      formData.append("myImage", file);
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+          authorization: `Bearer ${token}`,
+        },
+      };
 
+      await axios.post(`${API}upload/${profile_Id}`, formData, config);
+      alert("The file is successfully uploaded");
+      getUsersProfile();
+    } catch (error) {
+      alert("Error Occurred");
+    }
+  };
   const UpdateProfile = async (values: IUserRegister) => {
     try {
       const { data } = await axios.post(
@@ -53,7 +70,7 @@ const Profile = () => {
   }, []);
   return (
     <FlexDiv style={{ marginTop: 40 }} justify="space-between">
-      <ProfileInfo profile={profileData} />
+      <ProfileInfo profile={profileData} onImageUpload={onImageUpload} />
       <EditProfile profile={profileData} updateProfile={UpdateProfile} />
     </FlexDiv>
   );

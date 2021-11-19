@@ -7,7 +7,6 @@ const NavContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 10;
 `;
 
 const ImageContainer = styled.img`
@@ -19,6 +18,7 @@ const TextStyled = styled.h5`
   color: white;
   font-size: 38;
   font-weight: bold;
+  margin-right: 10;
 `;
 const NavBar = () => {
   return (

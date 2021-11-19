@@ -13,6 +13,7 @@ interface Props {
   alt?: string;
   style?: React.CSSProperties;
   children?: any;
+  onClick?: any;
 }
 
 export const Avatar: React.FC<Props> = (props) => {
