@@ -4,5 +4,5 @@ export * from "./Register";
 export * from "./BitCoin";
 export {Sites} from "./Sites/index";
 export {Site} from "./Sites/site";
-export {Docs} from './Docs/index';
+export {AdminDocs} from './Docs/index';
 
