@@ -97,7 +97,7 @@ const Home = () => {
       <Container>
         <FlexDiv
           align="center"
-          style={{ width: "60%" }}
+          style={{ width: "50%" }}
           justify="space-between"
           container
         >
