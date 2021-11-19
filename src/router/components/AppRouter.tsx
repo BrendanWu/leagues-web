@@ -167,6 +167,15 @@ const AppRouter = () => {
               <ListItemText primary="Docs" />
             </ListItem>
           </Link>
+          <Link style={{ textDecoration: "none", color: "black" }} to="/posts">
+            {" "}
+            <ListItem button>
+              <ListItemIcon>
+                <TableChartOutlined />
+              </ListItemIcon>
+              <ListItemText primary="Posts" />
+            </ListItem>
+          </Link>
           {/* <Link
             style={{ textDecoration: "none", color: "black" }}
             to="/bitcoin-transactions"
