@@ -1,10 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
-
 import MDEditor from "@uiw/react-md-editor";
-import { Input } from "../../react-design-system/Input";
-import { FlexDiv } from "../../react-design-system/FlexDiv";
-import Button from "../../react-design-system/Button";
+import { Input } from "../../../react-design-system/Input";
+import { FlexDiv } from "../../../react-design-system/FlexDiv";
+import Button from "../../../react-design-system/Button";
 
 export default function MarkdownEditor(props: any) {
   const [markdownString, setMarkdownString] =
@@ -21,7 +19,6 @@ export default function MarkdownEditor(props: any) {
     const name = e.target.name;
     const value = e.target.value;
     setMetaForm({ ...metaForm, [name]: value });
-    const body = { metaForm, value };
   };
   return (
     <div className="card" style={{ padding: 16 }}>

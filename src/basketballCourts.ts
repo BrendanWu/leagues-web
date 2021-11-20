@@ -1,513 +1,25 @@
-import { useState, useEffect, useRef } from "react";
-import { MapData } from "../interfaces/pages/Home";
-import GoogleMapReact from "google-map-react";
-import styled from "styled-components";
-import MapDrawer from "./MapDrawer";
-import { FlexDiv } from "../react-design-system/FlexDiv";
-import { useSelector } from "react-redux";
-import { RootState } from "../interfaces/redux/store";
-import img from "../../src/assets/location.png";
-import { useNavigator } from "../costumHooks/currentLocation";
-
-import {
-  MISSISSAUGA_BOUNDS,
-  TORONTO_BOUNDS,
-  TORONTO_BOUNDS_Marker,
-} from "./Basketballs of toronto (2)";
-
-const TextStyled = styled.h5`
-  color: white;
-  font-size: 38;
-  font-weight: bold;
-`;
-
-const LeaguesMap = () => {
-  const [isVisble, setIsVisible] = useState<boolean>(false);
-  const [name, setName] = useState<string>("");
-  const lat = useSelector<RootState>((state) => state?.location?.lat) as number;
-  const lng = useSelector<RootState>((state) => state?.location?.lng) as number;
-  const title = useSelector<RootState>(
-    (state) => state?.location?.title
-  ) as string;
-  const [mapLoaded, setMapLoaded] = useState<boolean>(false);
-  const [maps, setMaps] = useState<any>(null);
-  const [map, setMap] = useState<any>(null);
-  const [maps2, setMaps2] = useState<any>(null);
-  const [map2, setMap2] = useState<any>(null);
-  const { currentLat, currentLng, error } = useNavigator();
-  console.log(currentLat, currentLng, error);
-  // console.log(location);
-  const mapStyles = [
-    {
-      featureType: "all",
-      elementType: "labels",
-      stylers: [
-        {
-          visibility: "on",
-        },
-      ],
-    },
-    {
-      featureType: "all",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          saturation: 36,
-        },
-        {
-          color: "#000000",
-        },
-        {
-          lightness: 40,
-        },
-      ],
-    },
-    {
-      featureType: "all",
-      elementType: "labels.text.stroke",
-      stylers: [
-        {
-          visibility: "on",
-        },
-        {
-          color: "#000000",
-        },
-        {
-          lightness: 16,
-        },
-      ],
-    },
-    {
-      featureType: "all",
-      elementType: "labels.icon",
-      stylers: [
-        {
-          visibility: "off",
-        },
-      ],
-    },
-    {
-      featureType: "administrative",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#000000",
-        },
-        {
-          lightness: 20,
-        },
-      ],
-    },
-    {
-      featureType: "administrative",
-      elementType: "geometry.stroke",
-      stylers: [
-        {
-          color: "#000000",
-        },
-        {
-          lightness: 17,
-        },
-        {
-          weight: 1.2,
-        },
-      ],
-    },
-    {
-      featureType: "administrative.country",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          color: "#e5c163",
-        },
-      ],
-    },
-    {
-      featureType: "administrative.locality",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          color: "#c4c4c4",
-        },
-      ],
-    },
-    {
-      featureType: "administrative.neighborhood",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          color: "#e5c163",
-        },
-      ],
-    },
-    {
-      featureType: "landscape",
-      elementType: "geometry",
-      stylers: [
-        {
-          color: "#000000",
-        },
-        {
-          lightness: 20,
-        },
-      ],
-    },
-    {
-      featureType: "poi",
-      elementType: "geometry",
-      stylers: [
-        {
-          color: "#000000",
-        },
-        {
-          lightness: 21,
-        },
-        {
-          visibility: "on",
-        },
-      ],
-    },
-    {
-      featureType: "poi.business",
-      elementType: "geometry",
-      stylers: [
-        {
-          visibility: "on",
-        },
-      ],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#e5c163",
-        },
-        {
-          lightness: "0",
-        },
-      ],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "geometry.stroke",
-      stylers: [
-        {
-          visibility: "off",
-        },
-      ],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          color: "#ffffff",
-        },
-      ],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "labels.text.stroke",
-      stylers: [
-        {
-          color: "#e5c163",
-        },
-      ],
-    },
-    {
-      featureType: "road.arterial",
-      elementType: "geometry",
-      stylers: [
-        {
-          color: "#000000",
-        },
-        {
-          lightness: 18,
-        },
-      ],
-    },
-    {
-      featureType: "road.arterial",
-      elementType: "geometry.fill",
-      stylers: [
-        {
-          color: "#575757",
-        },
-      ],
-    },
-    {
-      featureType: "road.arterial",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          color: "#ffffff",
-        },
-      ],
-    },
-    {
-      featureType: "road.arterial",
-      elementType: "labels.text.stroke",
-      stylers: [
-        {
-          color: "#2c2c2c",
-        },
-      ],
-    },
-    {
-      featureType: "road.local",
-      elementType: "geometry",
-      stylers: [
-        {
-          color: "#000000",
-        },
-        {
-          lightness: 16,
-        },
-      ],
-    },
-    {
-      featureType: "road.local",
-      elementType: "labels.text.fill",
-      stylers: [
-        {
-          color: "#999999",
-        },
-      ],
-    },
-    {
-      featureType: "transit",
-      elementType: "geometry",
-      stylers: [
-        {
-          color: "#000000",
-        },
-        {
-          lightness: 19,
-        },
-      ],
-    },
-    {
-      featureType: "water",
-      elementType: "geometry",
-      stylers: [
-        {
-          color: "#000000",
-        },
-        {
-          lightness: 17,
-        },
-      ],
-    },
-  ];
-  const onMapLoaded = (map: any, maps: any) => {
-    console.log("boundss", map);
-    console.log("mapppppsssss", maps);
-
-    handleApiLoaded(map, maps);
-    // handleApiLoaded2(map, maps);
-    setMapLoaded(true);
-    setMap(map);
-    setMaps(maps);
-    setMap2(map);
-    setMaps2(maps);
+export type BasketballCourtT = {
+  _id: string;
+  hours: {
+    monday: string;
+    tuesday: string;
+    wednesday: string;
+    thursday: string;
+    friday: string;
+    saturday: string;
+    sunday: string;
   };
-  const handleApiLoaded = (map: any, maps: any) => {
-    var bounds = new maps.LatLngBounds();
-
-    for (let marker of MISSISSAUGA_BOUNDS_MArkers) {
-      bounds.extend(new maps.LatLng(marker.lat, marker.lng));
-    }
-    map.fitBounds(bounds);
+  description: string;
+  location?: {
+    longitude?: number;
+    latitude?: number;
   };
-  const handleApiLoaded2 = (map2: any, maps2: any) => {
-    var bounds = new maps2.LatLngBounds();
-
-    for (let marker of TORONTO_BOUNDS_Marker) {
-      bounds.extend(new maps2.LatLng(marker.lat, marker.lng));
-    }
-    map2.fitBounds(bounds);
-  };
-  const afterMapLoadChanges = () => {
-    return (
-      <div style={{ display: "none" }}>
-        <Polyline map={map} maps={maps} markers={MISSISSAUGA_BOUNDS_MArkers} />
-      </div>
-    );
-  };
-  const afterMapLoadChangesToronto = () => {
-    return (
-      <div style={{ display: "none" }}>
-        <Polyline map={map2} maps={maps2} markers={TORONTO_BOUNDS_Marker} />
-      </div>
-    );
-  };
-
-  return (
-    <div>
-      {/* <h1>{props.item?.title}</h1> */}
-      <MapDrawer
-        text={name}
-        isVisible={isVisble}
-        onClose={() => setIsVisible(false)}
-      />
-      <div style={{ width: "50vw", height: "80vh" }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyBbakHYrx-anepIbe5nyyMKVGEhdCHTfEI" }}
-          // defaultCenter={{
-          //   lat: lat || 43.653908,
-          //   lng: lng || -79.384293,
-          // }}
-          center={{
-            lat: lat || 43.653908,
-            lng: lng || -79.384293,
-          }}
-          defaultZoom={15}
-          options={{
-            styles: mapStyles,
-          }}
-          yesIWantToUseGoogleMapApiInternals
-          onGoogleApiLoaded={({ map, maps }) => onMapLoaded(map, maps)}
-        >
-          {/* {MISSISSAUGA_BOUNDS?.map((item, index) => (
-            <AnyReactComponent
-              key={index}
-              onSubmit={() => {
-                // setName(item?.title);
-                setIsVisible(true);
-              }}
-              lat={item[1]}
-              lng={item[0]}
-              text={"^"}
-            />
-          ))} */}
-          {/* {TORONTO_BOUNDS?.map((item, index) => (
-            <AnyReactComponent
-              key={index}
-              onSubmit={() => {
-                // setName(item?.title);
-                setIsVisible(true);
-              }}
-              lat={item[1]}
-              lng={item[0]}
-              text={"*"}
-            />
-          ))} */}
-          {/* {mapLoaded && map !== null && maps !== null
-            ? afterMapLoadChanges()
-            : ""} */}
-          {/* {mapLoaded && map2 !== null && maps2 !== null
-            ? afterMapLoadChangesToronto()
-            : ""} */}
-
-          <AnyReactComponent
-            onSubmit={() => {
-              setName(title);
-              setIsVisible(true);
-            }}
-            lat={lat}
-            lng={lng}
-            text={title}
-          />
-
-          <AnyReactComponent
-            onSubmit={() => {
-              console.log("Current Location");
-            }}
-            lat={currentLat || 0}
-            lng={currentLng || 0}
-            text={"Current Location"}
-          />
-          {/* {data?.map((item) => (
-            <AnyReactComponent
-              key={item?._id}
-              onSubmit={() => {
-                setName(item?.title);
-                setIsVisible(true);
-              }}
-              lat={item?.location?.latitude}
-              lng={item?.location?.longitude}
-              text={item?.title}
-            />
-          ))} */}
-        </GoogleMapReact>
-      </div>
-
-      {/* <ul>
-        <li>
-          {props.item?.location?.longitude +
-            " , " +
-            props.item?.location.latitude}
-        </li>
-      </ul> */}
-    </div>
-  );
+  title?: string;
+  website?: string;
+  imageUrl?: string;
 };
 
-const MISSISSAUGA_BOUNDS_MArkers = [
-  { lng: -79.8060608, lat: 43.5882743 },
-  { lng: -79.6735382, lat: 43.5012457 },
-  { lng: -79.648304, lat: 43.5231582 },
-  { lng: -79.6088219, lat: 43.4953292 },
-  { lng: -79.5293427, lat: 43.5793943 },
-  { lng: -79.5671082, lat: 43.6086307 },
-  { lng: -79.571228, lat: 43.6320034 },
-  { lng: -79.6309662, lat: 43.7299259 },
-  { lng: -79.8046875, lat: 43.5882344 },
-];
-
-const AnyReactComponent = (props: {
-  lat: number;
-  lng: number;
-  text: string;
-  onSubmit: () => void;
-}) => (
-  <FlexDiv
-    style={{
-      fontSize: 18,
-      fontWeight: "bold",
-      background: "white",
-      color: "darkorange",
-      zIndex: 10,
-    }}
-    onClick={() => props.onSubmit()}
-  >
-    {props?.text === "Current Location" ? (
-      props?.text
-    ) : (
-      <img style={{ height: 50, width: 50 }} src={img} />
-    )}
-    {/* {props?.text} */}
-  </FlexDiv>
-);
-
-const Polyline = (props: { markers: any; map: any; maps: any }) => {
-  const renderPolylines = () => {
-    const { markers, map, maps } = props;
-    /** Example of rendering geodesic polyline */
-    let geodesicPolyline = new maps.Polyline({
-      path: markers,
-      geodesic: true,
-      strokeColor: "#00a1e1",
-      strokeOpacity: 1.0,
-      strokeWeight: 4,
-    });
-    geodesicPolyline.setMap(map);
-
-    /** Example of rendering non geodesic polyline (straight line) */
-    let nonGeodesicPolyline = new maps.Polyline({
-      path: markers,
-      geodesic: false,
-      strokeColor: "blue",
-      strokeOpacity: 0.7,
-      strokeWeight: 3,
-    });
-    nonGeodesicPolyline.setMap(map);
-  };
-  renderPolylines();
-  return null;
-};
-const data = [
+const data: BasketballCourtT | any = [
   {
     _id: 0,
     hours: {
@@ -565,25 +77,6 @@ const data = [
     imageUrl: "https://goo.gl/maps/xVmRshmhan7jCmXRA",
   },
 
-  {
-    _id: 3,
-    hours: {
-      monday: "Temporarily Closed",
-      tuesday: "Temporarily Closed",
-      wednesday: "Temporarily Closed",
-      thursday: "Temporarily Closed",
-      friday: "Temporarily Closed",
-      saturday: "Temporarily Closed",
-      sunday: "Temporarily Closed",
-      Hoursofoperation: "Temporarily Closed",
-    },
-    description: "Outdoor Public",
-    location: { latitude: 41.701822, longitude: -73.930615 },
-    title: "Church Street Basketball Court",
-    website:
-      "https://www.google.com/maps/dir/43.6358258,-79.3966951/43.635787,-79.397768/@43.636169,-79.3993219,17z/am=t/data=!3m1!4b1",
-    imageUrl: "https://goo.gl/maps/B5tVNKEmWeoVorEA7",
-  },
   {
     _id: 4,
     hours: {
@@ -705,7 +198,7 @@ const data = [
       sunday: "closed",
       Hoursofoperation: "8 hours",
     },
-    description: "indoor",
+    description: "Indoor",
     location: { latitude: 43.660957, longitude: -79.366549 },
     title: "Youth Basketball Association",
     website: "http://youthball.ca/",
@@ -723,7 +216,7 @@ const data = [
       sunday: "6AM�11PM",
       Hoursofoperation: "17 hours",
     },
-    description: "indoor",
+    description: "Indoor",
     location: { latitude: 43.649755, longitude: -79.391808 },
     title: "The Hoop factory Basketball Club",
     website: "https://thehoopfactory.com/",
@@ -778,7 +271,7 @@ const data = [
       sunday: "Hours or services may differ",
       Hoursofoperation: "Unknown",
     },
-    description: "indoor",
+    description: "Indoor",
     location: { latitude: 43.66941, longitude: -79.410861 },
     title: "Annex Basketball Men's League",
     website: "http://annexbasketball.com/",
@@ -803,24 +296,7 @@ const data = [
     website: "http://www.lordsbasketball.com/",
     imageUrl: "https://images.app.goo.gl/HNougBexTwunwe4U8",
   },
-  {
-    _id: 16,
-    hours: {
-      monday: "closed",
-      tuesday: "12�5PM",
-      wednesday: "12�5PM",
-      thursday: "12�5PM",
-      friday: "12�5PM",
-      saturday: "10am-2pm",
-      sunday: "closed",
-      Hoursofoperation: "17 hours",
-    },
-    description: "Indoor",
-    location: { latitude: 0, longitude: 0 },
-    title: "Basketball World Toronto",
-    website: "http://www.bwt.ca/",
-    imageUrl: "https://goo.gl/maps/avmVDHtX4YkVyKVu5",
-  },
+
   {
     _id: 17,
     hours: {
@@ -907,7 +383,7 @@ const data = [
       sunday: "9AM�9PM",
       Hoursofoperation: "12 Hours ",
     },
-    description: "indoor",
+    description: "Indoor",
     location: { latitude: 43.601528, longitude: -79.50213 },
     title: "South Toronto Golden Eagles Basketball Club",
     website: "http://www.southtorontobasketball.com/",
@@ -925,7 +401,7 @@ const data = [
       sunday: "9AM�10PM",
       Hoursofoperation: "13 Hours ",
     },
-    description: "indoor",
+    description: "Indoor",
     location: { latitude: 43.660264, longitude: -79.344643 },
     title: "Jimmie Simpson Recreation Centre",
     website:
@@ -1143,7 +619,7 @@ const data = [
       sunday: "Hours or services may differ",
       Hoursofoperation: "Unknown",
     },
-    description: "indoor",
+    description: "Indoor",
     location: { latitude: 43.636284, longitude: -79.415278 },
     title: "ricoh coliseum basketball Court",
     website: "https://www.coca-colacoliseum.com/",
@@ -1493,4 +969,5 @@ const data = [
     imageUrl: "https://images.app.goo.gl/Q7AhvWszqxxjJfeA8",
   },
 ];
-export default LeaguesMap;
+
+export default data;

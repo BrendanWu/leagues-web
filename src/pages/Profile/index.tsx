@@ -67,6 +67,7 @@ const Profile = () => {
   };
   useEffect(() => {
     getUsersProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <FlexDiv style={{ marginTop: 40 }} justify="space-between">

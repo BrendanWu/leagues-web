@@ -2,22 +2,14 @@ import * as React from "react";
 import { FlexDiv } from "../../../react-design-system/FlexDiv";
 import { Text } from "../../../react-design-system/Text";
 import { Avatar } from "../../../react-design-system/Avatar";
-import image from "../../../assets/player.png";
 import { IUserRegister } from "../../../interfaces/pages/Auth";
 import { Input } from "../../../react-design-system/Input";
-import Button from "../../../react-design-system/Button";
-import axios from "axios";
 import { API } from "../../../constants";
 
 const ProfileInfo = (props: {
   profile: IUserRegister;
   onImageUpload: (file: any) => void;
 }) => {
-  const [file, setFile] = React.useState<any>(null);
-  const fileInput = React.useRef<any>(null);
-  // function chooseFile() {
-  //   cont { current } = fileInputs(current || { click: () => {} }).click();
-  // }
   return (
     <FlexDiv
       size={0.5}
@@ -25,13 +17,13 @@ const ProfileInfo = (props: {
       vert
       align="center"
     >
-      <label htmlFor="myuploadid">
+      <label htmlFor="upload_id">
         <Avatar src={(API + props.profile.image) as string} alt="PRofile Pic" />
       </label>
 
       <Input
         type="file"
-        id="myuploadid"
+        id="upload_id"
         // ref={fileInput}
         style={{ display: "none" }}
         onChange={(e: any) => props.onImageUpload(e.target.files[0])}

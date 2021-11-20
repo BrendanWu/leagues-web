@@ -1,22 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import makeApiRequest from "../../services/makeApiRequest";
-import PostView from "./PostView";
+import PostView from "./posts/PostView";
 import { FlexDiv } from "../../react-design-system/FlexDiv";
 import { Text } from "../../react-design-system/Text";
-import MarkdownEditor from "./MarkdownEditor";
 
 interface AuthObject {
   token: string;
 }
 const AdminDocs = (props: { auth: AuthObject }) => {
-  const [changeLogPosts, setChangeLogPosts] = React.useState([]);
+  const [changeLogPosts, setChangeLogPosts] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.auth.token) {
       makeApiRequest(
         `blog/getPostsByCategory/${"Changelog"}`,

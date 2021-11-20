@@ -1,89 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import { IHomeUser } from "../../interfaces/pages/Home";
 import { API } from "../../constants";
-import { RootState } from "../../interfaces/redux/store";
-import { useSelector } from "react-redux";
-import {
-  Card,
-  Table,
-  TableContainer,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-  Paper,
-  Select,
-  Checkbox,
-  Badge,
-  Chip,
-  Container,
-} from "@material-ui/core";
-import UrbanTorontoListings from "../../components/UrbanTorontoListings";
-import { Button2 } from "../../react-design-system/Button2";
+import Table from "@material-ui/core/Table";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableBody from "@material-ui/core/TableBody";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
 import Button from "../../react-design-system/Button";
 import { FlexDiv } from "../../react-design-system/FlexDiv";
-import AddSiteDialog from "../../components/AddSiteDialog";
-import AddGatewayDialog from "../../components/AddGatewayDialog";
-import { useHistory, useLocation } from "react-router";
+import AddGatewayDialog from "./components/AddGatewayDialog";
+import { useLocation } from "react-router";
 
 const Site = () => {
-  const [allUsers, setAllUsers] = useState<IHomeUser[]>([]);
   const classes = useStyles();
   const location = useLocation();
-  const [selected, setSelected] = useState(0);
-  const token = useSelector<RootState>((state) => state?.auth?.token);
-  const profile_Id = useSelector<RootState>((state) => state?.auth?.user_id);
-  const [sites, setSites] = React.useState([]);
   const [gateways, setGateways] = React.useState<any>([]);
-  const history = useHistory();
+
   const handleClose = (doc: any) => {
     setGateways([...gateways, doc]);
-  };
-  const getUsersProfiles = async () => {
-    try {
-      const { data } = await axios.get(`${API}getprofiles`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
-      setAllUsers(data);
-
-      // console.log(auth);
-    } catch (error) {}
-  };
-
-  const getQR = async () => {
-    try {
-      const { data } = await axios.get(
-        `${API}getqrdata`,
-
-        {
-          params: {
-            profile_Id,
-          },
-          headers: {
-            authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      console.log(data);
-    } catch (error) {}
   };
 
   useEffect(() => {
     const p = location.pathname.split("/")[2];
     axios.get(`${API}site/getGateways/${p}`).then((res) => {
-      console.log(res.data);
       setGateways(res.data.gateways);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(allUsers);
   return (
     <Container>
       <div className={classes.root}>
@@ -96,16 +44,11 @@ const Site = () => {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                {/* <TableCell>Member</TableCell> */}
-                {/* <TableCell>Site</TableCell> */}
                 <TableCell>GatewayID</TableCell>
                 <TableCell align="right">Log</TableCell>
                 <TableCell align="right">Last heartbeat(time)</TableCell>
                 <TableCell align="right"></TableCell>
                 <TableCell align="right"> Status</TableCell>
-
-                {/* <TableCell align="right">Carbs&nbsp;(g)</TableCell> */}
-                {/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>

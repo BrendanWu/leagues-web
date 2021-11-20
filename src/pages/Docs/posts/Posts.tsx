@@ -1,12 +1,8 @@
 import React from "react";
-// import { Grid } from "semantic-ui-react";
 import Grid from "@material-ui/core/Grid";
-
-import PostView from "./PostView";
-import makeApiRequest from "../../services/makeApiRequest";
-import { FlexDiv } from "../../react-design-system/FlexDiv";
-import { Icon } from "../../react-design-system/Icon";
-import MarkdownEditor from "./MarkdownEditor";
+import makeApiRequest from "../../../services/makeApiRequest";
+import { FlexDiv } from "../../../react-design-system/FlexDiv";
+import MarkdownEditor from "../componets/MarkdownEditor";
 import Button from "lifted-design-system/dist/Button";
 const AdminPosts = (props: any) => {
   const [posts, setPosts] = React.useState<any>([]);
@@ -24,6 +20,7 @@ const AdminPosts = (props: any) => {
   };
   React.useEffect(() => {
     getAllPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSave = async (metaForm: any, markdownString: any) => {

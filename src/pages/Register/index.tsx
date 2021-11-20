@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -27,7 +27,7 @@ const Register = () => {
   const onRegister = async () => {
     setIsLoading(true);
     try {
-      const { data } = await axios.post(
+      await axios.post(
         `${API}register`,
         { name, email, password },
         {
@@ -46,7 +46,7 @@ const Register = () => {
       setIsLoading(false);
     }
   };
-  useEffect(() => {}, []);
+
   return (
     <div style={{ backgroundColor: "white", minHeight: window.innerHeight }}>
       <Container component="main" maxWidth="xs">

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { FlexDiv } from "../../../react-design-system/FlexDiv";
 import { Text } from "../../../react-design-system/Text";
-import { Avatar } from "../../../react-design-system/Avatar";
 import { Input } from "../../../react-design-system/Input";
 import Button from "../../../react-design-system/Button";
 import { useFormik } from "formik";
@@ -13,7 +12,7 @@ const EditProfile = (props: {
   updateProfile: (values: IUserRegister) => void;
 }) => {
   const { name, phone, email, city, state, country, address } = props?.profile;
-  console.log("props profilee", props?.profile);
+
   let schema = yup.object().shape({
     name: yup.string().required("Full name is required"),
     phone: yup.number().required("Phone is required").positive().integer(),

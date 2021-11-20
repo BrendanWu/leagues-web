@@ -1,11 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  Switch,
-  BrowserRouter,
-  Route,
-  useHistory,
-  Redirect,
-} from "react-router-dom";
+import React from "react";
+import { Switch, BrowserRouter, Route, Redirect } from "react-router-dom";
 import { Login } from "../pages";
 import { Register } from "../pages";
 import HomeScreen from "../pages/Home/WebsiteHome";
