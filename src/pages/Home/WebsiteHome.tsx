@@ -10,30 +10,28 @@ import LeaguesMap from "./map/LeaguesMap";
 import LeaguesTableMap from "./map/LeaguesTableMap";
 import GameFeedCarousel from "./components/GameFeedCarousel";
 import NavBar from "./components/Navbar";
+import styled from "styled-components";
+
+const BackgroundImage = styled.div`
+  background-image: url(${hero});
+  background-repeat: repeat;
+  height: 300px;
+`;
 
 const HomeScreen = () => {
   const [selected, setSelected] = useState<string>("All");
   return (
     <>
-      <div
-        style={{
-          backgroundImage: `url(${hero})`,
-          backgroundRepeat: "repeat",
-          height: 350,
-        }}
-      >
-        <Container style={{ color: "white", marginTop: 10 }}>
+      <BackgroundImage>
+        <Container style={{ color: "white", marginTop: -20 }}>
           <NavBar />
-          <div style={{ width: 400, paddingTop: 50 }}>
-            <Text style={{ fontSize: 28 }}>
-              FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW
-            </Text>
+          <Text style={{ width: 400, paddingTop: 50, fontSize: 28 }}>
+            FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW
+          </Text>
 
-            <Button label="Get Started"></Button>
-          </div>
+          <Button style={{ width: 400 }} label="Get Started"></Button>
         </Container>
-      </div>
-
+      </BackgroundImage>
       <GameFeedCarousel />
 
       <Container>

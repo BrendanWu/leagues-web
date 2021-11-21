@@ -6,7 +6,25 @@ import Button from "../../../react-design-system/Button";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { IUserRegister } from "../../../interfaces/pages/Auth";
+import styled from "styled-components";
 
+const InputField = styled(Input)`
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  width: 300px;
+`;
+const StyledButton = styled(Button)`
+  color: blueviolet;
+  border: 2px solid lightgray;
+  border-radius: 10;
+  float: right;
+  width: 100;
+`;
+
+const ErrorContainer = styled.div`
+  color: "red";
+  font-size: 10px;
+`;
 const EditProfile = (props: {
   profile: IUserRegister;
   updateProfile: (values: IUserRegister) => void;
@@ -43,15 +61,8 @@ const EditProfile = (props: {
     <FlexDiv style={{ marginLeft: "5%" }} vert align="flex-start">
       <Text style={{ color: "blueviolet", margin: 20 }}> Profile Update </Text>
       <FlexDiv align="center" justify="space-between">
-        {" "}
         <FlexDiv style={{ marginBottom: 20 }} vert>
-          {" "}
-          <Input
-            style={{
-              border: "2px solid lightgray",
-              borderRadius: 10,
-              width: 300,
-            }}
+          <InputField
             label="Name"
             altTheme
             name="name"
@@ -60,19 +71,11 @@ const EditProfile = (props: {
             value={formik.values.name}
           />
           {formik.errors.email && (
-            <div style={{ color: "red", fontSize: 10 }}>
-              {formik.errors.name}
-            </div>
+            <ErrorContainer>{formik.errors.name}</ErrorContainer>
           )}
         </FlexDiv>
         <FlexDiv style={{ marginLeft: 15, marginBottom: 20 }} vert>
-          {" "}
-          <Input
-            style={{
-              border: "2px solid lightgray",
-              borderRadius: 10,
-              width: 300,
-            }}
+          <InputField
             label="Email"
             altTheme
             name="email"
@@ -81,21 +84,13 @@ const EditProfile = (props: {
             value={formik.values.email}
           />
           {formik.errors.email && (
-            <div style={{ color: "red", fontSize: 10 }}>
-              {formik.errors.email}
-            </div>
+            <ErrorContainer>{formik.errors.email}</ErrorContainer>
           )}
         </FlexDiv>
       </FlexDiv>
       <FlexDiv justify="space-between">
         <FlexDiv style={{ marginBottom: 20 }} vert>
-          <Input
-            style={{
-              border: "2px solid lightgray",
-              borderRadius: 10,
-
-              width: 300,
-            }}
+          <InputField
             label="Phone Number"
             altTheme
             name="phone"
@@ -104,20 +99,11 @@ const EditProfile = (props: {
             value={formik.values.phone}
           />
           {formik.errors.phone && (
-            <div style={{ color: "red", fontSize: 10 }}>
-              {formik.errors.phone}
-            </div>
+            <ErrorContainer>{formik.errors.phone}</ErrorContainer>
           )}
         </FlexDiv>
         <FlexDiv style={{ marginLeft: 15, marginBottom: 20 }} vert>
-          {" "}
-          <Input
-            style={{
-              border: "2px solid lightgray",
-              borderRadius: 10,
-
-              width: 300,
-            }}
+          <InputField
             label="City"
             altTheme
             name="city"
@@ -128,13 +114,7 @@ const EditProfile = (props: {
         </FlexDiv>
       </FlexDiv>
       <FlexDiv style={{ marginBottom: 20 }} justify="space-between">
-        <Input
-          style={{
-            border: "2px solid lightgray",
-            borderRadius: 10,
-
-            width: 300,
-          }}
+        <InputField
           label="Province/State"
           altTheme
           name="state"
@@ -142,13 +122,7 @@ const EditProfile = (props: {
           onChange={formik.handleChange}
           value={formik.values.state}
         />
-        <Input
-          style={{
-            border: "2px solid lightgray",
-            borderRadius: 10,
-            marginLeft: 15,
-            width: 300,
-          }}
+        <InputField
           label="Country"
           altTheme
           name="country"
@@ -158,13 +132,7 @@ const EditProfile = (props: {
         />
       </FlexDiv>
       <FlexDiv style={{ marginBottom: 20 }} justify="space-between">
-        <Input
-          style={{
-            border: "2px solid lightgray",
-            borderRadius: 10,
-
-            width: 615,
-          }}
+        <InputField
           label="Address"
           altTheme
           name="address"
@@ -174,20 +142,11 @@ const EditProfile = (props: {
         />
       </FlexDiv>
       <FlexDiv justify="flex-end" align="flex-end">
-        <Button
+        <StyledButton
           onClick={formik.handleSubmit}
-          style={{
-            color: "blueviolet",
-            border: "2px solid lightgray",
-            borderRadius: 10,
-            backgroundColor: "orange",
-            // display: "flex",
-            // alignSelf: "center",
-            float: "right",
-            width: 100,
-          }}
+          style={{}}
           label="Save Changes"
-        />{" "}
+        />
       </FlexDiv>
     </FlexDiv>
   );
