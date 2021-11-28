@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import { Route } from "react-router-dom";
 import UrbanTorontoListings from "../../components/UrbanTorontoListings";
-import { Home, BitCoinTranscations, Sites, Site, AdminDocs } from "../../pages";
+import { Home, BitCoinTranscations, Sites, Site, AdminDocs, Playgrounds } from "../../pages";
 import Posts from "../../pages/Docs/Posts";
 
 const Content = () => {
   const token = useSelector((state: any) => state?.auth?.token) as string;
-  const auth = {token}
+  const auth = { token }
   return (
     <>
       <Route exact path="/" component={Home} />
@@ -23,15 +23,15 @@ const Content = () => {
       <Route
         exact
         path="/docs"
-    >
+      >
         <AdminDocs auth={auth} />
-        </Route>
+      </Route>
       <Route
         exact
         path="/posts"
-    >
+      >
         <Posts auth={auth} />
-        </Route>
+      </Route>
       <Route
         exact
         path="/sites"
@@ -40,10 +40,17 @@ const Content = () => {
       <Route
         exact
         path="/site/:id"
-        
+
         component={Site}
       />
-      
+
+      <Route
+        exact
+        path="/playgrounds"
+
+        component={Playgrounds}
+      />
+
     </>
   );
 };
