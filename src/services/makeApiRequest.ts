@@ -1,16 +1,22 @@
 import axios, { Method } from "axios";
 import { BASE_URL } from "../utils/config";
 
-const makeApiRequest = (endpoint: string, method: Method, body: {}, token: any) => {
+const makeApiRequest = (
+  endpoint: string,
+  method: Method,
+  body: {},
+  token: any
+) => {
   const options = {
-    url: `${BASE_URL}/api/${endpoint}`,
+    url: `${BASE_URL}${endpoint}`,
     method,
-    headers: { 
+    headers: {
       idtoken: token,
       liftedapp: "leagues",
-      ContentType:"application/json"
+      ContentType: "application/json",
+      authorization: `Bearer ${token}`,
     },
-    data:body
+    data: body,
   };
   return axios(options);
 };

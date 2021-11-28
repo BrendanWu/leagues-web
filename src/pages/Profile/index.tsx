@@ -4,9 +4,9 @@ import { ProfileInfo } from "./components/ProfileInfo";
 import { EditProfile } from "./components/EditProfile";
 import { useSelector } from "react-redux";
 import { RootState } from "../../interfaces/redux/store";
-import axios from "axios";
-import { API } from "../../constants";
 import { IUserRegister } from "../../interfaces/pages/Auth";
+import Alert from "@material-ui/lab/Alert";
+import makeApiRequest from "../../services/makeApiRequest";
 
 const Profile = () => {
   const token = useSelector<RootState>((state) => state?.auth?.token);
@@ -20,60 +20,68 @@ const Profile = () => {
     country: "",
     state: "",
   });
+  const [alertValue, setAlertValue] = useState<
+    "success" | "info" | "warning" | "error"
+  >("success");
+  const [isAlert, setIsAlert] = useState<Boolean>(false);
   const getUsersProfile = async () => {
     try {
-      const { data } = await axios.get(`${API}getprofile/${profile_Id}`, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
+      const { data } = await makeApiRequest(
+        `getprofile/${profile_Id}`,
+        "GET",
+        {},
+        token
+      );
       setProfileData(data);
-      // console.log(auth);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   const onImageUpload = async (file: any) => {
     try {
       const formData = new FormData();
       formData.append("myImage", file);
-      const config = {
-        headers: {
-          "content-type": "multipart/form-data",
-          authorization: `Bearer ${token}`,
-        },
-      };
-
-      await axios.post(`${API}upload/${profile_Id}`, formData, config);
-      alert("The file is successfully uploaded");
+      await makeApiRequest(`upload/${profile_Id}`, "POST", formData, token);
+      setAlertValue("success");
+      setIsAlert(true);
       getUsersProfile();
     } catch (error) {
-      alert("Error Occurred");
+      setAlertValue("error");
+      setIsAlert(true);
+    } finally {
+      setTimeout(() => {
+        setIsAlert(false);
+      }, 1000);
     }
   };
   const UpdateProfile = async (values: IUserRegister) => {
     try {
-      const { data } = await axios.post(
-        `${API}updateprofile/${profile_Id}`,
+      const { data } = await makeApiRequest(
+        `updateprofile/${profile_Id}`,
+        "POST",
         values,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
+        token
       );
       setProfileData(data);
-      // console.log(auth);
       getUsersProfile();
     } catch (error) {}
   };
+
   useEffect(() => {
     getUsersProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <FlexDiv style={{ marginTop: 40 }} justify="space-between">
-      <ProfileInfo profile={profileData} onImageUpload={onImageUpload} />
-      <EditProfile profile={profileData} updateProfile={UpdateProfile} />
-    </FlexDiv>
+    <>
+      {isAlert && (
+        <Alert severity={alertValue}>File is uploaded Successfully</Alert>
+      )}
+      <FlexDiv style={{ marginTop: 40 }} justify="space-between">
+        <ProfileInfo profile={profileData} onImageUpload={onImageUpload} />
+        <EditProfile profile={profileData} updateProfile={UpdateProfile} />
+      </FlexDiv>
+    </>
   );
 };
 

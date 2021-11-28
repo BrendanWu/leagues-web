@@ -13,20 +13,23 @@ interface AuthObject {
 }
 const AdminDocs = (props: { auth: AuthObject }) => {
   const [changeLogPosts, setChangeLogPosts] = useState([]);
+  const fetchData = async (prop: { auth: AuthObject }) => {
+    try {
+      const { data } = await makeApiRequest(
+        `api/blog/getPostsByCategory/${"Changelog"}`,
+        "GET",
+        {},
+        prop.auth.token
+      );
+      setChangeLogPosts(data.posts);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (props.auth.token) {
-      makeApiRequest(
-        `blog/getPostsByCategory/${"Changelog"}`,
-        "GET",
-        {},
-        props.auth.token
-      ).then((response) => {
-        console.log(response);
-        if (response.data.success) {
-          setChangeLogPosts(response.data.posts);
-        }
-      });
+      fetchData(props);
     }
   }, [props]);
 

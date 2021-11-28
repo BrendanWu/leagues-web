@@ -1,58 +1,90 @@
-import React from "react";
+import React, { useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import { Input } from "../../../react-design-system/Input";
+import { Title } from "../../../react-design-system/Title";
 import { FlexDiv } from "../../../react-design-system/FlexDiv";
 import Button from "../../../react-design-system/Button";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import styled from "styled-components";
+
+const ErrorContainer = styled.p`
+  color: "red";
+  font-size: 10px;
+`;
 
 export default function MarkdownEditor(props: any) {
   const [markdownString, setMarkdownString] =
-    React.useState<string>("**Hello world!!!**");
-  const [metaForm, setMetaForm] = React.useState({
-    title: null,
-    description: null,
-    date: null,
-    author: null,
-    category: null,
+    useState<string>("**Hello world!!!**");
+
+  let schema = yup.object().shape({
+    title: yup.string().required("Title is required"),
+    description: yup.string(),
+    date: yup.string(),
+    author: yup.string(),
+    category: yup.string(),
   });
-
-  const handleMetaChange = (e: any) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setMetaForm({ ...metaForm, [name]: value });
-  };
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      description: "",
+      date: "",
+      author: "",
+      category: "",
+    },
+    enableReinitialize: true,
+    onSubmit: (values) => {
+      props.handleSave(values);
+    },
+    validateOnBlur: true,
+    validationSchema: schema,
+  });
   return (
-    <div className="card" style={{ padding: 16 }}>
-      <h3>Create a new post</h3>
+    <FlexDiv card vert style={{ paddingLeft: 16, margin: 5 }}>
+      <Title>Create a new post</Title>
 
-      <Input onChange={handleMetaChange} name="title" altTheme label="Title" />
-      <h3>Meta</h3>
+      <Input
+        name="title"
+        altTheme
+        label="Title"
+        onChange={formik.handleChange}
+        value={formik.values.title}
+      />
+      {formik.errors.title && (
+        <ErrorContainer>{formik.errors.title}</ErrorContainer>
+      )}
+      <Title>Meta</Title>
       <FlexDiv vert>
         <FlexDiv justify="space-between">
           <Input
-            onChange={handleMetaChange}
             name="description"
             altTheme
             label="Description"
+            onChange={formik.handleChange}
+            value={formik.values.description}
           />
           <Input
-            onChange={handleMetaChange}
             name="date"
             altTheme
             label="Date"
+            onChange={formik.handleChange}
+            value={formik.values.date}
           />
         </FlexDiv>
         <FlexDiv justify="space-between">
           <Input
-            onChange={handleMetaChange}
             name="author"
             altTheme
             label="Author"
+            onChange={formik.handleChange}
+            value={formik.values.author}
           />
           <Input
-            onChange={handleMetaChange}
             name="category"
             altTheme
             label="Category"
+            onChange={formik.handleChange}
+            value={formik.values.category}
           />
         </FlexDiv>
       </FlexDiv>
@@ -60,16 +92,11 @@ export default function MarkdownEditor(props: any) {
       <FlexDiv align="center">
         <FlexDiv>
           {" "}
-          <h3>Markdown content</h3>
+          <Title>Markdown content</Title>
         </FlexDiv>
         <FlexDiv justify="flex-end">Unsaved changes</FlexDiv>
         <FlexDiv justify="flex-end">
-          <Button
-            label="Save"
-            onClick={() => {
-              props.handleSave(metaForm, markdownString);
-            }}
-          />
+          <Button label="Save" onClick={formik.handleSubmit} />
         </FlexDiv>
       </FlexDiv>
 
@@ -81,6 +108,6 @@ export default function MarkdownEditor(props: any) {
         style={{ maxWidth: 1600 }}
       />
       <MDEditor.Markdown source={markdownString} />
-    </div>
+    </FlexDiv>
   );
 }

@@ -8,7 +8,7 @@ import img from "../../../../src/assets/location.png";
 import { useNavigator } from "../../../costumHooks/currentLocation";
 
 const LeaguesMap = () => {
-  const [isVisble, setIsVisible] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
   const lat = useSelector<RootState>((state) => state?.location?.lat) as number;
   const lng = useSelector<RootState>((state) => state?.location?.lng) as number;
@@ -21,12 +21,14 @@ const LeaguesMap = () => {
     <>
       <MapDrawer
         text={name}
-        isVisible={isVisble}
+        isVisible={isVisible}
         onClose={() => setIsVisible(false)}
       />
       <div style={{ width: "50vw", height: "80vh" }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyBbakHYrx-anepIbe5nyyMKVGEhdCHTfEI" }}
+          bootstrapURLKeys={{
+            key: process.env.REACT_APP_GOOGLE_API_KEY as string,
+          }}
           center={{
             lat: lat || 43.653908,
             lng: lng || -79.384293,

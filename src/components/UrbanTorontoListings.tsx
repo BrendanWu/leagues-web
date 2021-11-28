@@ -1,51 +1,58 @@
-import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import { API } from "../constants";
-
+import { FlexDiv } from "../react-design-system/FlexDiv";
+import { Text } from "../react-design-system/Text";
+import { Title } from "../react-design-system/Title";
+import makeApiRequest from "../services/makeApiRequest";
 const UrbanTorontoListings = () => {
   const [listings, setListings] = useState([]);
   const [numberOfListings, setNumberOfListings] = useState(10);
+  const fetchData = async () => {
+    try {
+      const { data } = await makeApiRequest(
+        "listings/getListings",
+        "GET",
+        {},
+        null
+      );
+      setListings(data.listings);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    Axios.get(API + "listings/getListings").then((res: any) => {
-      console.log(res);
-      if (res.data.success) {
-        setListings(res.data.listings);
-      }
-    });
+    fetchData();
   }, []);
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-      }}
+    <FlexDiv
+      style={{ maxWidth: "90vw", marginLeft: "10vw" }}
+      vert
+      justify="flex-start"
+      align="flex-start"
     >
-      <div style={{ display: "flex", flexDirection: "column", maxWidth: 1024 }}>
-        <h1>News</h1>
+      <Title label="News" />
 
-        {listings &&
-          listings.slice(0, numberOfListings).map((listing: any) => {
-            return (
-              <div>
-                <img
-                  style={{ width: 100 }}
-                  alt="listing"
-                  src={listing.imageUri}
-                />
-                <p style={{ fontWeight: "bold" }}>{listing.title}</p>
-                <p>{listing.description}</p>
-              </div>
-            );
-          })}
-        <button
-          onClick={() => {
-            setNumberOfListings(numberOfListings + 10);
-          }}
-        >
-          Show more
-        </button>
-      </div>
-    </div>
+      {listings &&
+        listings.slice(0, numberOfListings).map((listing: any) => {
+          return (
+            <FlexDiv vert justify="flex-start" align="flex-start">
+              <img
+                style={{ width: 100 }}
+                alt="listing"
+                src={listing.imageUri}
+              />
+              <Text style={{ fontWeight: "bold" }}>{listing.title}</Text>
+              <Text>{listing.description}</Text>
+            </FlexDiv>
+          );
+        })}
+      <button
+        onClick={() => {
+          setNumberOfListings(numberOfListings + 10);
+        }}
+      >
+        Show more
+      </button>
+    </FlexDiv>
   );
 };
 

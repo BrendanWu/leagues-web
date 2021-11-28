@@ -25,27 +25,29 @@ const AdminPosts = (props: any) => {
 
   const handleSave = async (metaForm: any, markdownString: any) => {
     const body = { metaForm, markdownString };
-    const response = await makeApiRequest(
-      "blog/createNewPost",
-      "POST",
-      body,
-      props.auth.token
-    );
-    if (response.data.success) {
-      setPosts([...posts, response?.data?.post ? response.data.post : null]);
+    try {
+      const { data } = await makeApiRequest(
+        "api/blog/createNewPost",
+        "POST",
+        body,
+        props.auth.token
+      );
+      setPosts([...posts, data?.post ? data.post : null]);
+    } catch (error) {
+      console.log(error);
     }
-    console.log(response);
   };
   const getAllPosts = async () => {
-    const response = await makeApiRequest(
-      "blog/getAllPosts",
-      "GET",
-      {},
-      props.auth.token
-    );
-    console.log(response);
-    if (response.data.success) {
-      setPosts(response.data.posts);
+    try {
+      const { data } = await makeApiRequest(
+        "api/blog/getAllPosts",
+        "GET",
+        {},
+        props.auth.token
+      );
+      setPosts(data.posts);
+    } catch (error) {
+      console.log(error);
     }
   };
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardActions, CardMedia, CardContent } from "@material-ui/core";
 import Button from "../../../react-design-system/Button";
 import { Text } from "../../../react-design-system/Text";
@@ -6,10 +6,22 @@ import courtImage from "../../../assets/court.jpg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FlexDiv } from "../../../react-design-system/FlexDiv";
+import MapDrawer from "../map/MapDrawer";
 
 const QuestionList = () => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const onVisible = () => {
+    setIsVisible(true);
+  };
   return (
     <>
+      {isVisible && (
+        <MapDrawer
+          text={"name"}
+          isVisible={isVisible}
+          onClose={() => setIsVisible(false)}
+        />
+      )}
       <Carousel
         swipeable={false}
         draggable={false}
@@ -25,9 +37,7 @@ const QuestionList = () => {
       >
         {carouselData.map((q) => {
           return (
-            <div
-              style={{ padding: 16, display: "flex", justifyContent: "center" }}
-            >
+            <FlexDiv style={{ padding: 16 }}>
               {
                 <Card
                   style={{
@@ -100,11 +110,12 @@ const QuestionList = () => {
                         height: 20,
                       }}
                       label="HOP IN"
+                      onClick={onVisible}
                     />
                   </CardActions>
                 </Card>
               }
-            </div>
+            </FlexDiv>
           );
         })}
       </Carousel>

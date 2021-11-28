@@ -1,9 +1,6 @@
 import React from "react";
 import MDEditor from "@uiw/react-md-editor";
-
-interface Post {
-  markdownString: string;
-}
+import { Post } from "../../../interfaces/pages/Docs";
 
 const PostView = (props: { post: Post }) => {
   return (
