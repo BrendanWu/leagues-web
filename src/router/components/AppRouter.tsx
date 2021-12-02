@@ -11,7 +11,6 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Popover from "@material-ui/core/Popover";
@@ -27,9 +26,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../interfaces/redux/store";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ReceiptIcon from "@material-ui/icons/Receipt";
 import ListItemText from "@material-ui/core/ListItemText";
-import { Icon } from "@material-ui/core";
 import { TableChartOutlined } from "@material-ui/icons";
 import logo from "../../assets/leagues-logo.svg";
 const drawerWidth = 240;
@@ -43,6 +40,7 @@ const AppRouter = () => {
     (state) => state?.profile?.name
   ) as string;
   const dispatch = useDispatch();
+  const history = useHistory();
   const handleMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -84,6 +82,7 @@ const AppRouter = () => {
           <img
             src={logo}
             style={{ height: 50, marginTop: 8, marginBottom: 8 }}
+            alt="logo"
           />
           <Typography
             component="h1"
@@ -118,6 +117,9 @@ const AppRouter = () => {
                 }}
               >
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                <MenuItem onClick={() => history.push("/profile")}>
+                  My Profile
+                </MenuItem>
               </Popover>
             </div>
           </div>

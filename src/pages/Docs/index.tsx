@@ -1,38 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import makeApiRequest from "../../services/makeApiRequest";
-import PostView from "./PostView";
+import PostView from "./posts/PostView";
 import { FlexDiv } from "../../react-design-system/FlexDiv";
 import { Text } from "../../react-design-system/Text";
-import MarkdownEditor from "./MarkdownEditor";
-
-
 
 interface AuthObject {
   token: string;
 }
 const AdminDocs = (props: { auth: AuthObject }) => {
-  const [changeLogPosts, setChangeLogPosts] = React.useState([]);
-
-  React.useEffect(() => {
-    if(props.auth.token){
-      makeApiRequest(
-        `blog/getPostsByCategory/${"Changelog"}`,
+  const [changeLogPosts, setChangeLogPosts] = useState([]);
+  const fetchData = async (prop: { auth: AuthObject }) => {
+    try {
+      const { data } = await makeApiRequest(
+        `api/blog/getPostsByCategory/${"Changelog"}`,
         "GET",
         {},
-        props.auth.token
-      ).then((response) => {
-        console.log(response);
-        if (response.data.success) {
-          setChangeLogPosts(response.data.posts);
-        }
-      });
+        prop.auth.token
+      );
+      setChangeLogPosts(data.posts);
+    } catch (error) {
+      console.log(error);
     }
-   
+  };
+
+  useEffect(() => {
+    if (props.auth.token) {
+      fetchData(props);
+    }
   }, [props]);
 
   return (
@@ -74,4 +72,4 @@ const AdminDocs = (props: { auth: AuthObject }) => {
   );
 };
 
-export {AdminDocs};
+export { AdminDocs };

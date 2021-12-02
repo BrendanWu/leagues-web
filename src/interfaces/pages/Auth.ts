@@ -1,7 +1,13 @@
 export interface IUserRegister {
   name: string;
   email: string;
-  password: string;
+  password?: string;
+  phone?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  image?: string;
+  address?: string;
 }
 
 export interface IUserLogin {

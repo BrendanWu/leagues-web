@@ -1,156 +1,92 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import React, { useState } from "react";
+import { Text } from "../../react-design-system/Text";
 import { Container } from "@material-ui/core";
-import UrbanTorontoListings from "../../components/UrbanTorontoListings";
-import { Button2 } from "../../react-design-system/Button2";
 import Button from "../../react-design-system/Button";
 import { FlexDiv } from "../../react-design-system/FlexDiv";
-import styled from "styled-components";
-import Stars from "../../components/StarsComponent";
+import { Input } from "../../react-design-system/Input";
+import { Select } from "../../react-design-system/Select";
 import hero from "../../assets/hero-bg.svg";
-import LeaguesMap from "../../components/LeaguesMap";
-import LeaguesTableMap from "./components/LeaguesTableMap";
-import NavBar from "./components/Navbar";
+import LeaguesMap from "./map/LeaguesMap";
+import LeaguesTableMap from "./map/LeaguesTableMap";
 import GameFeedCarousel from "./components/GameFeedCarousel";
-import { Text } from "../../react-design-system/Text";
-const MapContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+import NavBar from "./components/Navbar";
+import styled from "styled-components";
+
+const BackgroundImage = styled.div`
+  background-image: url(${hero});
+  background-repeat: repeat;
+  height: 300px;
 `;
 
 const HomeScreen = () => {
+  const [selected, setSelected] = useState<string>("All");
   return (
     <>
-      {/* <Stars number={4} /> */}
-      <div
-        style={{
-          backgroundImage: `url(${hero})`,
-          backgroundRepeat: "repeat",
-          height: 400,
-        }}
-      >
-        <Container style={{ color: "white" }}>
+      <BackgroundImage>
+        <Container style={{ color: "white", marginTop: -20 }}>
           <NavBar />
-          <div style={{ width: 500, paddingTop: 10 }}>
-            <Text>FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW</Text>
-            <Button label="Get Started"></Button>
-          </div>
+          <Text style={{ width: 400, paddingTop: 50, fontSize: 28 }}>
+            FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW
+          </Text>
+
+          <Button style={{ width: 400 }} label="Get Started"></Button>
         </Container>
-      </div>
+      </BackgroundImage>
+      <GameFeedCarousel />
+
       <Container>
+        <FlexDiv
+          align="center"
+          style={{ width: "60%" }}
+          justify="space-between"
+          container
+        >
+          <Input
+            // style={{ width: 200 }}
+            altTheme
+            label="Enter state name"
+            image="https://thumbs.dreamstime.com/z/red-maps-pin-location-map-icon-location-pin-pin-icon-vector-red-maps-pin-location-map-icon-location-pin-pin-icon-vector-vector-144267433.jpg"
+          />
+          <Select onChange={(e: any) => setSelected(e.target.value)}>
+            <option value="">Indoor/OutDoor</option>
+            <option value="in">Indoor</option>
+            <option value="out">OutDoor</option>
+          </Select>
+          <Select style={{ width: 97 }}>
+            <option value="">Price</option>
+            <option value="">$100-200</option>
+            <option value="">$200-300</option>
+            <option value="">$300-500</option>
+            <option value="">$500-1000</option>
+          </Select>
+          <Select style={{ width: 97 }}>
+            <option value="">Time</option>
+            <option value="">3 pm</option>
+            <option value="">4 pm</option>
+            <option value="">5 pm</option>
+            <option value="">6 pm</option>
+            <option value="">7 pm</option>
+          </Select>
+        </FlexDiv>
+
         <FlexDiv container>
-          <MapContainer>
-            <LeaguesMap />
-          </MapContainer>
+          <LeaguesMap />
 
           <FlexDiv
             style={{
               color: "white",
               backgroundColor: "#282828",
               maxHeight: "80vh",
+              overflow: "scroll",
+              borderLeft: 0,
             }}
           >
-            <LeaguesTableMap />
+            <LeaguesTableMap type={selected} />
           </FlexDiv>
         </FlexDiv>
-
-        {/* <h1>IO</h1>  */}
-        {/* <h3>Games in my area table view</h3>
-        <FlexDiv container style={{ background: "lightgray" }}>
-          <FlexDiv vert justify="center" align="center">
-            <h2>Title</h2>
-            <p>Description</p>
-          </FlexDiv>
-          <FlexDiv vert justify="center" align="center">
-            <h2>Title</h2>
-            <p>Description</p>
-          </FlexDiv>
-          <FlexDiv vert justify="center" align="center">
-            <h2>Title</h2>
-            <p>Description</p>
-          </FlexDiv>
-        </FlexDiv> */}
-        {/* <Button onClick={() => getQR()}> Send Qr </Button> */}
-        {/* <ul>
-          {allUsers.map((user) => (
-            <li key={user._id}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  flexDirection: "row",
-                  width: "40vw",
-                }}
-              >
-                <Typography>Name:</Typography>
-                <Typography>{user?.name}</Typography>
-                <Typography>Email:</Typography>
-                <Typography>{user?.email}</Typography>
-              </div>
-            </li>
-          ))}
-        </ul> */}
-        {/* <Card className={classes.card}>
-          <ul>
-            <li>Dashboard</li>
-            <li>your organization : companyX</li>
-            <li>api calls : 100</li>
-            <li>billing: 100 *0.01 = $1</li>
-          </ul>
-        </Card>
-        <Card className={classes.card}>
-          QR api
-          <FlexDiv></FlexDiv>
-        </Card>
-        <Card className={classes.card}>Bitcoin api</Card>
-        <Card className={classes.card}>
-          Webscraper api
-          <ul>
-            <li>method: GET</li>
-            <li>url: 192.102.242.12:5000/listings/getListings</li>
-            <li>input: website url</li>
-            <li>output: array </li>
-          </ul>
-          <FlexDiv>
-            <input placeholder="urbantoronto.ca" />
-
-            <Button label="test api route" />
-          </FlexDiv>
-        </Card> */}
-        {/* <Card className={classes.card}>
-          <a href="https://docs.google.com/document/d/1JIxKVWgTZQfvTQptMpX99IgvBK31qXLiQ9ytCW0UE-Q/edit?usp=sharing">
-            Design system
-          </a>
-          React Modal React Burger Menu (Mobile Navs) Framer Motions
-          (Animations) AOS (Animations) React Currency Format React Select React
-          Toastify React Toolkit React Carousel Custom Cards* Forms, Buttons,
-          Input Fields* Navs, Footers* Heroes, Page Headers * About AppRoot
-          AppSwitcherMenu Avatar AvatarSelector BadgeButton Banner Breadcrumb
-          BusyStateDialog BusyStateIndicator Button Calendar Checkbox CodeEditor
-          ColorPicker DatePicker Dialog Divider Draggable Dropdown DualSelector
-          Heading HelpPopup Icon Image ImageSelector Input Label Landmark
-          Layouts SegmentedButton Select Settings Slider SplashScreen
-          SplitButton SVG Splitter TabBar Table Text TextArea Tile TileCarousel
-          ToggleButton Token TokenInput TokenInputDialog Tokenizer Toolbar Tree
-          WindowShade withLabels ZeroState
-        </Card> */}
       </Container>
-      {/* <h1>api documentation</h1> */}
     </>
   );
 };
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    card: {
-      padding: 16,
-      display: "flex",
-      flexDirection: "column",
-    },
-  })
-);
 
 export default HomeScreen;

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-// import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,7 +15,7 @@ import { API } from "../../constants";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/auth";
 import { setProfile } from "../../redux/actions/profile";
-// import JohariButton from "johaributton";
+
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -40,8 +39,6 @@ const Login = () => {
         }
       );
 
-      // console.log(data)
-
       dispatch(login(data?.token, data?.userId));
       dispatch(setProfile(data?.profile));
     } catch (error: any) {
@@ -60,7 +57,7 @@ const Login = () => {
           <Typography component="h1" variant="h5">
             Leagues
           </Typography>
-          {/* <JohariButton /> */}
+
           <form className={classes.form} noValidate>
             <TextField
               variant="outlined"
@@ -88,10 +85,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
             />
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
+
             <Button
               fullWidth
               variant="contained"

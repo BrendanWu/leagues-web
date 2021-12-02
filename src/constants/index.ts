@@ -1,4 +1,4 @@
-export const API = "http://localhost:5000/";
-// export const API = "https://liftedsol.herokuapp.com/";
-const PublicAddress = "moh9qcEs58KSsYsrH5xVUajXeKbUmP714k";
-const PrivateAddress = "92dUM9VCHtjrmgFgQV96uSa1fQYhqdBLv914ZE6beKTfbLhHJJy";
+const dev = "http://localhost:5000/";
+const prod = "https:/league-servertesting.herokuapp.com/";
+export const API = process.env.NODE_ENV !== "production" ? prod : prod;
+console.log(dev);

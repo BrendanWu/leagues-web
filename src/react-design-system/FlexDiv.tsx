@@ -27,6 +27,7 @@ interface Props {
   sm?: number;
   md?: number;
   l?: number;
+  card?: boolean;
   children?: any;
   onClick?: (e?: React.MouseEvent) => void;
 }
@@ -38,6 +39,7 @@ const StyledFlexDiv = styled.div<Props>((props) => ({
   justifyContent: props.justify && props.justify,
   alignItems: props.align && props.align,
   flexDirection: props.vert ? "column" : "row",
+  boxShadow: props?.card ? "4px 4px 4px 4px #27272733" : "0px",
 }));
 
 export const FlexDiv: React.FC<Props> = (props) => {
