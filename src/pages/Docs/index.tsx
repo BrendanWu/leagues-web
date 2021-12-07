@@ -16,7 +16,7 @@ const AdminDocs = (props: { auth: AuthObject }) => {
   const fetchData = async (prop: { auth: AuthObject }) => {
     try {
       const { data } = await makeApiRequest(
-        `api/blog/getPostsByCategory/${"Changelog"}`,
+        `blog/getPostsByCategory/${"Changelog"}`,
         "GET",
         {},
         prop.auth.token
@@ -51,13 +51,19 @@ const AdminDocs = (props: { auth: AuthObject }) => {
             i
           ) => {
             return (
-              <Accordion>
+              <Accordion expanded>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   // aria-controls={doc.title}
                   id={doc.title}
                 >
-                  <Text>{doc.title}</Text>
+                  <FlexDiv justify="space-between">
+                    {" "}
+                    <Text> {doc.title}</Text>{" "}
+                    <Text>
+                      Posted by: {doc?.author} on {doc?.date}
+                    </Text>{" "}
+                  </FlexDiv>
                 </AccordionSummary>
                 <AccordionDetails>
                   <PostView post={doc} />
