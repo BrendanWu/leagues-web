@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { FlexDiv } from "./FlexDiv";
 import { VariantOptions, Icon } from "./Icon";
+import { Text } from "./Text";
 
 const StyledButton = styled.button<Props>`
   background-color: ${({ alt }) => (alt ? "#1c1c1c" : "white")};
@@ -47,7 +48,7 @@ export const Button2: React.FC<Props> = (props) => {
     return (
       <StyledButton {...props}>
         <FlexDiv container justify="center" align="center">
-          <p style={{ margin: 0, marginRight: 10 }}>{props.label}</p>
+          <Text style={{ margin: 0, marginRight: 10 }}>{props.label}</Text>
           {props.icon ? <Icon variant={props.icon} size={10} /> : null}
         </FlexDiv>
       </StyledButton>
@@ -56,7 +57,7 @@ export const Button2: React.FC<Props> = (props) => {
     return (
       <StyledButton {...props}>
         <FlexDiv container justify="center" align="center">
-          <p style={{ margin: 0, marginRight: 10 }}>{props.label}</p>
+          <Text style={{ margin: 0, marginRight: 10 }}>{props.label}</Text>
           {props.icon ? <Icon variant={props.icon} size={10} /> : null}
         </FlexDiv>
       </StyledButton>

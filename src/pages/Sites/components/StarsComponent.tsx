@@ -1,5 +1,6 @@
 import React from "react";
 import ReactStars from "react-stars";
+import { Text } from "../../../react-design-system/Text";
 
 const Stars = (props: { number: number }) => {
   const [numberOfStars, setNumberOfStars] = React.useState<number>(
@@ -17,7 +18,7 @@ const Stars = (props: { number: number }) => {
 
   return (
     <div>
-      <p>Stars component goes here</p>
+      <Text>Stars component goes here</Text>
       {numberOfStars}
       <ReactStars
         //   count={props.number}

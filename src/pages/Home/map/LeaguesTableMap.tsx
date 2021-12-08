@@ -4,9 +4,35 @@ import { FlexDiv } from "../../../react-design-system/FlexDiv";
 import { useDispatch } from "react-redux";
 import { setLocation } from "../../../redux/actions/location";
 import { Text } from "../../../react-design-system/Text";
+import moment from "moment";
 
+interface Hours {
+  hours: {
+    monday: string;
+    tuesday: string;
+    wednesday: string;
+    thursday: string;
+    friday: string;
+    saturday: string;
+    sunday: string;
+  };
+}
 const LeaguesTableMap = (props: { type?: string }) => {
   const dispatch = useDispatch();
+  const getTimeSlotsToday = (hours: Hours) => {
+    const days = [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+      "sunday",
+    ];
+    const currentDayOfWeek = moment().day();
+    //@ts-ignore
+    return hours[days[currentDayOfWeek]];
+  };
   const tableData =
     props.type === "in"
       ? basketballCourts.filter((item: any) => item?.description === "Indoor")
@@ -21,7 +47,7 @@ const LeaguesTableMap = (props: { type?: string }) => {
             container
             style={{
               padding: 10,
-              border: "1px solid orange",
+              border: "1px solid #ebebeb",
               cursor: "pointer",
             }}
             justify="space-between"
@@ -36,13 +62,16 @@ const LeaguesTableMap = (props: { type?: string }) => {
               )
             }
           >
-            <FlexDiv>
-              <p style={{ fontWeight: "bold" }}>{court.title}</p>
+            <FlexDiv vert>
+              <Text style={{ fontWeight: "bold" }}>{court.title}</Text>
+              <Text style={{ color: "#909298" }}>{court.description}</Text>
+              <Text>
+                Today {getTimeSlotsToday(court.hours)}
+              </Text>
             </FlexDiv>
             <FlexDiv justify="flex-end">
               <div style={{ textAlign: "right" }}>
                 <Text style={{ color: "#DA3E17" }}> Free Entry </Text>
-                <p style={{ color: "#909298" }}>{court.description}</p>
               </div>
             </FlexDiv>
           </FlexDiv>
