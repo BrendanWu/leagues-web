@@ -27,7 +27,7 @@ const AdminPosts = (props: any) => {
     const body = { metaForm, markdownString };
     try {
       const { data } = await makeApiRequest(
-        "api/blog/createNewPost",
+        "blog/createNewPost",
         "POST",
         body,
         props.auth.token
@@ -40,7 +40,7 @@ const AdminPosts = (props: any) => {
   const getAllPosts = async () => {
     try {
       const { data } = await makeApiRequest(
-        "api/blog/getAllPosts",
+        "blog/getAllPosts",
         "GET",
         {},
         props.auth.token
@@ -51,7 +51,7 @@ const AdminPosts = (props: any) => {
     }
   };
   return (
-    <div className="container" style={{ width: 800 }}>
+    <FlexDiv vert container style={{ maxWidth: "80%", margin: 10 }}>
       {/* <FlexDiv style={{marginBottom:16}}>
                 <FlexDiv card style={{height:100, padding:16}} justify="center" align="center">
                     Create a post
@@ -64,7 +64,7 @@ const AdminPosts = (props: any) => {
                 </FlexDiv>
             </FlexDiv> */}
       <h3>All posts</h3>
-      <FlexDiv vert style={{ marginBottom: 200 }}>
+      <FlexDiv vert style={{ marginBottom: 20 }}>
         {posts.map(
           (
             p: {
@@ -100,7 +100,7 @@ const AdminPosts = (props: any) => {
       </FlexDiv>
 
       <MarkdownEditor auth={props.auth} handleSave={handleSave} />
-    </div>
+    </FlexDiv>
   );
 };
 

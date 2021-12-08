@@ -15,25 +15,76 @@ import styled from "styled-components";
 const BackgroundImage = styled.div`
   background-image: url(${hero});
   background-repeat: repeat;
-  height: 300px;
+  height: 65vh;
 `;
-
+const HappeningText = styled(Text)`
+  text-align: left;
+  font: normal normal bold 30px Oswald;
+  letter-spacing: 0px;
+  color: #da3e17;
+  text-transform: uppercase;
+  opacity: 1;
+`;
+const LocationText = styled(Text)`
+  text-align: right;
+  font: normal normal normal 12px Circular Std;
+  letter-spacing: 0px;
+  color: #909298;
+  text-transform: capitalize;
+  opacity: 1;
+  align-self: center;
+`;
+const MainTitle = styled(Text)`
+  text-align: center;
+  font: normal normal bold 36px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+  opacity: 1;
+`;
+const TitleText = styled(Text)`
+  text-align: center;
+  font: normal normal normal 16px Circular Std;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+`;
 const HomeScreen = () => {
   const [selected, setSelected] = useState<string>("All");
   return (
     <>
       <BackgroundImage>
-        <Container style={{ color: "white", marginTop: -20 }}>
+        <Container style={{ color: "white", padding: 20 }}>
           <NavBar />
-          <Text style={{ width: 400, paddingTop: 50, fontSize: 28 }}>
-            FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW
-          </Text>
-
-          <Button style={{ width: 400 }} label="Get Started"></Button>
+          <MainTitle>FIND RECREATIONAL GAMES HAPPENING</MainTitle>
+          <MainTitle>AROUND YOU RIGHT NOW</MainTitle>
+          {/* <TitleText>
+            All sports, recreational events at your fingertips.
+          </TitleText>
+          <TitleText>
+            Create a league, invite your friends and level up.
+          </TitleText> */}
+          <FlexDiv justify="center">
+            <Button
+              style={{ width: 400, alignSelf: "center" }}
+              label="Get Started"
+            />
+          </FlexDiv>
         </Container>
       </BackgroundImage>
-      <GameFeedCarousel />
-
+      <FlexDiv
+        style={{ marginLeft: "8vw", marginRight: "10vw" }}
+        vert
+        container
+      >
+        <FlexDiv container justify="space-between">
+          <HappeningText>HAPPENING RIGHT NOW</HappeningText>
+          <LocationText>
+            You Are Currently Located In Mississauga, Ontario
+          </LocationText>
+        </FlexDiv>
+        <GameFeedCarousel />
+      </FlexDiv>
       <Container>
         <FlexDiv
           align="center"

@@ -24,6 +24,7 @@ const Profile = () => {
     "success" | "info" | "warning" | "error"
   >("success");
   const [isAlert, setIsAlert] = useState<Boolean>(false);
+  // const [data, loading] = useFetch("getpoile")
   const getUsersProfile = async () => {
     try {
       const { data } = await makeApiRequest(
