@@ -33,7 +33,7 @@ const QuestionList = () => {
         containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
         dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
+        itemClass="carousel-item-padding-10-px"
       >
         {carouselData.map((q) => {
           return (
