@@ -58,13 +58,18 @@ const HomeScreen = () => {
           <NavBar />
           <MainTitle>FIND RECREATIONAL GAMES HAPPENING</MainTitle>
           <MainTitle>AROUND YOU RIGHT NOW</MainTitle>
-          <TitleText>
+          {/* <TitleText>
             All sports, recreational events at your fingertips.
           </TitleText>
           <TitleText>
             Create a league, invite your friends and level up.
-          </TitleText>
-          <Button style={{ width: 400 }} label="Get Started"></Button>
+          </TitleText> */}
+          <FlexDiv justify="center">
+            <Button
+              style={{ width: 400, alignSelf: "center" }}
+              label="Get Started"
+            />
+          </FlexDiv>
         </Container>
       </BackgroundImage>
       <FlexDiv
