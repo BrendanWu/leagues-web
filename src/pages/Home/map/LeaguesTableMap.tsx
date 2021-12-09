@@ -21,7 +21,7 @@ const LeaguesTableMap = (props: { type?: string }) => {
             container
             style={{
               padding: 10,
-              border: "1px solid orange",
+              border: "1px solid #EFEFEF",
               cursor: "pointer",
             }}
             justify="space-between"
@@ -37,12 +37,14 @@ const LeaguesTableMap = (props: { type?: string }) => {
             }
           >
             <FlexDiv>
-              <p style={{ fontWeight: "bold" }}>{court.title}</p>
+              <p style={{ fontWeight: "bold", color: "#282828" }}>
+                {court.title}
+              </p>
             </FlexDiv>
             <FlexDiv justify="flex-end">
               <div style={{ textAlign: "right" }}>
                 <Text style={{ color: "#DA3E17" }}> Free Entry </Text>
-                <p style={{ color: "#909298" }}>{court.description}</p>
+                <p style={{ color: "#282828" }}>{court.description}</p>
               </div>
             </FlexDiv>
           </FlexDiv>

@@ -10,11 +10,59 @@ import LeaguesMap from "./map/LeaguesMap";
 import LeaguesTableMap from "./map/LeaguesTableMap";
 import GameFeedCarousel from "./components/GameFeedCarousel";
 import styled from "styled-components";
+import leg from "../../assets/whatleg.png";
 
 const BackgroundImage = styled.div`
   background-image: url(${hero});
   background-repeat: repeat;
-  height: 300px;
+  height: 65vh;
+`;
+const HappeningText = styled(Text)`
+  text-align: left;
+  font: normal normal bold 30px Oswald;
+  letter-spacing: 0px;
+  color: #da3e17;
+  text-transform: uppercase;
+  opacity: 1;
+`;
+const LocationText = styled(Text)`
+  text-align: right;
+  font: normal normal normal 12px Circular Std;
+  letter-spacing: 0px;
+  color: #909298;
+  text-transform: capitalize;
+  opacity: 1;
+  align-self: center;
+`;
+const MainTitle = styled(Text)`
+  text-align: center;
+  font: normal normal bold 36px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+  opacity: 1;
+`;
+const TitleText = styled(Text)`
+  text-align: center;
+  font: normal normal normal 16px Circular Std;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+`;
+const ImageTitle = styled(Text)`
+  text-align: left;
+  font: normal normal 600 28px Oswald;
+  letter-spacing: 0px;
+  color: #1d1d1d;
+  text-transform: uppercase;
+  opacity: 1;
+`;
+const DetailText = styled(Text)`
+  text-align: left;
+  font: normal normal normal 16px Circular Std;
+  letter-spacing: 0px;
+  color: #1d1d1d;
+  opacity: 1;
 `;
 
 export const Home = () => {
@@ -23,25 +71,89 @@ export const Home = () => {
   return (
     <>
       <BackgroundImage>
-        <Container style={{ color: "white", marginTop: -20 }}>
-          <Text style={{ width: 400, paddingTop: 50, fontSize: 28 }}>
-            FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW
-          </Text>
-
-          <Button style={{ width: 400 }} label="Get Started"></Button>
+        <Container style={{ color: "white", padding: 20 }}>
+          <MainTitle>FIND RECREATIONAL GAMES HAPPENING</MainTitle>
+          <MainTitle>AROUND YOU RIGHT NOW</MainTitle>
+          {/* <TitleText>
+            All sports, recreational events at your fingertips.
+          </TitleText>
+          <TitleText>
+            Create a league, invite your friends and level up.
+          </TitleText> */}
+          <FlexDiv justify="center">
+            <Button
+              style={{ width: 400, alignSelf: "center" }}
+              label="Get Started"
+            />
+          </FlexDiv>
         </Container>
       </BackgroundImage>
-
-      <GameFeedCarousel />
-
+      <FlexDiv
+        style={{ marginLeft: "8vw", marginRight: "10vw" }}
+        vert
+        container
+      >
+        <FlexDiv container justify="space-between">
+          <HappeningText>HAPPENING RIGHT NOW</HappeningText>
+          <LocationText>
+            You Are Currently Located In Mississauga, Ontario
+          </LocationText>
+        </FlexDiv>
+        <GameFeedCarousel />
+      </FlexDiv>
+      <FlexDiv container>
+        <FlexDiv>
+          <img width={"100%"} src={leg} alt="league" />
+        </FlexDiv>
+        <FlexDiv vert justify="center">
+          <ImageTitle>WHAT IS LEAGUES?</ImageTitle>
+          <DetailText>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet.
+            <br />
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+            quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta.{" "}
+          </DetailText>
+        </FlexDiv>
+      </FlexDiv>
+      <BackgroundImage style={{ paddingTop: 60 }}>
+        <MainTitle>SED UT PERSPICIATIS UNDE OMNIS ISTE</MainTitle>
+        <MainTitle>NATUS ERROR SIT VOLUPTATEM.</MainTitle>
+        <TitleText>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+        </TitleText>
+        <TitleText>
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
+        </TitleText>
+        <FlexDiv justify="center">
+          <Button
+            style={{ width: 400, alignSelf: "center" }}
+            label="Get Started"
+          />
+        </FlexDiv>
+      </BackgroundImage>
+      <MainTitle style={{ color: "#1D1D1D" }}>ADVANCED SEARCH </MainTitle>
+      <TitleText style={{ color: "#1D1D1D" }}>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+      </TitleText>{" "}
+      <TitleText style={{ color: "#1D1D1D" }}>
+        ab illo inventore veritatis et quasi architecto beatae vitae dicta.
+      </TitleText>
       <Container>
         <FlexDiv
           align="center"
-          style={{ width: "50%" }}
+          style={{ width: "60%" }}
           justify="space-between"
           container
         >
           <Input
+            // style={{ width: 200 }}
             altTheme
             label="Enter state name"
             image="https://thumbs.dreamstime.com/z/red-maps-pin-location-map-icon-location-pin-pin-icon-vector-red-maps-pin-location-map-icon-location-pin-pin-icon-vector-vector-144267433.jpg"
@@ -74,7 +186,7 @@ export const Home = () => {
           <FlexDiv
             style={{
               color: "white",
-              backgroundColor: "#282828",
+              backgroundColor: "white",
               maxHeight: "80vh",
               overflow: "scroll",
               borderLeft: 0,

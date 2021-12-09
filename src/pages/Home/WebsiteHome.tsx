@@ -6,6 +6,7 @@ import { FlexDiv } from "../../react-design-system/FlexDiv";
 import { Input } from "../../react-design-system/Input";
 import { Select } from "../../react-design-system/Select";
 import hero from "../../assets/hero-bg.svg";
+import leg from "../../assets/whatleg.png";
 import LeaguesMap from "./map/LeaguesMap";
 import LeaguesTableMap from "./map/LeaguesTableMap";
 import GameFeedCarousel from "./components/GameFeedCarousel";
@@ -49,6 +50,21 @@ const TitleText = styled(Text)`
   color: #ffffff;
   opacity: 1;
 `;
+const ImageTitle = styled(Text)`
+  text-align: left;
+  font: normal normal 600 28px Oswald;
+  letter-spacing: 0px;
+  color: #1d1d1d;
+  text-transform: uppercase;
+  opacity: 1;
+`;
+const DetailText = styled(Text)`
+  text-align: left;
+  font: normal normal normal 16px Circular Std;
+  letter-spacing: 0px;
+  color: #1d1d1d;
+  opacity: 1;
+`;
 const HomeScreen = () => {
   const [selected, setSelected] = useState<string>("All");
   return (
@@ -85,6 +101,50 @@ const HomeScreen = () => {
         </FlexDiv>
         <GameFeedCarousel />
       </FlexDiv>
+      <FlexDiv container>
+        <FlexDiv>
+          <img width={"100%"} src={leg} alt="league" />
+        </FlexDiv>
+        <FlexDiv vert justify="center">
+          <ImageTitle>WHAT IS LEAGUES?</ImageTitle>
+          <DetailText>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet.
+            <br />
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+            quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta.{" "}
+          </DetailText>
+        </FlexDiv>
+      </FlexDiv>
+      <BackgroundImage style={{ paddingTop: 60 }}>
+        <MainTitle>SED UT PERSPICIATIS UNDE OMNIS ISTE</MainTitle>
+        <MainTitle>NATUS ERROR SIT VOLUPTATEM.</MainTitle>
+        <TitleText>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+        </TitleText>
+        <TitleText>
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
+        </TitleText>
+        <FlexDiv justify="center">
+          <Button
+            style={{ width: 400, alignSelf: "center" }}
+            label="Get Started"
+          />
+        </FlexDiv>
+      </BackgroundImage>
+      <MainTitle style={{ color: "#1D1D1D" }}>ADVANCED SEARCH </MainTitle>
+      <TitleText style={{ color: "#1D1D1D" }}>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+      </TitleText>{" "}
+      <TitleText style={{ color: "#1D1D1D" }}>
+        ab illo inventore veritatis et quasi architecto beatae vitae dicta.
+      </TitleText>
       <Container>
         <FlexDiv
           align="center"
@@ -126,7 +186,7 @@ const HomeScreen = () => {
           <FlexDiv
             style={{
               color: "white",
-              backgroundColor: "#282828",
+              backgroundColor: "white",
               maxHeight: "80vh",
               overflow: "scroll",
               borderLeft: 0,

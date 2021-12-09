@@ -90,157 +90,70 @@ const AnyReactComponent = (props: {
 
 const mapStyles = [
   {
-    featureType: "all",
-    elementType: "labels",
-    stylers: [
-      {
-        visibility: "on",
-      },
-    ],
-  },
-  {
-    featureType: "all",
-    elementType: "labels.text.fill",
-    stylers: [
-      {
-        saturation: 36,
-      },
-      {
-        color: "#000000",
-      },
-      {
-        lightness: 40,
-      },
-    ],
-  },
-  {
-    featureType: "all",
-    elementType: "labels.text.stroke",
-    stylers: [
-      {
-        visibility: "on",
-      },
-      {
-        color: "#000000",
-      },
-      {
-        lightness: 16,
-      },
-    ],
-  },
-  {
-    featureType: "all",
-    elementType: "labels.icon",
-    stylers: [
-      {
-        visibility: "off",
-      },
-    ],
-  },
-  {
-    featureType: "administrative",
-    elementType: "geometry.fill",
-    stylers: [
-      {
-        color: "#000000",
-      },
-      {
-        lightness: 20,
-      },
-    ],
-  },
-  {
-    featureType: "administrative",
-    elementType: "geometry.stroke",
-    stylers: [
-      {
-        color: "#000000",
-      },
-      {
-        lightness: 17,
-      },
-      {
-        weight: 1.2,
-      },
-    ],
-  },
-  {
-    featureType: "administrative.country",
-    elementType: "labels.text.fill",
-    stylers: [
-      {
-        color: "#e5c163",
-      },
-    ],
-  },
-  {
-    featureType: "administrative.locality",
-    elementType: "labels.text.fill",
-    stylers: [
-      {
-        color: "#c4c4c4",
-      },
-    ],
-  },
-  {
-    featureType: "administrative.neighborhood",
-    elementType: "labels.text.fill",
-    stylers: [
-      {
-        color: "#e5c163",
-      },
-    ],
-  },
-  {
-    featureType: "landscape",
+    featureType: "landscape.man_made",
     elementType: "geometry",
     stylers: [
       {
-        color: "#000000",
+        color: "#f7f1df",
       },
+    ],
+  },
+  {
+    featureType: "landscape.natural",
+    elementType: "geometry",
+    stylers: [
       {
-        lightness: 20,
+        color: "#d0e3b4",
+      },
+    ],
+  },
+  {
+    featureType: "landscape.natural.terrain",
+    elementType: "geometry",
+    stylers: [
+      {
+        visibility: "off",
       },
     ],
   },
   {
     featureType: "poi",
-    elementType: "geometry",
+    elementType: "labels",
     stylers: [
       {
-        color: "#000000",
-      },
-      {
-        lightness: 21,
-      },
-      {
-        visibility: "on",
+        visibility: "off",
       },
     ],
   },
   {
     featureType: "poi.business",
+    elementType: "all",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "poi.medical",
     elementType: "geometry",
     stylers: [
       {
-        visibility: "on",
+        color: "#fbd3da",
       },
     ],
   },
   {
-    featureType: "road.highway",
-    elementType: "geometry.fill",
+    featureType: "poi.park",
+    elementType: "geometry",
     stylers: [
       {
-        color: "#e5c163",
-      },
-      {
-        lightness: "0",
+        color: "#bde6ab",
       },
     ],
   },
   {
-    featureType: "road.highway",
+    featureType: "road",
     elementType: "geometry.stroke",
     stylers: [
       {
@@ -249,32 +162,29 @@ const mapStyles = [
     ],
   },
   {
-    featureType: "road.highway",
-    elementType: "labels.text.fill",
+    featureType: "road",
+    elementType: "labels",
     stylers: [
       {
-        color: "#ffffff",
+        visibility: "off",
       },
     ],
   },
   {
     featureType: "road.highway",
-    elementType: "labels.text.stroke",
+    elementType: "geometry.fill",
     stylers: [
       {
-        color: "#e5c163",
+        color: "#ffe15f",
       },
     ],
   },
   {
-    featureType: "road.arterial",
-    elementType: "geometry",
+    featureType: "road.highway",
+    elementType: "geometry.stroke",
     stylers: [
       {
-        color: "#000000",
-      },
-      {
-        lightness: 18,
+        color: "#efd151",
       },
     ],
   },
@@ -283,58 +193,25 @@ const mapStyles = [
     elementType: "geometry.fill",
     stylers: [
       {
-        color: "#575757",
-      },
-    ],
-  },
-  {
-    featureType: "road.arterial",
-    elementType: "labels.text.fill",
-    stylers: [
-      {
         color: "#ffffff",
       },
     ],
   },
   {
-    featureType: "road.arterial",
-    elementType: "labels.text.stroke",
-    stylers: [
-      {
-        color: "#2c2c2c",
-      },
-    ],
-  },
-  {
     featureType: "road.local",
-    elementType: "geometry",
+    elementType: "geometry.fill",
     stylers: [
       {
-        color: "#000000",
-      },
-      {
-        lightness: 16,
+        color: "black",
       },
     ],
   },
   {
-    featureType: "road.local",
-    elementType: "labels.text.fill",
+    featureType: "transit.station.airport",
+    elementType: "geometry.fill",
     stylers: [
       {
-        color: "#999999",
-      },
-    ],
-  },
-  {
-    featureType: "transit",
-    elementType: "geometry",
-    stylers: [
-      {
-        color: "#000000",
-      },
-      {
-        lightness: 19,
+        color: "#cfb2db",
       },
     ],
   },
@@ -343,12 +220,272 @@ const mapStyles = [
     elementType: "geometry",
     stylers: [
       {
-        color: "#000000",
-      },
-      {
-        lightness: 17,
+        color: "#a2daf2",
       },
     ],
   },
 ];
+//   = [
+//   {
+//     featureType: "all",
+//     elementType: "labels",
+//     stylers: [
+//       {
+//         visibility: "on",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "all",
+//     elementType: "labels.text.fill",
+//     stylers: [
+//       {
+//         saturation: 36,
+//       },
+//       {
+//         color: "#cec6c6d8",
+//       },
+//       {
+//         lightness: 40,
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "all",
+//     elementType: "labels.text.stroke",
+//     stylers: [
+//       {
+//         visibility: "on",
+//       },
+//       {
+//         color: "#000000",
+//       },
+//       {
+//         lightness: 16,
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "all",
+//     elementType: "labels.icon",
+//     stylers: [
+//       {
+//         visibility: "off",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "administrative",
+//     elementType: "geometry.fill",
+//     stylers: [
+//       {
+//         color: "#000000",
+//       },
+//       {
+//         lightness: 20,
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "administrative",
+//     elementType: "geometry.stroke",
+//     stylers: [
+//       {
+//         color: "#000000",
+//       },
+//       {
+//         lightness: 17,
+//       },
+//       {
+//         weight: 1.2,
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "administrative.country",
+//     elementType: "labels.text.fill",
+//     stylers: [
+//       {
+//         color: "#e5c163",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "administrative.locality",
+//     elementType: "labels.text.fill",
+//     stylers: [
+//       {
+//         color: "#c4c4c4",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "administrative.neighborhood",
+//     elementType: "labels.text.fill",
+//     stylers: [
+//       {
+//         color: "#e5c163",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "landscape",
+//     elementType: "geometry",
+//     stylers: [
+//       {
+//         color: "#000000",
+//       },
+//       {
+//         lightness: 20,
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "poi",
+//     elementType: "geometry",
+//     stylers: [
+//       {
+//         color: "#000000",
+//       },
+//       {
+//         lightness: 21,
+//       },
+//       {
+//         visibility: "on",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "poi.business",
+//     elementType: "geometry",
+//     stylers: [
+//       {
+//         visibility: "on",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "road.highway",
+//     elementType: "geometry.fill",
+//     stylers: [
+//       {
+//         color: "#e5c163",
+//       },
+//       {
+//         lightness: "0",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "road.highway",
+//     elementType: "geometry.stroke",
+//     stylers: [
+//       {
+//         visibility: "off",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "road.highway",
+//     elementType: "labels.text.fill",
+//     stylers: [
+//       {
+//         color: "#ffffff",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "road.highway",
+//     elementType: "labels.text.stroke",
+//     stylers: [
+//       {
+//         color: "#e5c163",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "road.arterial",
+//     elementType: "geometry",
+//     stylers: [
+//       {
+//         color: "#000000",
+//       },
+//       {
+//         lightness: 18,
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "road.arterial",
+//     elementType: "geometry.fill",
+//     stylers: [
+//       {
+//         color: "#575757",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "road.arterial",
+//     elementType: "labels.text.fill",
+//     stylers: [
+//       {
+//         color: "#ffffff",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "road.arterial",
+//     elementType: "labels.text.stroke",
+//     stylers: [
+//       {
+//         color: "#2c2c2c",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "road.local",
+//     elementType: "geometry",
+//     stylers: [
+//       {
+//         color: "#000000",
+//       },
+//       {
+//         lightness: 16,
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "road.local",
+//     elementType: "labels.text.fill",
+//     stylers: [
+//       {
+//         color: "#999999",
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "transit",
+//     elementType: "geometry",
+//     stylers: [
+//       {
+//         color: "#000000",
+//       },
+//       {
+//         lightness: 19,
+//       },
+//     ],
+//   },
+//   {
+//     featureType: "water",
+//     elementType: "geometry",
+//     stylers: [
+//       {
+//         color: "#000000",
+//       },
+//       {
+//         lightness: 17,
+//       },
+//     ],
+//   },
+// ];
 export default LeaguesMap;
