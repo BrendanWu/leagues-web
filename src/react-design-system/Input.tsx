@@ -40,7 +40,7 @@ const StyledTextArea = styled.textarea.attrs<
   color: props.altTheme ? "black" : "white",
   border: props.altTheme ? "2px solid lightgray" : "2px solid white",
   paddingLeft: "1em",
-  fontFamily: "Montserrat",
+  // fontFamily: "Montserrat",
   paddingTop: "1em",
 
   marginRight: 40,
@@ -57,6 +57,7 @@ interface Props {
   ref?: any;
 }
 
+
 export const Input: React.FC<
   Props & React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>
 > = (props) => {
@@ -65,7 +66,8 @@ export const Input: React.FC<
   }
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      <StyledInput {...props} />
+      <StyledInput {...props}/>
+      {/* <input {...props}>{props.label}</input> */}
 
       {props?.image ? (
         <img
@@ -78,7 +80,6 @@ export const Input: React.FC<
             zIndex: 2,
           }}
           src={props?.image}
-          alt=""
         />
       ) : null}
     </div>

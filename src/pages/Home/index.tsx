@@ -86,6 +86,7 @@ export const Home = () => {
               label="Get Started"
             />
           </FlexDiv>
+
         </Container>
       </BackgroundImage>
       <FlexDiv
@@ -148,7 +149,9 @@ export const Home = () => {
       <Container>
         <FlexDiv
           align="center"
+
           style={{ width: "60%" }}
+
           justify="space-between"
           container
         >
@@ -156,14 +159,15 @@ export const Home = () => {
             // style={{ width: 200 }}
             altTheme
             label="Enter state name"
+            style={{border:"1px solid lightgray",padding:"16px",borderRadius:"12px"}}
             image="https://thumbs.dreamstime.com/z/red-maps-pin-location-map-icon-location-pin-pin-icon-vector-red-maps-pin-location-map-icon-location-pin-pin-icon-vector-vector-144267433.jpg"
           />
-          <Select onChange={(e: any) => setSelected(e.target.value)}>
-            <option value="">Indoor/OutDoor</option>
+          <Select onChange={(e: any) => setSelected(e.target.value)} style={{marginRight:16, marginLeft:16}}>
+            <option value="">Outdoor/Indoor</option>
             <option value="in">Indoor</option>
             <option value="out">OutDoor</option>
           </Select>
-          <Select style={{ width: 97 }}>
+          <Select style={{ width: 97, marginRight:16 }}>
             <option value="">Price</option>
             <option value="">$100-200</option>
             <option value="">$200-300</option>
@@ -180,6 +184,7 @@ export const Home = () => {
           </Select>
         </FlexDiv>
 
+      </Container>
         <FlexDiv container>
           <LeaguesMap />
 
@@ -189,13 +194,12 @@ export const Home = () => {
               backgroundColor: "white",
               maxHeight: "80vh",
               overflow: "scroll",
-              borderLeft: 0,
+              marginRight:32
             }}
           >
             <LeaguesTableMap type={selected} />
           </FlexDiv>
         </FlexDiv>
-      </Container>
     </>
   );
 };

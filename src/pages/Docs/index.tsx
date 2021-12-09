@@ -37,7 +37,7 @@ const AdminDocs = (props: { auth: AuthObject }) => {
     <div className="container">
       <FlexDiv vert>
         <h3>Changelog</h3>
-        <p>This category provides documentation on bugs and hotfixes.</p>
+        <Text>This category provides documentation on bugs and hotfixes.</Text>
         {changeLogPosts?.map(
           (
             doc: {

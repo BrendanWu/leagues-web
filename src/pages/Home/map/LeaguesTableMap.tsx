@@ -4,9 +4,35 @@ import { FlexDiv } from "../../../react-design-system/FlexDiv";
 import { useDispatch } from "react-redux";
 import { setLocation } from "../../../redux/actions/location";
 import { Text } from "../../../react-design-system/Text";
+import moment from "moment";
 
+interface Hours {
+  hours: {
+    monday: string;
+    tuesday: string;
+    wednesday: string;
+    thursday: string;
+    friday: string;
+    saturday: string;
+    sunday: string;
+  };
+}
 const LeaguesTableMap = (props: { type?: string }) => {
   const dispatch = useDispatch();
+  const getTimeSlotsToday = (hours: Hours) => {
+    const days = [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+      "sunday",
+    ];
+    const currentDayOfWeek = moment().day();
+    //@ts-ignore
+    return hours[days[currentDayOfWeek]];
+  };
   const tableData =
     props.type === "in"
       ? basketballCourts.filter((item: any) => item?.description === "Indoor")
@@ -21,7 +47,9 @@ const LeaguesTableMap = (props: { type?: string }) => {
             container
             style={{
               padding: 10,
+
               border: "1px solid #EFEFEF",
+
               cursor: "pointer",
             }}
             justify="space-between"
@@ -36,7 +64,7 @@ const LeaguesTableMap = (props: { type?: string }) => {
               )
             }
           >
-            <FlexDiv>
+  <FlexDiv>
               <p style={{ fontWeight: "bold", color: "#282828" }}>
                 {court.title}
               </p>
