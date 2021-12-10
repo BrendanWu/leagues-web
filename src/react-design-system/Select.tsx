@@ -2,12 +2,11 @@ import * as React from "react";
 import styled from "styled-components";
 
 const StyledSelect = styled.select`
-  width: 157px;
-  height: 35px;
+ 
   background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #909298;
-  border-radius: 2px;
-  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 16px;
   opacity: 1;
 `;
 

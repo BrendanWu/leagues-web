@@ -159,9 +159,9 @@ const HomeScreen = () => {
             image="https://thumbs.dreamstime.com/z/red-maps-pin-location-map-icon-location-pin-pin-icon-vector-red-maps-pin-location-map-icon-location-pin-pin-icon-vector-vector-144267433.jpg"
           />
           <Select onChange={(e: any) => setSelected(e.target.value)}>
-            <option value="">Indoor/OutDoor</option>
+            <option value="">Outdoor/Indoor</option>
             <option value="in">Indoor</option>
-            <option value="out">OutDoor</option>
+            <option value="out">Outdoor</option>
           </Select>
           <Select style={{ width: 97 }}>
             <option value="">Price</option>
@@ -185,8 +185,6 @@ const HomeScreen = () => {
 
           <FlexDiv
             style={{
-              color: "white",
-              backgroundColor: "white",
               maxHeight: "80vh",
               overflow: "scroll",
               borderLeft: 0,
