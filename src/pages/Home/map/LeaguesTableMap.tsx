@@ -47,7 +47,9 @@ const LeaguesTableMap = (props: { type?: string }) => {
             container
             style={{
               padding: 10,
-              border: "1px solid #ebebeb",
+
+              border: "1px solid #EFEFEF",
+
               cursor: "pointer",
             }}
             justify="space-between"
@@ -62,14 +64,15 @@ const LeaguesTableMap = (props: { type?: string }) => {
               )
             }
           >
-            <FlexDiv vert>
-              <Text style={{ fontWeight: "bold" }}>{court.title}</Text>
-              <Text style={{ color: "#909298" }}>{court.description}</Text>
-              <Text>Today {getTimeSlotsToday(court.hours)}</Text>
+            <FlexDiv>
+              <p style={{ fontWeight: "bold", color: "#282828" }}>
+                {court.title}
+              </p>
             </FlexDiv>
             <FlexDiv justify="flex-end">
               <div style={{ textAlign: "right" }}>
                 <Text style={{ color: "#DA3E17" }}> Free Entry </Text>
+                <p style={{ color: "#282828" }}>{court.description}</p>
               </div>
             </FlexDiv>
           </FlexDiv>

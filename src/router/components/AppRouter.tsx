@@ -316,7 +316,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Copyright = () => {
+export const Copyright = () => {
   return (
     <div
       style={{
@@ -330,12 +330,11 @@ const Copyright = () => {
         <FlexDiv align="center">
           <FlexDiv vert>
             {/* <Text style={{ fontWeight: "bold" }}>LiftedSolutions ®</Text> */}
-            <img src={logo} style={{ width: 100, marginBottom:16 }} />
-       
+            <img src={logo} style={{ width: 100, marginBottom: 16 }} />
+
             <Text>Toronto, ON</Text>
             <Text>1.855.638.7646</Text>
             <Text>join@leagues.co</Text>
-           
           </FlexDiv>
           <FlexDiv>
             <FlexDiv>
@@ -350,20 +349,22 @@ const Copyright = () => {
           </FlexDiv>
           <FlexDiv>
             <FlexDiv justify="flex-end">
-              <img src={twitterLogo} style={{ width: 16, marginRight:32 }} />
-   
-              <img src={facebookLogo} style={{ width: 12, marginRight:32 }} />
-         
+              <img src={twitterLogo} style={{ width: 16, marginRight: 32 }} />
+
+              <img src={facebookLogo} style={{ width: 12, marginRight: 32 }} />
+
               <img src={instagramLogo} style={{ width: 16 }} />
             </FlexDiv>
           </FlexDiv>
         </FlexDiv>
       </div>
-      <FlexDiv justify="center" style={{borderTop:"1px solid white"}}>
-        <Text style={{marginRight:16}}>Terms & Conditions</Text>
-        <Text style={{marginRight:16}}>Privacy Policy</Text>
-        <Text style={{marginRight:16}}>Purchase Policy</Text>
-        <Text style={{marginRight:16}}>2021 Leagues. All rights reserved</Text>
+      <FlexDiv justify="center" style={{ borderTop: "1px solid white" }}>
+        <Text style={{ marginRight: 16 }}>Terms & Conditions</Text>
+        <Text style={{ marginRight: 16 }}>Privacy Policy</Text>
+        <Text style={{ marginRight: 16 }}>Purchase Policy</Text>
+        <Text style={{ marginRight: 16 }}>
+          2021 Leagues. All rights reserved
+        </Text>
       </FlexDiv>
     </div>
   );

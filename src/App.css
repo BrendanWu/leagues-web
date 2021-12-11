@@ -1,6 +1,13 @@
 .App {
   text-align: center;
 }
+@font-face {
+  font-family: OswaldVariable;
+  src: url("./assets/Fonts/Oswald/Oswald-VariableFont_wght.ttf");
+}
+.text {
+  font-family: OswaldVariable;
+}
 
 .App-logo {
   height: 40vmin;
@@ -12,7 +19,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+input::placeholder {
+  font-family: OswaldVariable;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

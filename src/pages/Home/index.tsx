@@ -11,6 +11,14 @@ import LeaguesTableMap from "./map/LeaguesTableMap";
 import GameFeedCarousel from "./components/GameFeedCarousel";
 import styled from "styled-components";
 import leg from "../../assets/whatleg.png";
+import iconProfile from "../../assets/iconProfile.png";
+import calendar from "../../assets/calendar.png";
+import basket from "../../assets/basket.png";
+import arrow from "../../assets/arrow.png";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const BackgroundImage = styled.div`
   background-image: url(${hero});
@@ -71,12 +79,21 @@ export const Home = () => {
   return (
     <>
       <BackgroundImage>
-        <Container style={{ color: "white", marginTop: -30 }}>
-          <Text style={{ width: 400, paddingTop: 50, fontSize: 28 }}>
-            FIND RECREATIONAL GAMES HAPPENING AROUND YOU RIGHT NOW
-          </Text>
-
-          <Button style={{ width: 400 }} label="Get Started"></Button>
+        <Container style={{ color: "white", padding: 20 }}>
+          <MainTitle>FIND RECREATIONAL GAMES HAPPENING</MainTitle>
+          <MainTitle>AROUND YOU RIGHT NOW</MainTitle>
+          {/* <TitleText>
+            All sports, recreational events at your fingertips.
+          </TitleText>
+          <TitleText>
+            Create a league, invite your friends and level up.
+          </TitleText> */}
+          <FlexDiv justify="center">
+            <Button
+              style={{ width: 400, alignSelf: "center" }}
+              label="Get Started"
+            />
+          </FlexDiv>
         </Container>
       </BackgroundImage>
       <FlexDiv
@@ -92,7 +109,7 @@ export const Home = () => {
         </FlexDiv>
         <GameFeedCarousel />
       </FlexDiv>
-      <FlexDiv container>
+      <FlexDiv style={{ backgroundColor: "white" }} container>
         <FlexDiv>
           <img width={"100%"} src={leg} alt="league" />
         </FlexDiv>
@@ -139,7 +156,7 @@ export const Home = () => {
       <Container>
         <FlexDiv
           align="center"
-          style={{ width: "50%", marginBottom: 16, marginTop: 32 }}
+          style={{ width: "60%" }}
           justify="space-between"
           container
         >
@@ -184,6 +201,8 @@ export const Home = () => {
 
         <FlexDiv
           style={{
+            color: "white",
+            backgroundColor: "white",
             maxHeight: "80vh",
             overflow: "scroll",
             marginRight: 32,
@@ -191,6 +210,193 @@ export const Home = () => {
         >
           <LeaguesTableMap type={selected} />
         </FlexDiv>
+      </FlexDiv>
+      <FlexDiv vert justify="center">
+        <MainTitle style={{ color: "#DA3E17" }}>THE LOCKER ROOM </MainTitle>
+        <TitleText
+          style={{ color: "#1D1D1D", maxWidth: "70vw", alignSelf: "center" }}
+        >
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+          ipsum dolor sit amet.
+        </TitleText>{" "}
+      </FlexDiv>
+      <FlexDiv vert align="center" justify="center">
+        <FlexDiv style={{ maxWidth: "70vw", marginTop: 20 }}>
+          <FlexDiv
+            size={0.5}
+            style={{
+              background: "#70777A 0% 0% no-repeat padding-box",
+              opacity: 1,
+              minHeight: 220,
+            }}
+          ></FlexDiv>
+          <FlexDiv
+            size={0.5}
+            // style={{
+            //   background: "#70777A 0% 0% no-repeat padding-box",
+            //   opacity: 1,
+            // }}
+          >
+            <FlexDiv style={{ paddingLeft: 20 }} justify="center" vert>
+              <img width={60} height={60} src={iconProfile} alt="Icon" />
+              <Text
+                style={{
+                  color: "#DA3E17",
+                  fontSize: 16,
+                  fontWeight: "bold",
+                  padding: 0,
+                  marginTop: 0,
+                  marginLeft: 10,
+                }}
+              >
+                BUILD YOUR PROFILE
+              </Text>
+              <Text
+                style={{
+                  marginLeft: 10,
+                  marginTop: 0,
+                }}
+              >
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua.
+              </Text>
+            </FlexDiv>
+          </FlexDiv>
+        </FlexDiv>
+        <FlexDiv style={{ maxWidth: "70vw", marginTop: 20 }}>
+          <FlexDiv
+            size={0.5}
+            // style={{
+            //   background: "#70777A 0% 0% no-repeat padding-box",
+            //   opacity: 1,
+            // }}
+          >
+            <FlexDiv style={{ paddingLeft: 20 }} justify="center" vert>
+              <img width={60} height={60} src={calendar} alt="Icon" />
+              <Text
+                style={{
+                  color: "#DA3E17",
+                  fontSize: 16,
+                  fontWeight: "bold",
+                  padding: 0,
+                  marginTop: 0,
+                  marginLeft: 10,
+                }}
+              >
+                CREATE + JOIN LOCAL EVENTS
+              </Text>
+              <Text
+                style={{
+                  marginLeft: 10,
+                  marginTop: 0,
+                }}
+              >
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua.
+              </Text>
+            </FlexDiv>
+          </FlexDiv>
+          <FlexDiv
+            size={0.5}
+            style={{
+              background: "#70777A 0% 0% no-repeat padding-box",
+              opacity: 1,
+              minHeight: 220,
+            }}
+          ></FlexDiv>
+        </FlexDiv>
+        <FlexDiv container style={{ maxWidth: "70vw", marginTop: 20 }}>
+          <FlexDiv
+            size={0.5}
+            style={{
+              background: "#70777A 0% 0% no-repeat padding-box",
+              opacity: 1,
+              minHeight: 220,
+            }}
+          ></FlexDiv>
+          <FlexDiv
+            size={0.5}
+            // style={{
+            //   background: "#70777A 0% 0% no-repeat padding-box",
+            //   opacity: 1,
+            // }}
+          >
+            <FlexDiv style={{ paddingLeft: 20 }} justify="center" vert>
+              <img width={60} height={60} src={basket} alt="Icon" />
+              <Text
+                style={{
+                  color: "#DA3E17",
+                  fontSize: 16,
+                  fontWeight: "bold",
+                  padding: 0,
+                  marginTop: 0,
+                  marginLeft: 10,
+                }}
+              >
+                CHECK IN AND START HOOPING.
+              </Text>
+              <Text
+                style={{
+                  marginLeft: 10,
+                  marginTop: 0,
+                }}
+              >
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua.
+              </Text>
+            </FlexDiv>
+          </FlexDiv>
+        </FlexDiv>
+        <FlexDiv style={{ paddingTop: 30 }} justify="center">
+          <Text
+            style={{
+              color: "#DA3E17",
+              fontSize: 20,
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
+            GO TO THE LOCKER ROOM
+          </Text>
+          <img
+            style={{ marginTop: 17, marginLeft: 10 }}
+            width={30}
+            height={30}
+            src={arrow}
+            alt="arrow"
+          />
+        </FlexDiv>
+      </FlexDiv>
+      <MainTitle style={{ color: "#1D1D1D", fontSize: 24 }}>
+        FREQUENTLY ASKED QUESTIONS
+      </MainTitle>
+      <FlexDiv vert align="center">
+        {[1, 2, 3, 4, 5, 6, 7].map((item) => (
+          <Accordion key={item} style={{ maxWidth: "50vw" }}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon style={{ color: "#DA3E00" }} />}
+              // aria-controls={doc.title}
+            >
+              <TitleText style={{ color: "#1D1D1D" }}>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam?
+              </TitleText>
+            </AccordionSummary>
+            <AccordionDetails>
+              <TitleText style={{ color: "#1D1D1D" }}>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua.
+              </TitleText>
+            </AccordionDetails>
+          </Accordion>
+        ))}
       </FlexDiv>
     </>
   );

@@ -48,7 +48,7 @@ const StyledTextArea = styled.textarea.attrs<
 
 interface Props {
   width?: string;
-  label?: string;
+  label?: any;
   lines?: number;
   altTheme?: boolean;
   border?: boolean;
@@ -56,7 +56,6 @@ interface Props {
   image?: string;
   ref?: any;
 }
-
 
 export const Input: React.FC<
   Props & React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>
@@ -66,7 +65,7 @@ export const Input: React.FC<
   }
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      <StyledInput {...props}/>
+      <StyledInput {...props} />
       {/* <input {...props}>{props.label}</input> */}
 
       {props?.image ? (
