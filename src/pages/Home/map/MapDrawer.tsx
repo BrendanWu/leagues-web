@@ -4,6 +4,8 @@ import { FlexDiv } from "../../../react-design-system/FlexDiv";
 import { Text } from "../../../react-design-system/Text";
 import courtImage from "../../../assets/court.jpg";
 import styled from "styled-components";
+import Button from "../../../react-design-system/Button";
+import { Link } from "react-router-dom";
 
 const StyledImg = styled.img`
   width: 20vw;
@@ -50,7 +52,7 @@ const MapDrawer = (props: {
             fontSize: `12px`,
           }}
         >
-          Today @ 2:00pm - 4:00pm
+          2/6 Players
         </Text>{" "}
         <Text
           style={{
@@ -59,8 +61,21 @@ const MapDrawer = (props: {
             fontSize: `12px`,
           }}
         >
+          Today @ 2:00pm - 4:00pm
+        </Text>{" "}
+        <Text
+          style={{
+            color: "#4695C6",
+            height: 5,
+            fontSize: `12px`,
+            marginBottom: 30,
+          }}
+        >
           HoopDome | North York, ON S
         </Text>
+        <Link to="/locker">
+          <Button alt label="Join " />
+        </Link>
       </FlexDiv>
     </Drawer>
   );
