@@ -8,7 +8,7 @@ const makeApiRequest = (
   token: any
 ) => {
   const options = {
-    url: `${BASE_URL}${endpoint}`,
+    url: `${BASE_URL}/${endpoint}`,
     method,
     headers: {
       idtoken: token,

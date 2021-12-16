@@ -1,4 +1,4 @@
 export const BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? "http://localhost:" + process.env.PORT
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:5000" 
     : "https:/league-servertesting.herokuapp.com/";

@@ -77,7 +77,7 @@ const QuestionList = () => {
                   />
                   <CardContent style={{ height: 130 }}>
                     <FlexDiv style={{ height: 27 }} justify="space-between">
-                      <Text style={{ color: "gray" }}>Basketball</Text>
+                      <Text style={{ color: "gray" }}>{court.description}</Text>
                       <Text style={{ color: "#DA3E17" }}>$10 Entry Fee</Text>
                     </FlexDiv>
                     <Text
@@ -85,39 +85,22 @@ const QuestionList = () => {
                         color: "black",
                         fontWeight: "bold",
                         fontSize: 16,
-                        height: 10,
+          
                       }}
                     >
-                      Pickup game
+                      {court.title}
                     </Text>
+           
                     <Text
                       style={{
                         color: "#4695C6",
-                        fontWeight: "lighter",
-                        fontSize: 12,
-                        height: 5,
-                      }}
-                    >
-                      {court.description}
-                    </Text>{" "}
-                    <Text
-                      style={{
-                        color: "#4695C6",
-                        height: 5,
+                
                         fontSize: `12px`,
                       }}
                     >
                       {getTimeSlotsToday(court.hours)}
                     </Text>{" "}
-                    <Text
-                      style={{
-                        color: "#4695C6",
-                        height: 5,
-                        fontSize: `12px`,
-                      }}
-                    >
-                      {court.title}
-                    </Text>
+             
                   </CardContent>
                   <CardActions>
                     <Button
@@ -126,7 +109,7 @@ const QuestionList = () => {
                         fontWeight: "bold",
                         height: 20,
                       }}
-                      label="HOP IN"
+                      label="Find a game"
                       onClick={onVisible}
                     />
                   </CardActions>

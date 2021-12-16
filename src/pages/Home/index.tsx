@@ -27,7 +27,7 @@ const BackgroundImage = styled.div`
 `;
 const HappeningText = styled(Text)`
   text-align: left;
-  font: normal normal bold 30px Oswald;
+  font: normal normal bold 30px OswaldVariable;
   letter-spacing: 0px;
   color: #da3e17;
   text-transform: uppercase;
@@ -44,7 +44,7 @@ const LocationText = styled(Text)`
 `;
 const MainTitle = styled(Text)`
   text-align: center;
-  font: normal normal bold 36px Oswald;
+  font: normal normal bold 36px OswaldVariable;
   letter-spacing: 0px;
   color: #ffffff;
   text-transform: uppercase;
@@ -79,7 +79,8 @@ export const Home = () => {
   return (
     <>
       <BackgroundImage>
-        <Container style={{ color: "white", padding: 20 }}>
+
+          <FlexDiv vert align="center" justify="center" style={{height:"100%"}}>
           <MainTitle>FIND RECREATIONAL GAMES HAPPENING</MainTitle>
           <MainTitle>AROUND YOU RIGHT NOW</MainTitle>
           {/* <TitleText>
@@ -94,15 +95,16 @@ export const Home = () => {
               label="Get Started"
             />
           </FlexDiv>
-        </Container>
+          </FlexDiv>
+      
       </BackgroundImage>
       <FlexDiv
-        style={{ marginLeft: "8vw", marginRight: "10vw" }}
+        // style={{ marginLeft: "8vw", marginRight: "10vw" }}
         vert
         container
       >
-        <FlexDiv container justify="space-between">
-          <HappeningText>HAPPENING RIGHT NOW</HappeningText>
+        <FlexDiv container justify="space-between" style={{marginRight:"6em", marginLeft:"6em"}}>
+          <HappeningText>BASKETBALL COURTS IN TORONTO</HappeningText>
           <LocationText>
             You Are Currently Located In Mississauga, Ontario
           </LocationText>
