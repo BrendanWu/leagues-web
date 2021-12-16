@@ -7,6 +7,7 @@ import makeApiRequest from "../../services/makeApiRequest";
 import PostView from "./posts/PostView";
 import { FlexDiv } from "../../react-design-system/FlexDiv";
 import { Text } from "../../react-design-system/Text";
+import Container from "@material-ui/core/Container";
 
 interface AuthObject {
   token: string;
@@ -34,7 +35,7 @@ const AdminDocs = (props: { auth: AuthObject }) => {
   }, [props]);
 
   return (
-    <div className="container">
+    <Container>
       <FlexDiv vert>
         <h3>Changelog</h3>
         <Text>This category provides documentation on bugs and hotfixes.</Text>
@@ -74,7 +75,7 @@ const AdminDocs = (props: { auth: AuthObject }) => {
         )}
       </FlexDiv>
       {/* <MarkdownEditor/> */}
-    </div>
+    </Container>
   );
 };
 
