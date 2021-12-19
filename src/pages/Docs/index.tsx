@@ -52,7 +52,7 @@ const AdminDocs = (props: { auth: AuthObject }) => {
             i
           ) => {
             return (
-              <Accordion expanded>
+              <Accordion key={i} expanded>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   // aria-controls={doc.title}
