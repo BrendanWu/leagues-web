@@ -1,4 +1,5 @@
 import React from "react";
+import AlertDialog from "../componets/AlertDialog";
 import Button from "lifted-design-system/dist/Button";
 import Container from "@material-ui/core/Container";
 import { FlexDiv } from "../../../react-design-system/FlexDiv";
@@ -68,6 +69,10 @@ const AdminPosts = (props: any) => {
     }
   }
 
+  const handleCancelEdit = () => {
+    setEditPost(null);
+  }
+
   const getAllPosts = async () => {
     try {
       const { data } = await makeApiRequest(
@@ -84,7 +89,6 @@ const AdminPosts = (props: any) => {
   };
 
   const handleEditPost = async (post: any) => {
-    console.log("Post to Edit: ", post);
     setEditPost(post);
   }
 
@@ -141,7 +145,14 @@ const AdminPosts = (props: any) => {
                   </Grid>
 
                   <Grid xs={2} item={true}>
-                    <Button onClick={() => handleRemove(p._id)} label="Remove" />
+                    <AlertDialog
+                      openDialogText={"Remove"}
+                      titleText={"Remove Post?"}
+                      contentText={"Are you sure to remove this post?"}
+                      closeButtonText={"No"}
+                      actionButtonText={"Yes"}
+                      action={() => handleRemove(p._id)}
+                    />
                   </Grid>
                 </Grid>
               );
@@ -154,7 +165,8 @@ const AdminPosts = (props: any) => {
           auth={props.auth}
           handleSave={handleSave}
           handleUpdate={handleUpdate}
-          />
+          handleCancel={handleCancelEdit}
+        />
       </FlexDiv>
     </Container>
   );

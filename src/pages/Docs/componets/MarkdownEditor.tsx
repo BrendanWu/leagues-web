@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AlertDialog from "./AlertDialog";
 import Button from "../../../react-design-system/Button";
 import { FlexDiv } from "../../../react-design-system/FlexDiv";
 import { Input } from "../../../react-design-system/Input";
@@ -114,7 +115,18 @@ export default function MarkdownEditor(props: any) {
         <FlexDiv justify="flex-end">Unsaved changes</FlexDiv>
 
         <FlexDiv justify="flex-end">
-          <Button label="Save" onClick={formik.handleSubmit} />
+          <Button label={props.post ? "Update" : "Save"} onClick={formik.handleSubmit} />
+          {
+            props.post &&
+            <AlertDialog
+              openDialogText={"Cancel"}
+              titleText={"Cancel Editing?"}
+              contentText={"Are you sure to discard all changes?"}
+              closeButtonText={"No"}
+              actionButtonText={"Yes"}
+              action={props.handleCancel}
+            />
+          }
         </FlexDiv>
       </FlexDiv>
 
