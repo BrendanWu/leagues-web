@@ -121,7 +121,7 @@ export default function MarkdownEditor(props: any) {
             <AlertDialog
               openDialogText={"Cancel"}
               titleText={"Cancel Editing?"}
-              contentText={"Are you sure to discard all changes?"}
+              contentText={"Are you sure you want to discard all changes?"}
               closeButtonText={"No"}
               actionButtonText={"Yes"}
               action={props.handleCancel}

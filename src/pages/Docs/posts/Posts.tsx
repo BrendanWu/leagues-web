@@ -148,7 +148,7 @@ const AdminPosts = (props: any) => {
                     <AlertDialog
                       openDialogText={"Remove"}
                       titleText={"Remove Post?"}
-                      contentText={"Are you sure to remove this post?"}
+                      contentText={"Are you sure you want to remove this post?"}
                       closeButtonText={"No"}
                       actionButtonText={"Yes"}
                       action={() => handleRemove(p._id)}
