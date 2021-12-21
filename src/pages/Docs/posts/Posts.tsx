@@ -1,11 +1,10 @@
 import React from "react";
-import AlertDialog from "../componets/AlertDialog";
+import AlertDialog from "../components/AlertDialog";
 import Button from "lifted-design-system/dist/Button";
 import Container from "@material-ui/core/Container";
 import { FlexDiv } from "../../../react-design-system/FlexDiv";
-import Grid from "@material-ui/core/Grid";
 import { Text } from "../../../react-design-system/Text";
-import MarkdownEditor from "../componets/MarkdownEditor";
+import MarkdownEditor from "../components/MarkdownEditor";
 import makeApiRequest from "../../../services/makeApiRequest";
 
 const AdminPosts = (props: any) => {
@@ -131,20 +130,18 @@ const AdminPosts = (props: any) => {
               i: any
             ) => {
               return (
-                <Grid key={i} container>
-                  <Grid xs={6} item={true}>
+                <FlexDiv key={i}>
+                  <FlexDiv xs={6}>
                     <Text>{p.title}</Text>
-                  </Grid>
+                  </FlexDiv>
 
-                  <Grid xs={2} item={true}>
+                  <FlexDiv xs={4}>
                     <Text>{p.category}</Text>
-                  </Grid>
+                  </FlexDiv>
 
-                  <Grid xs={2} item={true}>
-                    <Button onClick={() => handleEditPost(p)} label="Edit" />
-                  </Grid>
-
-                  <Grid xs={2} item={true}>
+                  <FlexDiv xs={2}>
+                    <Button onClick={() => handleEditPost(p)} label="Edit"/>
+                    
                     <AlertDialog
                       openDialogText={"Remove"}
                       titleText={"Remove Post?"}
@@ -153,8 +150,8 @@ const AdminPosts = (props: any) => {
                       actionButtonText={"Yes"}
                       action={() => handleRemove(p._id)}
                     />
-                  </Grid>
-                </Grid>
+                  </FlexDiv>
+                </FlexDiv>
               );
             }
           )}

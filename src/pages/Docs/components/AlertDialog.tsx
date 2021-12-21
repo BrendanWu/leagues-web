@@ -24,7 +24,7 @@ const AlertDialog = (props: any) => {
   }
 
   return (
-    <div>
+    <>
       <LDButton label={props.openDialogText} onClick={handleClickOpen} />
         
       <Dialog
@@ -48,7 +48,7 @@ const AlertDialog = (props: any) => {
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </>
   );
 }
 

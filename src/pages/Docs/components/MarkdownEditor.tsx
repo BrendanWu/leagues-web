@@ -39,12 +39,9 @@ export default function MarkdownEditor(props: any) {
     },
     enableReinitialize: true,
     onSubmit: (values) => {
-      if (props.post) {
-        props.handleUpdate(props.post._id, values, markdownString);
-      }
-      else {
-        props.handleSave(values, markdownString);
-      }
+      props.post ?
+      props.handleUpdate(props.post._id, values, markdownString) :
+      props.handleSave(values, markdownString);
     },
     validateOnBlur: true,
     validationSchema: schema,
