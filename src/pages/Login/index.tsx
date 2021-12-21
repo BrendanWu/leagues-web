@@ -49,6 +49,12 @@ const Login = () => {
     }
   };
 
+  const handleKeyPress = (event: any) => {
+    if (event.key === "Enter") {
+      onLogin();
+    }
+  }
+
   return (
     <div style={{ backgroundColor: "white", minHeight: window.innerHeight }}>
       <Container component="main" maxWidth="xs">
@@ -71,6 +77,7 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               autoFocus
+              onKeyPress={handleKeyPress}
             />
             <TextField
               variant="outlined"
@@ -84,6 +91,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
+              onKeyPress={handleKeyPress}
             />
 
             <Button
