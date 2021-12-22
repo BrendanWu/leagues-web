@@ -23,13 +23,17 @@ const QuestionList = () => {
       "saturday",
       "sunday",
     ];
+
     const currentDayOfWeek = moment().day();
+
     //@ts-ignore
     return hours[days[currentDayOfWeek]];
   };
+
   const onVisible = () => {
     setIsVisible(true);
   };
+
   return (
     <>
       {isVisible && (
@@ -45,21 +49,21 @@ const QuestionList = () => {
         responsive={responsive}
         infinite={true}
         autoPlay
-        autoPlaySpeed={1000}
-        transitionDuration={1000}
+        autoPlaySpeed={2000}
+        transitionDuration={1500}
         containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-10-px"
       >
-        {basketballCourts.map((court:BasketballCourtT) => {
+        {basketballCourts.map((court: BasketballCourtT) => {
           return (
             <FlexDiv style={{ padding: 16 }}>
               {
                 <Card
                   style={{
                     width: 270,
-                    height: 320,
+                    height: 340,
                     background: "#FFFFFF 0% 0% no-repeat padding-box",
                     boxShadow: "2px 2px 4px #27272733",
                     borderRadius: "2px",
@@ -76,42 +80,26 @@ const QuestionList = () => {
                     alt="Court"
                   />
                   <CardContent style={{ height: 130 }}>
-                    <FlexDiv style={{ height: 27 }} justify="space-between">
+                    <FlexDiv style={{ height: 30 }} justify="space-between">
                       <Text style={{ color: "gray" }}>{court.description}</Text>
                       <Text style={{ color: "#DA3E17" }}>$10 Entry Fee</Text>
                     </FlexDiv>
-                    <Text
-                      style={{
-                        color: "black",
-                        fontWeight: "bold",
-                        fontSize: 16,
-          
-                      }}
-                    >
+
+                    <Text style={{ color: "black", fontWeight: "bold", fontSize: 16, }}>
                       {court.title}
                     </Text>
-           
-                    <Text
-                      style={{
-                        color: "#4695C6",
-                
-                        fontSize: `12px`,
-                      }}
-                    >
+
+                    <Text style={{ color: "#4695C6", fontSize: 12 }}>
                       {getTimeSlotsToday(court.hours)}
-                    </Text>{" "}
-             
+                    </Text>
                   </CardContent>
                   <CardActions>
-                    <Button
-                      style={{
-                        color: "#DA3E17",
-                        fontWeight: "bold",
-                        height: 20,
-                      }}
-                      label="Find a game"
-                      onClick={onVisible}
-                    />
+                    <FlexDiv vert>
+                      <Button style={{ color: "#DA3E17", fontWeight: "bold", height: 40 }}
+                        label="Find a Game"
+                        onClick={onVisible}
+                      />
+                    </FlexDiv>
                   </CardActions>
                 </Card>
               }
@@ -122,6 +110,7 @@ const QuestionList = () => {
     </>
   );
 };
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1920 },
