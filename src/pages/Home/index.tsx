@@ -79,8 +79,7 @@ export const Home = () => {
   return (
     <>
       <BackgroundImage>
-
-          <FlexDiv vert align="center" justify="center" style={{height:"100%"}}>
+        <FlexDiv vert align="center" justify="center" style={{ height: "100%" }}>
           <MainTitle>FIND RECREATIONAL GAMES HAPPENING</MainTitle>
           <MainTitle>AROUND YOU RIGHT NOW</MainTitle>
           {/* <TitleText>
@@ -95,15 +94,15 @@ export const Home = () => {
               label="Get Started"
             />
           </FlexDiv>
-          </FlexDiv>
-      
+        </FlexDiv>
       </BackgroundImage>
+      
       <FlexDiv
         // style={{ marginLeft: "8vw", marginRight: "10vw" }}
         vert
         container
       >
-        <FlexDiv container justify="space-between" style={{marginRight:"6em", marginLeft:"6em"}}>
+        <FlexDiv container justify="space-between" style={{ marginRight: "6em", marginLeft: "6em" }}>
           <HappeningText>BASKETBALL COURTS IN TORONTO</HappeningText>
           <LocationText>
             You Are Currently Located In Mississauga, Ontario
@@ -237,10 +236,10 @@ export const Home = () => {
           ></FlexDiv>
           <FlexDiv
             size={0.5}
-            // style={{
-            //   background: "#70777A 0% 0% no-repeat padding-box",
-            //   opacity: 1,
-            // }}
+          // style={{
+          //   background: "#70777A 0% 0% no-repeat padding-box",
+          //   opacity: 1,
+          // }}
           >
             <FlexDiv style={{ paddingLeft: 20 }} justify="center" vert>
               <img width={60} height={60} src={iconProfile} alt="Icon" />
@@ -272,10 +271,10 @@ export const Home = () => {
         <FlexDiv style={{ maxWidth: "70vw", marginTop: 20 }}>
           <FlexDiv
             size={0.5}
-            // style={{
-            //   background: "#70777A 0% 0% no-repeat padding-box",
-            //   opacity: 1,
-            // }}
+          // style={{
+          //   background: "#70777A 0% 0% no-repeat padding-box",
+          //   opacity: 1,
+          // }}
           >
             <FlexDiv style={{ paddingLeft: 20 }} justify="center" vert>
               <img width={60} height={60} src={calendar} alt="Icon" />
@@ -323,10 +322,10 @@ export const Home = () => {
           ></FlexDiv>
           <FlexDiv
             size={0.5}
-            // style={{
-            //   background: "#70777A 0% 0% no-repeat padding-box",
-            //   opacity: 1,
-            // }}
+          // style={{
+          //   background: "#70777A 0% 0% no-repeat padding-box",
+          //   opacity: 1,
+          // }}
           >
             <FlexDiv style={{ paddingLeft: 20 }} justify="center" vert>
               <img width={60} height={60} src={basket} alt="Icon" />
@@ -383,7 +382,7 @@ export const Home = () => {
           <Accordion key={item} style={{ maxWidth: "50vw" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon style={{ color: "#DA3E00" }} />}
-              // aria-controls={doc.title}
+            // aria-controls={doc.title}
             >
               <TitleText style={{ color: "#1D1D1D" }}>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed

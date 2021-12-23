@@ -9,18 +9,23 @@ import { useNavigator } from "../../../costumHooks/currentLocation";
 
 const LeaguesMap = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [name, setName] = useState<string>("");
   const lat = useSelector<RootState>((state) => state?.location?.lat) as number;
   const lng = useSelector<RootState>((state) => state?.location?.lng) as number;
-  const title = useSelector<RootState>(
-    (state) => state?.location?.title
-  ) as string;
+  const title = useSelector<RootState>((state) => state?.location?.title) as string;
+  const description = useSelector<RootState>((state) => state?.court?.description) as string;
+  const timing = useSelector<RootState>((state) => state?.court?.timing) as string;
+  const website = useSelector<RootState>((state) => state?.court?.website) as string;
+  const imageUrl = useSelector<RootState>((state) => state?.court?.imageUrl) as string;
   const { currentLat, currentLng } = useNavigator();
 
   return (
     <>
       <MapDrawer
-        text={name}
+        title={title}
+        description={description}
+        timing={timing}
+        website={website}
+        imageUrl={imageUrl}
         isVisible={isVisible}
         onClose={() => setIsVisible(false)}
       />
@@ -40,10 +45,7 @@ const LeaguesMap = () => {
           yesIWantToUseGoogleMapApiInternals
         >
           <AnyReactComponent
-            onSubmit={() => {
-              setName(title);
-              setIsVisible(true);
-            }}
+            onSubmit={() => { setIsVisible(true) }}
             lat={lat}
             lng={lng}
             text={title}
@@ -79,11 +81,10 @@ const AnyReactComponent = (props: {
     }}
     onClick={() => props.onSubmit()}
   >
-    {props?.text === "Current Location" ? (
-      props?.text
-    ) : (
+    {props?.text === "Current Location" ?
+      props?.text :
       <img style={{ height: 50, width: 50 }} alt="Location" src={img} />
-    )}
+    }
     {/* {props?.text} */}
   </FlexDiv>
 );

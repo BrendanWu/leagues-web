@@ -6,6 +6,7 @@ import courtImage from "../../../assets/court.jpg";
 import styled from "styled-components";
 import Button from "../../../react-design-system/Button";
 import { Link } from "react-router-dom";
+import MUILink from '@material-ui/core/Link';
 
 const StyledImg = styled.img`
   width: 20vw;
@@ -13,18 +14,22 @@ const StyledImg = styled.img`
 `;
 
 const MapDrawer = (props: {
-  text: string;
+  title: string;
+  description: string;
+  timing: string;
+  website: string;
+  imageUrl: string;
   isVisible: boolean;
   onClose: () => void;
 }) => {
-  const { isVisible, onClose, text } = props;
-  console.log(text);
+  const { title, description, timing, website, imageUrl, isVisible, onClose } = props;
+
   return (
     <Drawer anchor={"right"} open={isVisible} onClose={onClose}>
       <FlexDiv style={{ margin: 20 }} vert>
         <StyledImg src={courtImage} alt="Basket Court" />
-        <Text style={{ color: "gray" }}>BasketBall</Text>
-        <Text style={{ color: "#DA3E17" }}>$10 Entry Fee</Text>
+        <Text style={{ color: "gray", marginBottom:5 }}>{description}</Text>
+        <Text style={{ color: "#DA3E17", marginBottom:5 }}>$10 Entry Fee</Text>
         <Text
           style={{
             color: "black",
@@ -33,9 +38,9 @@ const MapDrawer = (props: {
             height: 10,
           }}
         >
-          Pick-Up Game
+          {title}
         </Text>
-        <Text
+        {/* <Text
           style={{
             color: "#4695C6",
             fontWeight: "lighter",
@@ -44,8 +49,8 @@ const MapDrawer = (props: {
           }}
         >
           Indoor Gym | Full-Court{" "}
-        </Text>{" "}
-        <Text
+        </Text>{" "} */}
+        {/* <Text
           style={{
             color: "#4695C6",
             height: 5,
@@ -53,26 +58,52 @@ const MapDrawer = (props: {
           }}
         >
           2/6 Players
-        </Text>{" "}
+        </Text>{" "} */}
         <Text
           style={{
             color: "#4695C6",
             height: 5,
             fontSize: `12px`,
+            marginBottom: 20
           }}
         >
-          Today @ 2:00pm - 4:00pm
-        </Text>{" "}
-        <Text
-          style={{
-            color: "#4695C6",
-            height: 5,
-            fontSize: `12px`,
-            marginBottom: 30,
-          }}
-        >
-          HoopDome | North York, ON S
+          Today: {timing}
         </Text>
+
+        {
+          website &&
+          <MUILink
+            style={{
+              color: "#4695C6",
+              height: 5,
+              fontSize: `12px`,
+              marginBottom: 20
+            }}
+            href={website}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Website
+          </MUILink>
+        }
+
+        {
+          imageUrl &&
+          <MUILink
+            style={{
+              color: "#4695C6",
+              height: 5,
+              fontSize: `12px`,
+              marginBottom: 40
+            }}
+            href={imageUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Image
+          </MUILink>
+        }
+
         <Link to="/locker">
           <Button alt label="Join " />
         </Link>
@@ -80,4 +111,6 @@ const MapDrawer = (props: {
     </Drawer>
   );
 };
+
+
 export default MapDrawer;

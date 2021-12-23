@@ -13,6 +13,8 @@ import moment from "moment";
 
 const QuestionList = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [selectedCourt, setSelectedCourt] = useState<any>(null);
+
   const getTimeSlotsToday = (hours: any) => {
     const days = [
       "monday",
@@ -30,17 +32,20 @@ const QuestionList = () => {
     return hours[days[currentDayOfWeek]];
   };
 
-  const onVisible = () => {
-    setIsVisible(true);
-  };
-
   return (
     <>
       {isVisible && (
         <MapDrawer
-          text={"name"}
+          title={selectedCourt?.title}
+          description={selectedCourt?.description}
+          timing={getTimeSlotsToday(selectedCourt?.hours)}
+          website={selectedCourt?.website}
+          imageUrl={selectedCourt?.imageUrl}
           isVisible={isVisible}
-          onClose={() => setIsVisible(false)}
+          onClose={() => {
+            setIsVisible(false);
+            setSelectedCourt(null);
+          }}
         />
       )}
       <Carousel
@@ -97,7 +102,10 @@ const QuestionList = () => {
                     <FlexDiv vert>
                       <Button style={{ color: "#DA3E17", fontWeight: "bold", height: 40 }}
                         label="Find a Game"
-                        onClick={onVisible}
+                        onClick={() => {
+                          setIsVisible(true);
+                          setSelectedCourt(court);
+                        }}
                       />
                     </FlexDiv>
                   </CardActions>
