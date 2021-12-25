@@ -27,14 +27,18 @@ const QuestionList = () => {
     //@ts-ignore
     return hours[days[currentDayOfWeek]];
   };
-  const onVisible = () => {
+
+  const [selectedCourt, setSelectedCourt] = React.useState<BasketballCourtT>();
+  const selectCourt = (court: BasketballCourtT) => {
     setIsVisible(true);
+    setSelectedCourt(court)
   };
   return (
     <>
       {isVisible && (
         <MapDrawer
           text={"name"}
+          court={selectedCourt}
           isVisible={isVisible}
           onClose={() => setIsVisible(false)}
         />
@@ -59,7 +63,7 @@ const QuestionList = () => {
                 <Card
                   style={{
                     width: 270,
-                    height: 320,
+                 
                     background: "#FFFFFF 0% 0% no-repeat padding-box",
                     boxShadow: "2px 2px 4px #27272733",
                     borderRadius: "2px",
@@ -71,23 +75,15 @@ const QuestionList = () => {
                 >
                   <CardMedia
                     component="img"
-                    height="130"
                     image={courtImage}
                     alt="Court"
                   />
-                  <CardContent style={{ height: 130 }}>
-                    <FlexDiv style={{ height: 27 }} justify="space-between">
+                  <CardContent>
+                    <FlexDiv justify="space-between">
                       <Text style={{ color: "gray" }}>{court.description}</Text>
-                      <Text style={{ color: "#DA3E17" }}>$10 Entry Fee</Text>
+                      <Text style={{ color: "#DA3E17" }}>Open today</Text>
                     </FlexDiv>
-                    <Text
-                      style={{
-                        color: "black",
-                        fontWeight: "bold",
-                        fontSize: 16,
-          
-                      }}
-                    >
+                    <Text>
                       {court.title}
                     </Text>
            
@@ -100,19 +96,17 @@ const QuestionList = () => {
                     >
                       {getTimeSlotsToday(court.hours)}
                     </Text>{" "}
-             
-                  </CardContent>
-                  <CardActions>
                     <Button
                       style={{
                         color: "#DA3E17",
                         fontWeight: "bold",
-                        height: 20,
+                        // height: 20, 
                       }}
-                      label="Find a game"
-                      onClick={onVisible}
+                      label="Create a game here"
+                      onClick={() => selectCourt(court)}
                     />
-                  </CardActions>
+                  </CardContent>
+            
                 </Card>
               }
             </FlexDiv>

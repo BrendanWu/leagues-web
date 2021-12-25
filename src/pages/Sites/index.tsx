@@ -12,10 +12,18 @@ import Container from "@material-ui/core/Container";
 import { FlexDiv } from "../../react-design-system/FlexDiv";
 import AddSiteDialog from "./components/AddSiteDialog";
 import { useHistory } from "react-router";
+import { useQuery, useSubscription } from "@apollo/client";
+import { MY_FIRST_QUERY } from "../../graphql/queries";
+import Button from "lifted-design-system/dist/Button";
+import { Text } from "../../react-design-system/Text";
 
 export const Sites = () => {
   const [sites, setSites] = React.useState<any>([]);
   const history = useHistory();
+
+  const {loading, error, data} = useSubscription(MY_FIRST_QUERY)
+
+
 
   const handleClose = (doc: any) => {
     setSites([...sites, doc]);
@@ -25,7 +33,8 @@ export const Sites = () => {
     axios.get(`${API}site/getSites`).then((res) => {
       setSites(res.data.sites);
     });
-  }, []);
+    console.log(data);
+  }, [data]);
 
   return (
     <Container>
@@ -33,6 +42,7 @@ export const Sites = () => {
         <h3>Games</h3>
         <AddSiteDialog handleClose={handleClose} />
       </FlexDiv>
+      {loading ? <Text>Loading</Text> : error ? <Text>Error</Text> : data?.games?.length}
 
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
@@ -45,20 +55,18 @@ export const Sites = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {sites &&
-              sites.length &&
-              sites.map((site: any) => (
+            {data?.games?.map((game: any) => (
                 <TableRow
-                  key={site._id}
+                  key={game.id}
                   hover
                   style={{ cursor: "pointer" }}
                   onClick={() => {
-                    history.push("/site/" + site._id);
+                    history.push("/site/" + game.id);
                   }}
                 >
-                  <TableCell>{site.address}</TableCell>
-                  <TableCell align="right">{site.gateways?.length}</TableCell>
-                  <TableCell align="right">{site.updatedAt}</TableCell>
+                  <TableCell>{game.address}</TableCell>
+                  <TableCell align="right">{game.id}</TableCell>
+                  <TableCell align="right">{game.status}</TableCell>
                   <TableCell align="right">
                     <div
                       style={{

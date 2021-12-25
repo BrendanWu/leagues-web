@@ -12,7 +12,16 @@ interface Props {
   text?: string;
   style?: React.CSSProperties;
   children?: any;
+  size?: sizeT
 }
+
+const sizes = {
+  small: "12px",
+  medium: "16px",
+  large: "20px",
+}
+
+type sizeT = "small" | "medium" | "large";
 
 export const Text: React.FC<Props> = (props) => {
   return (

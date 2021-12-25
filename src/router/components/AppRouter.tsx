@@ -153,7 +153,7 @@ const AppRouter = () => {
               <ListItemIcon>
                 <TableChartOutlined />
               </ListItemIcon>
-              <ListItemText primary="Find Arenas" />
+              <ListItemText primary="Find courts" />
             </ListItem>
           </Link>
           <Link style={{ textDecoration: "none", color: "black" }} to="/sites">
@@ -162,7 +162,7 @@ const AppRouter = () => {
               <ListItemIcon>
                 <TableChartOutlined />
               </ListItemIcon>
-              <ListItemText primary="Play 3v3" />
+              <ListItemText primary="Basketball games" />
             </ListItem>
           </Link>
           <Link style={{ textDecoration: "none", color: "black" }} to="/docs">
@@ -246,7 +246,7 @@ const useStyles = makeStyles((theme: Theme) =>
       ...theme.mixins.toolbar,
     },
     appBar: {
-      backgroundColor: "#1b1b1b",
+      backgroundColor: "black",
       boxShadow: "none",
       zIndex: theme.zIndex.drawer + 1,
       transition: theme.transitions.create(["width", "margin"], {
@@ -255,7 +255,7 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
     },
     appBarShift: {
-      backgroundColor: "#1b1b1b",
+      backgroundColor: "black",
       marginLeft: drawerWidth,
       width: `calc(100% - ${drawerWidth}px)`,
       transition: theme.transitions.create(["width", "margin"], {

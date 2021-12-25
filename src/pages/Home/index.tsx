@@ -19,6 +19,7 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { useHistory } from "react-router-dom";
 
 const BackgroundImage = styled.div`
   background-image: url(${hero});
@@ -44,7 +45,7 @@ const LocationText = styled(Text)`
 `;
 const MainTitle = styled(Text)`
   text-align: center;
-  font: normal normal bold 36px OswaldVariable;
+  font: normal normal bold 4em OswaldVariable;
   letter-spacing: 0px;
   color: #ffffff;
   text-transform: uppercase;
@@ -75,14 +76,22 @@ const DetailText = styled(Text)`
 
 export const Home = () => {
   const [selected, setSelected] = useState<string>("All");
-
+  const history = useHistory();
+  function goToLocker() {
+    history.push("/locker");
+  }
+  
   return (
     <>
       <BackgroundImage>
 
           <FlexDiv vert align="center" justify="center" style={{height:"100%"}}>
-          <MainTitle>FIND RECREATIONAL GAMES HAPPENING</MainTitle>
-          <MainTitle>AROUND YOU RIGHT NOW</MainTitle>
+          <FlexDiv style={{width:"66%"}}>
+
+          <MainTitle>FIND BASKETBALL COURTS PLAY GAMES IN TORONTO</MainTitle>
+          
+          </FlexDiv>
+          {/* <MainTitle>AROUND YOU RIGHT NOW</MainTitle> */}
           {/* <TitleText>
             All sports, recreational events at your fingertips.
           </TitleText>
@@ -116,35 +125,31 @@ export const Home = () => {
           <img width={"100%"} src={leg} alt="league" />
         </FlexDiv>
         <FlexDiv vert justify="center">
-          <ImageTitle>WHAT IS LEAGUES?</ImageTitle>
+          <ImageTitle>INVITE YOUR FRIENDS</ImageTitle>
           <DetailText>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
-            <br />
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta.{" "}
+            Invite up to 9 friends and create a recurring link to your next basketball meetup
           </DetailText>
+          <Button alt onClick={()=>goToLocker()} label="Create a basketball meetup link for you and your friends"/>
+
         </FlexDiv>
       </FlexDiv>
       <BackgroundImage style={{ paddingTop: 60 }}>
-        <MainTitle>SED UT PERSPICIATIS UNDE OMNIS ISTE</MainTitle>
-        <MainTitle>NATUS ERROR SIT VOLUPTATEM.</MainTitle>
+        <FlexDiv vert style={{width:"100%"}} justify="center" align="center">
+      <FlexDiv style={{width:"66%"}}>
+        <MainTitle>Read reviews on the latest in Toronto Basketball</MainTitle>
+        </FlexDiv>
+        <FlexDiv vert style={{width:"66%"}} justify="center" align="center">
+        {/* <MainTitle></MainTitle> */}
         <TitleText>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        </TitleText>
-        <TitleText>
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
-        </TitleText>
+Basketball courts, leagues, and exclusive memberships   </TitleText>
+     
         <FlexDiv justify="center">
           <Button
             style={{ width: 400, alignSelf: "center" }}
             label="Get Started"
           />
+        </FlexDiv>
+        </FlexDiv>
         </FlexDiv>
       </BackgroundImage>
       <MainTitle style={{ color: "#1D1D1D" }}>ADVANCED SEARCH </MainTitle>
@@ -158,7 +163,7 @@ export const Home = () => {
       <Container>
         <FlexDiv
           align="center"
-          style={{ width: "60%" }}
+          style={{ width: "60%", marginBottom:16 }}
           justify="space-between"
           container
         >
@@ -403,3 +408,4 @@ export const Home = () => {
     </>
   );
 };
+

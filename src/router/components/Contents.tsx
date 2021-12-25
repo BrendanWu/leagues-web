@@ -6,7 +6,7 @@ import Posts from "../../pages/Docs/posts/Posts";
 import { Profile } from "../../pages/Profile";
 import { LockerRoom } from "../../pages/LockerRoom/index";
 import { TeamStat } from "../../pages/LockerRoom/TeamStat";
-import { Leagues } from "../../pages/LockerRoom/Legues";
+import { Leagues } from "../../pages/LockerRoom/Leagues";
 
 const Content = () => {
   const token = useSelector((state: any) => state?.auth?.token) as string;

@@ -4,14 +4,14 @@ import { ProfileInfo } from "./components/ProfileInfo";
 import { EditProfile } from "./components/EditProfile";
 import { useSelector } from "react-redux";
 import { RootState } from "../../interfaces/redux/store";
-import { IUserRegister } from "../../interfaces/pages/Auth";
+import { IUserRegister, IProfile } from "../../interfaces/pages/Auth";
 import Alert from "@material-ui/lab/Alert";
 import makeApiRequest from "../../services/makeApiRequest";
 
 const Profile = () => {
   const token = useSelector<RootState>((state) => state?.auth?.token);
   const profile_Id = useSelector<RootState>((state) => state?.auth?.user_id);
-  const [profileData, setProfileData] = useState<IUserRegister>({
+  const [profileData, setProfileData] = useState<IProfile>({
     name: "",
     email: "",
     password: "",
@@ -19,6 +19,8 @@ const Profile = () => {
     phone: "",
     country: "",
     state: "",
+    height: 170,
+    weight: 70,
   });
   const [alertValue, setAlertValue] = useState<
     "success" | "info" | "warning" | "error"

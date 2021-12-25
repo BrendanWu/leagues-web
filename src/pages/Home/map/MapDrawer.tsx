@@ -6,6 +6,7 @@ import courtImage from "../../../assets/court.jpg";
 import styled from "styled-components";
 import Button from "../../../react-design-system/Button";
 import { Link } from "react-router-dom";
+import { BasketballCourtT } from "../../../basketballCourts";
 
 const StyledImg = styled.img`
   width: 20vw;
@@ -15,6 +16,7 @@ const StyledImg = styled.img`
 const MapDrawer = (props: {
   text: string;
   isVisible: boolean;
+  court?: BasketballCourtT;
   onClose: () => void;
 }) => {
   const { isVisible, onClose, text } = props;
@@ -23,8 +25,8 @@ const MapDrawer = (props: {
     <Drawer anchor={"right"} open={isVisible} onClose={onClose}>
       <FlexDiv style={{ margin: 20 }} vert>
         <StyledImg src={courtImage} alt="Basket Court" />
-        <Text style={{ color: "gray" }}>BasketBall</Text>
-        <Text style={{ color: "#DA3E17" }}>$10 Entry Fee</Text>
+        <Text style={{ color: "gray" }}>Basketball</Text>
+        <Text style={{ color: "#DA3E17" }}>  Indoor Gym | Full-Court{" "}</Text>
         <Text
           style={{
             color: "black",
@@ -33,18 +35,10 @@ const MapDrawer = (props: {
             height: 10,
           }}
         >
-          Pick-Up Game
+          {props?.court?.title}
         </Text>
-        <Text
-          style={{
-            color: "#4695C6",
-            fontWeight: "lighter",
-            fontSize: 12,
-            height: 5,
-          }}
-        >
-          Indoor Gym | Full-Court{" "}
-        </Text>{" "}
+      
+       
         <Text
           style={{
             color: "#4695C6",
@@ -52,16 +46,7 @@ const MapDrawer = (props: {
             fontSize: `12px`,
           }}
         >
-          2/6 Players
-        </Text>{" "}
-        <Text
-          style={{
-            color: "#4695C6",
-            height: 5,
-            fontSize: `12px`,
-          }}
-        >
-          Today @ 2:00pm - 4:00pm
+          TODO display availability today and all other metadata please
         </Text>{" "}
         <Text
           style={{
@@ -71,7 +56,7 @@ const MapDrawer = (props: {
             marginBottom: 30,
           }}
         >
-          HoopDome | North York, ON S
+          
         </Text>
         <Link to="/locker">
           <Button alt label="Join " />

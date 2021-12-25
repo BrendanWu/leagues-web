@@ -29,7 +29,7 @@ const BackgroundImage = styled.div`
 `;
 const HappeningText = styled(Text)`
   text-align: left;
-  font: normal normal bold 30px Oswald;
+  font: normal normal bold 30px OswaldVariable;
   letter-spacing: 0px;
   color: #da3e17;
   text-transform: uppercase;
@@ -46,7 +46,7 @@ const LocationText = styled(Text)`
 `;
 const MainTitle = styled(Text)`
   text-align: center;
-  font: normal normal bold 36px Oswald;
+  font: normal normal bold 4em OswaldVariable;
   letter-spacing: 0px;
   color: #ffffff;
   text-transform: uppercase;
@@ -79,10 +79,14 @@ const HomeScreen = () => {
   return (
     <>
       <BackgroundImage>
-        <Container style={{ color: "white", padding: 20 }}>
-          <NavBar />
-          <MainTitle>FIND RECREATIONAL GAMES HAPPENING</MainTitle>
-          <MainTitle>AROUND YOU RIGHT NOW</MainTitle>
+
+          <FlexDiv vert align="center" justify="center" style={{height:"100%"}}>
+          <FlexDiv style={{width:"66%"}}>
+
+          <MainTitle>FIND BASKETBALL COURTS PLAY GAMES IN TORONTO</MainTitle>
+          
+          </FlexDiv>
+          {/* <MainTitle>AROUND YOU RIGHT NOW</MainTitle> */}
           {/* <TitleText>
             All sports, recreational events at your fingertips.
           </TitleText>
@@ -95,15 +99,16 @@ const HomeScreen = () => {
               label="Get Started"
             />
           </FlexDiv>
-        </Container>
+          </FlexDiv>
+      
       </BackgroundImage>
       <FlexDiv
-        style={{ marginLeft: "8vw", marginRight: "10vw" }}
+        // style={{ marginLeft: "8vw", marginRight: "10vw" }}
         vert
         container
       >
-        <FlexDiv container justify="space-between">
-          <HappeningText>HAPPENING RIGHT NOW</HappeningText>
+        <FlexDiv container justify="space-between" style={{marginRight:"6em", marginLeft:"6em"}}>
+          <HappeningText>BASKETBALL COURTS IN TORONTO</HappeningText>
           <LocationText>
             You Are Currently Located In Mississauga, Ontario
           </LocationText>
@@ -115,35 +120,31 @@ const HomeScreen = () => {
           <img width={"100%"} src={leg} alt="league" />
         </FlexDiv>
         <FlexDiv vert justify="center">
-          <ImageTitle>WHAT IS LEAGUES?</ImageTitle>
+          <ImageTitle>INVITE YOUR FRIENDS</ImageTitle>
           <DetailText>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet.
-            <br />
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta.{" "}
+            Invite up to 9 friends and create a recurring link to your next basketball meetup
           </DetailText>
+          <Button alt label="Create a basketball meetup link for you and your friends"/>
+
         </FlexDiv>
       </FlexDiv>
       <BackgroundImage style={{ paddingTop: 60 }}>
-        <MainTitle>SED UT PERSPICIATIS UNDE OMNIS ISTE</MainTitle>
-        <MainTitle>NATUS ERROR SIT VOLUPTATEM.</MainTitle>
+        <FlexDiv vert style={{width:"100%"}} justify="center" align="center">
+      <FlexDiv style={{width:"66%"}}>
+        <MainTitle>Read reviews on the latest in Toronto Basketball</MainTitle>
+        </FlexDiv>
+        <FlexDiv vert style={{width:"66%"}} justify="center" align="center">
+        {/* <MainTitle></MainTitle> */}
         <TitleText>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        </TitleText>
-        <TitleText>
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
-        </TitleText>
+Basketball courts, leagues, and exclusive memberships   </TitleText>
+     
         <FlexDiv justify="center">
           <Button
             style={{ width: 400, alignSelf: "center" }}
             label="Get Started"
           />
+        </FlexDiv>
+        </FlexDiv>
         </FlexDiv>
       </BackgroundImage>
       <MainTitle style={{ color: "#1D1D1D" }}>ADVANCED SEARCH </MainTitle>
@@ -157,7 +158,7 @@ const HomeScreen = () => {
       <Container>
         <FlexDiv
           align="center"
-          style={{ width: "60%" }}
+          style={{ width: "60%", marginBottom:16 }}
           justify="space-between"
           container
         >
@@ -165,79 +166,53 @@ const HomeScreen = () => {
             // style={{ width: 200 }}
             altTheme
             label="Enter state name"
+            style={{
+              border: "1px solid lightgray",
+              padding: "16px",
+              borderRadius: "12px",
+            }}
             image="https://thumbs.dreamstime.com/z/red-maps-pin-location-map-icon-location-pin-pin-icon-vector-red-maps-pin-location-map-icon-location-pin-pin-icon-vector-vector-144267433.jpg"
           />
           <Select
-            style={{ fontFamily: "OswaldVariable" }}
             onChange={(e: any) => setSelected(e.target.value)}
+            style={{ marginRight: 16, marginLeft: 16 }}
           >
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              {" "}
-              Outdoor/Indoor
-            </option>
-
-            <option style={{ fontFamily: "OswaldVariable" }} value="in">
-              Indoor
-            </option>
-            <option style={{ fontFamily: "OswaldVariable" }} value="out">
-              Outdoor
-            </option>
+            <option value="">Outdoor/Indoor</option>
+            <option value="in">Indoor</option>
+            <option value="out">OutDoor</option>
           </Select>
-          <Select style={{ fontFamily: "OswaldVariable", minWidth: 97 }}>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              Price
-            </option>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              $100-200
-            </option>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              $200-300
-            </option>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              $300-500
-            </option>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              $500-1000
-            </option>
+          <Select style={{ width: 97, marginRight: 16 }}>
+            <option value="">Price</option>
+            <option value="">$100-200</option>
+            <option value="">$200-300</option>
+            <option value="">$300-500</option>
+            <option value="">$500-1000</option>
           </Select>
-          <Select style={{ fontFamily: "OswaldVariable", minWidth: 97 }}>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              Time
-            </option>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              3 pm
-            </option>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              4 pm
-            </option>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              5 pm
-            </option>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              6 pm
-            </option>
-            <option style={{ fontFamily: "OswaldVariable" }} value="">
-              7 pm
-            </option>
+          <Select style={{ width: 97 }}>
+            <option value="">Time</option>
+            <option value="">3 pm</option>
+            <option value="">4 pm</option>
+            <option value="">5 pm</option>
+            <option value="">6 pm</option>
+            <option value="">7 pm</option>
           </Select>
-        </FlexDiv>
-
-        <FlexDiv container>
-          <LeaguesMap />
-
-          <FlexDiv
-            style={{
-              color: "white",
-              backgroundColor: "white",
-              maxHeight: "80vh",
-              overflow: "scroll",
-              borderLeft: 0,
-            }}
-          >
-            <LeaguesTableMap type={selected} />
-          </FlexDiv>
         </FlexDiv>
       </Container>
+      <FlexDiv container>
+        <LeaguesMap />
+
+        <FlexDiv
+          style={{
+            color: "white",
+            backgroundColor: "white",
+            maxHeight: "80vh",
+            overflow: "scroll",
+            marginRight: 32,
+          }}
+        >
+          <LeaguesTableMap type={selected} />
+        </FlexDiv>
+      </FlexDiv>
       <FlexDiv vert justify="center">
         <MainTitle style={{ color: "#DA3E17" }}>THE LOCKER ROOM </MainTitle>
         <TitleText
@@ -425,7 +400,6 @@ const HomeScreen = () => {
           </Accordion>
         ))}
       </FlexDiv>
-      <Copyright />
     </>
   );
 };

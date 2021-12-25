@@ -71,9 +71,9 @@ export const Input: React.FC<
       {props?.image ? (
         <img
           style={{
-            borderRadius: 20,
-            marginTop: 7,
-            marginLeft: -30,
+            // borderRadius: 20,
+            // marginTop: 7,
+            // marginLeft: -30,
             width: 30,
             height: 30,
             zIndex: 2,
