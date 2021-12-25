@@ -1,28 +1,34 @@
 import { useState } from "react";
 import GoogleMapReact from "google-map-react";
 import MapDrawer from "./MapDrawer";
-import { FlexDiv } from "../../../react-design-system/FlexDiv";
+import Marker from "./components/Marker";
+import InfoWindow from "./components/InfoWindow";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../interfaces/redux/store";
-import img from "../../../../src/assets/location.png";
 import { useNavigator } from "../../../costumHooks/currentLocation";
 
 const LeaguesMap = () => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [name, setName] = useState<string>("");
+  const [isDrawerVisible, setIsDrawerVisible] = useState<boolean>(false);
+  const [isInfoWindowVisible, setIsInfoWindowVisible] = useState<boolean>(false);
   const lat = useSelector<RootState>((state) => state?.location?.lat) as number;
   const lng = useSelector<RootState>((state) => state?.location?.lng) as number;
-  const title = useSelector<RootState>(
-    (state) => state?.location?.title
-  ) as string;
+  const title = useSelector<RootState>((state) => state?.location?.title) as string;
+  const description = useSelector<RootState>((state) => state?.court?.description) as string;
+  const timing = useSelector<RootState>((state) => state?.court?.timing) as string;
+  const website = useSelector<RootState>((state) => state?.court?.website) as string;
+  const imageUrl = useSelector<RootState>((state) => state?.court?.imageUrl) as string;
   const { currentLat, currentLng } = useNavigator();
 
   return (
     <>
       <MapDrawer
-        text={name}
-        isVisible={isVisible}
-        onClose={() => setIsVisible(false)}
+        title={title}
+        description={description}
+        timing={timing}
+        website={website}
+        imageUrl={imageUrl}
+        isVisible={isDrawerVisible}
+        onClose={() => setIsDrawerVisible(false)}
       />
       <div style={{ width: "50vw", height: "80vh" }}>
         <GoogleMapReact
@@ -38,24 +44,38 @@ const LeaguesMap = () => {
             styles: mapStyles,
           }}
           yesIWantToUseGoogleMapApiInternals
-        >
-          <AnyReactComponent
-            onSubmit={() => {
-              setName(title);
-              setIsVisible(true);
-            }}
-            lat={lat}
-            lng={lng}
-            text={title}
-          />
+          onClick={() => isInfoWindowVisible && setIsInfoWindowVisible(false)} >
 
-          <AnyReactComponent
-            onSubmit={() => {
-              console.log("Current Location");
-            }}
+          {/* Court InfoWindow and Marker */}
+          {
+            isInfoWindowVisible &&
+            <InfoWindow
+              lat={lat}
+              lng={lng}
+              title={title}
+              description={description}
+              timing={timing}
+              website={website}
+              imageUrl={imageUrl}
+              onSubmit={() => { setIsDrawerVisible(true) }}
+            />
+          }
+          {
+            !isInfoWindowVisible &&
+            <Marker
+              lat={lat}
+              lng={lng}
+              text=""
+              onSubmit={() => { setIsInfoWindowVisible(true) }}
+            />
+          }
+
+          {/* Current Location Marker */}
+          <Marker
             lat={currentLat || 0}
             lng={currentLng || 0}
             text={"Current Location"}
+            onSubmit={() => console.log("Current Location")}
           />
         </GoogleMapReact>
       </div>
@@ -63,30 +83,6 @@ const LeaguesMap = () => {
   );
 };
 
-const AnyReactComponent = (props: {
-  lat: number;
-  lng: number;
-  text: string;
-  onSubmit: () => void;
-}) => (
-  <FlexDiv
-    style={{
-      fontSize: 18,
-      fontWeight: "bold",
-      background: "white",
-      color: "darkorange",
-      zIndex: 10,
-    }}
-    onClick={() => props.onSubmit()}
-  >
-    {props?.text === "Current Location" ? (
-      props?.text
-    ) : (
-      <img style={{ height: 50, width: 50 }} alt="Location" src={img} />
-    )}
-    {/* {props?.text} */}
-  </FlexDiv>
-);
 
 const mapStyles = [
   {
@@ -488,4 +484,6 @@ const mapStyles = [
 //     ],
 //   },
 // ];
+
+
 export default LeaguesMap;

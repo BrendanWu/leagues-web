@@ -8,7 +8,7 @@ const NavBar = () => {
     <NavContainer>
       <ImageContainer src={hero} />
       <Link href="/login" variant="body2">
-        <TextStyled>LogIn </TextStyled>
+        <TextStyled>Log In</TextStyled>
       </Link>
     </NavContainer>
   );

@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Button from "../../../react-design-system/Button";
 import { Link } from "react-router-dom";
 import { BasketballCourtT } from "../../../basketballCourts";
+import MUILink from '@material-ui/core/Link';
 
 const StyledImg = styled.img`
   width: 20vw;
@@ -14,13 +15,17 @@ const StyledImg = styled.img`
 `;
 
 const MapDrawer = (props: {
-  text: string;
+  title: string;
+  description: string;
+  timing: string;
+  website: string;
+  imageUrl: string;
   isVisible: boolean;
   court?: BasketballCourtT;
   onClose: () => void;
 }) => {
-  const { isVisible, onClose, text } = props;
-  console.log(text);
+  const { title, description, timing, website, imageUrl, isVisible, onClose } = props;
+
   return (
     <Drawer anchor={"right"} open={isVisible} onClose={onClose}>
       <FlexDiv style={{ margin: 20 }} vert>
@@ -44,6 +49,7 @@ const MapDrawer = (props: {
             color: "#4695C6",
             height: 5,
             fontSize: `12px`,
+            marginBottom: 20
           }}
         >
           TODO display availability today and all other metadata please
@@ -58,6 +64,41 @@ const MapDrawer = (props: {
         >
           
         </Text>
+
+        {
+          website &&
+          <MUILink
+            style={{
+              color: "#4695C6",
+              height: 5,
+              fontSize: `12px`,
+              marginBottom: 20
+            }}
+            href={website}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Website
+          </MUILink>
+        }
+
+        {
+          imageUrl &&
+          <MUILink
+            style={{
+              color: "#4695C6",
+              height: 5,
+              fontSize: `12px`,
+              marginBottom: 40
+            }}
+            href={imageUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Image
+          </MUILink>
+        }
+
         <Link to="/locker">
           <Button alt label="Join " />
         </Link>
@@ -65,4 +106,6 @@ const MapDrawer = (props: {
     </Drawer>
   );
 };
+
+
 export default MapDrawer;
