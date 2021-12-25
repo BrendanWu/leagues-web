@@ -57,13 +57,13 @@ const QuestionList = () => {
         autoPlaySpeed={2000}
         transitionDuration={1500}
         containerClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+        removeArrowOnDeviceType={["desktop", "laptop", "tablet", "mobile"]}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-10-px"
       >
         {basketballCourts.map((court: BasketballCourtT) => {
           return (
-            <FlexDiv style={{ padding: 16 }}>
+            <FlexDiv justify="center" style={{ padding: 16 }}>
               {
                 <Card
                   style={{
@@ -125,19 +125,24 @@ const responsive = {
     items: 5,
     slidesToSlide: 1, // optional, default to 1.
   },
-  tablet: {
-    breakpoint: { max: 1920, min: 1080 },
+  laptop: {
+    breakpoint: { max: 1920, min: 1440 },
     items: 4,
     slidesToSlide: 1, // optional, default to 1.
   },
-  small: {
-    breakpoint: { max: 1080, min: 400 },
+  tablet: {
+    breakpoint: { max: 1440, min: 1080 },
     items: 3,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+  small: {
+    breakpoint: { max: 1080, min: 640 },
+    items: 2,
     slidesToSlide: 1, // optional, default to 1.
   },
 
   mobile: {
-    breakpoint: { max: 400, min: 0 },
+    breakpoint: { max: 640, min: 0 },
     items: 1,
     slidesToSlide: 1, // optional, default to 1.
   },
