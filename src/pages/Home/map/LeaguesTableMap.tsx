@@ -1,8 +1,9 @@
 import React from "react";
-import basketballCourts from "../../../basketballCourts";
+import basketballCourts, { BasketballCourtT } from "../../../basketballCourts";
 import { FlexDiv } from "../../../react-design-system/FlexDiv";
 import { useDispatch } from "react-redux";
 import { setLocation } from "../../../redux/actions/location";
+import { setCourt } from "../../../redux/actions/court";
 import { Text } from "../../../react-design-system/Text";
 import moment from "moment";
 
@@ -33,36 +34,47 @@ const LeaguesTableMap = (props: { type?: string }) => {
     //@ts-ignore
     return hours[days[currentDayOfWeek]];
   };
+
+  const dispatchCourtData = (court: any) => {
+    dispatch(
+      setLocation({
+        lat: court?.location?.latitude,
+        lng: court?.location?.longitude,
+        title: court?.title
+      })
+    );
+    dispatch(
+      setCourt({
+        title: court?.title,
+        description: court?.description,
+        timing: getTimeSlotsToday(court?.hours),
+        website: court?.website,
+        imageUrl: court?.imageUrl
+      })
+    );
+  }
+
   const tableData =
-    props.type === "in"
-      ? basketballCourts.filter((item: any) => item?.description === "Indoor")
-      : props.type === "out"
-      ? basketballCourts.filter((item: any) => item?.description !== "Indoor")
-      : basketballCourts;
+    props.type === "in" ?
+      basketballCourts.filter((item: any) => item?.description === "Indoor") :
+      props.type === "out" ?
+        basketballCourts.filter((item: any) => item?.description !== "Indoor") :
+        basketballCourts;
+
   return (
     <FlexDiv vert>
-      {tableData.map((court: any) => {
+      {tableData.map((court: BasketballCourtT) => {
         return (
           <FlexDiv
             container
             style={{
               padding: 10,
-
               border: "1px solid #EFEFEF",
-
               cursor: "pointer",
             }}
             justify="space-between"
             align="center"
-            onClick={() =>
-              dispatch(
-                setLocation({
-                  lat: court?.location?.latitude,
-                  lng: court?.location?.longitude,
-                  title: court?.title,
-                })
-              )
-            }
+            onClick={() => dispatchCourtData(court)}
           >
             <FlexDiv>
               <p style={{ fontWeight: "bold", color: "#282828" }}>
