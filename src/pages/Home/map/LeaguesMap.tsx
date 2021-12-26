@@ -42,6 +42,7 @@ const LeaguesMap = () => {
           defaultZoom={15}
           options={{
             styles: mapStyles,
+            clickableIcons: false
           }}
           yesIWantToUseGoogleMapApiInternals
           onClick={() => isInfoWindowVisible && setIsInfoWindowVisible(false)} >
