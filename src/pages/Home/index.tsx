@@ -19,6 +19,9 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import NavBar from "./components/Navbar";
+import { useSelector } from "react-redux";
+import { RootState } from "../../interfaces/redux/store";
 
 const BackgroundImage = styled.div`
   background-image: url(${hero});
@@ -73,30 +76,32 @@ const DetailText = styled(Text)`
   opacity: 1;
 `;
 
-export const Home = () => {
+const Home = () => {
   const [selected, setSelected] = useState<string>("All");
+  const isLoggedIn = useSelector<RootState>((state) => state?.auth?.isLoggedIn) as boolean;
 
   return (
     <>
       <BackgroundImage>
-        <FlexDiv vert align="center" justify="center" style={{ height: "100%" }}>
-          <MainTitle>FIND RECREATIONAL GAMES HAPPENING</MainTitle>
-          <MainTitle>AROUND YOU RIGHT NOW</MainTitle>
-          {/* <TitleText>
+          <Container style={{ color: "white", padding: 20 }}>
+            {!isLoggedIn && <NavBar />}
+            <MainTitle>FIND RECREATIONAL GAMES HAPPENING</MainTitle>
+            <MainTitle>AROUND YOU RIGHT NOW</MainTitle>
+            {/* <TitleText>
             All sports, recreational events at your fingertips.
           </TitleText>
           <TitleText>
             Create a league, invite your friends and level up.
           </TitleText> */}
-          <FlexDiv justify="center">
-            <Button
-              style={{ width: 400, alignSelf: "center" }}
-              label="Get Started"
-            />
-          </FlexDiv>
-        </FlexDiv>
+            <FlexDiv justify="center">
+              <Button
+                style={{ width: 400, alignSelf: "center" }}
+                label="Get Started"
+              />
+            </FlexDiv>
+          </Container>
       </BackgroundImage>
-      
+
       <FlexDiv
         // style={{ marginLeft: "8vw", marginRight: "10vw" }}
         vert
@@ -402,3 +407,5 @@ export const Home = () => {
     </>
   );
 };
+
+export { Home };
