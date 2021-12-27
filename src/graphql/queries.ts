@@ -15,3 +15,16 @@ subscription MyQuery {
     }
   }
   `;
+
+  export const MY_SECOND_QUERY = gql`
+  subscription MyQuery {
+    game_player {
+      players {
+        name
+        weight
+        height
+      }
+    }
+  }
+  
+  `

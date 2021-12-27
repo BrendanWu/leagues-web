@@ -9,6 +9,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { API } from "../../../constants";
+import { LockerRoom } from "../../LockerRoom";
+import { Container } from "@material-ui/core";
 
 export default function FormDialog(props: any) {
   const [open, setOpen] = React.useState(false);
@@ -49,7 +51,7 @@ export default function FormDialog(props: any) {
     });
   }, []);
   return (
-    <div>
+    <Container>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Create game
       </Button>
@@ -57,11 +59,12 @@ export default function FormDialog(props: any) {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
+        fullScreen
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Create a game</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Enter site information (address, floor, lat, lng)
+            To create a game, please enter the address of the court or select a court from the list below
           </DialogContentText>
           <TextField
             autoFocus
@@ -76,16 +79,17 @@ export default function FormDialog(props: any) {
             type="string"
             fullWidth
           />
+          <LockerRoom/>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={submitSite} color="primary">
+          {/* <Button onClick={submitSite} color="primary">
             Create a game
-          </Button>
+          </Button> */}
         </DialogActions>
       </Dialog>
-    </div>
+    </Container>
   );
 }

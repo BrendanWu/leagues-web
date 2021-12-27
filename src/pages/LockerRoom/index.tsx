@@ -3,12 +3,24 @@ import { FlexDiv } from "../../react-design-system/FlexDiv";
 import { Text } from "../../react-design-system/Text";
 import Button from "../../react-design-system/Button";
 import { Link } from "react-router-dom";
-import { BasketballCourtT } from "../../basketballCourts";
-import { Container, Grid } from "@material-ui/core";
+import data, { BasketballCourtT } from "../../basketballCourts";
+import {
+  Container,
+  Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
 import LeaguesMap from "../Home/map/LeaguesMap";
 import LeaguesTableMap from "../Home/map/LeaguesTableMap";
 import { IProfile } from "../../interfaces/pages/Auth";
-const LockerRoom = (props: { court: BasketballCourtT }) => {
+import { useSubscription } from "@apollo/client";
+import { MY_SECOND_QUERY } from "../../graphql/queries";
+const LockerRoom = (props: { court?: BasketballCourtT }) => {
   const [court, selectCourt] = React.useState<BasketballCourtT>();
   const [availableTimeSlots, setTimeSlots] = React.useState<string[]>([]);
 
@@ -38,7 +50,7 @@ const LockerRoom = (props: { court: BasketballCourtT }) => {
     const [timeStart, timeEnd] = calculateDatesTimeslot(timeslot);
   };
   return (
-    <Container>
+    <>
       <FlexDiv vert style={{ marginTop: 40 }}>
         <Text size="large">Locker room</Text>
         {props.court == undefined ? (
@@ -53,7 +65,7 @@ const LockerRoom = (props: { court: BasketballCourtT }) => {
                   backgroundColor: "white",
                   maxHeight: "80vh",
                   overflow: "scroll",
-                  marginRight: 32,
+                  // marginRight: 32,
                 }}
               >
                 <LeaguesTableMap />
@@ -75,19 +87,121 @@ const LockerRoom = (props: { court: BasketballCourtT }) => {
         ))}
       </Grid>
       <TeamsComponent />
-      <Link to="/team-stat">
-        {" "}
+   
         <Button alt label="Ready up"></Button>
-      </Link>
-    </Container>
+      
+    </>
   );
 };
 
 const TeamsComponent = () => {
   const [profileList, setProfileList] = React.useState<IProfile[]>([]);
+  const {data,error,loading} = useSubscription(MY_SECOND_QUERY);
   return (
     <>
       <Text>Invite your friends</Text>
+      <Grid container>
+        <Grid xs={12} sm={6}>
+        <TableContainer component={Paper}>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Court</TableCell>
+              <TableCell align="right">Address</TableCell>
+              <TableCell align="right"> Messages</TableCell>
+              <TableCell align="right"> Status</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data?.game_player?.map((game: any) => (
+              <TableRow
+                key={game.id}
+                hover
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  // history.push("/site/" + game.id);
+                }}
+              >
+                <TableCell>{game.players[0].name}</TableCell>
+                <TableCell align="right">
+                  {game.players[0].weight}
+                </TableCell>
+                <TableCell align="right">{game.players[0].height}</TableCell>
+                <TableCell align="right">Point guard</TableCell>
+      
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+        </Grid>
+        <Grid xs={12} sm={6}>
+        <TableContainer component={Paper}>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Court</TableCell>
+              <TableCell align="right">Address</TableCell>
+              <TableCell align="right"> Messages</TableCell>
+              <TableCell align="right"> Status</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data?.game_player?.map((game: any) => (
+              <TableRow
+                key={game.id}
+                hover
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  // history.push("/site/" + game.id);
+                }}
+              >
+                <TableCell>{game.players[0].name}</TableCell>
+                <TableCell align="right">
+                  {game.players[0].weight}
+                </TableCell>
+                <TableCell align="right">{game.players[0].height}</TableCell>
+                <TableCell align="right">Point guard</TableCell>
+      
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+        </Grid>
+      </Grid>
+      <TableContainer component={Paper}>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Court</TableCell>
+              <TableCell align="right">Address</TableCell>
+              <TableCell align="right"> Messages</TableCell>
+              <TableCell align="right"> Status</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data?.game_player?.map((game: any) => (
+              <TableRow
+                key={game.id}
+                hover
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  // history.push("/site/" + game.id);
+                }}
+              >
+                <TableCell>{game.players[0].name}</TableCell>
+                <TableCell align="right">
+                  {game.players[0].weight}
+                </TableCell>
+                <TableCell align="right">{game.players[0].height}</TableCell>
+                <TableCell align="right">Point guard</TableCell>
+      
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <Text>
         You will be able to arrange your teams after you check in on game day
       </Text>

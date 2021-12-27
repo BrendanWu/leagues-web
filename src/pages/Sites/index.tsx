@@ -52,7 +52,7 @@ export const Sites = () => {
             <TableRow>
               <TableCell>Court</TableCell>
               <TableCell align="right">Address</TableCell>
-              <TableCell align="right"> Schedule</TableCell>
+              <TableCell align="right"> Messages</TableCell>
               <TableCell align="right"> Status</TableCell>
             </TableRow>
           </TableHead>
@@ -70,6 +70,9 @@ export const Sites = () => {
                   <TableCell align="right">{game.timeslot_date} @ {game.timeslot}</TableCell>
                   <TableCell align="right">{game.status}</TableCell>
                   <TableCell align="right">
+                    <FlexDiv justify="flex-end" align="center">
+
+                  <Text style={{marginRight:16}}>6/6</Text>
                     <div
                       style={{
                         width: 10,
@@ -79,6 +82,7 @@ export const Sites = () => {
                         float: "right",
                       }}
                     ></div>
+                    </FlexDiv>
                   </TableCell>
                 </TableRow>
               ))}
