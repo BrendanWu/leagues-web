@@ -1,11 +1,10 @@
 import React from "react";
 import { Switch, BrowserRouter, Route, Redirect } from "react-router-dom";
-import { Login } from "../pages";
-import { Register } from "../pages";
-import HomeScreen from "../pages/Home/WebsiteHome";
+import { Login, Register, Home } from "../pages";
 import { AppRouter } from "./components/AppRouter";
 import { RootState } from "../interfaces/redux/store";
 import { useSelector } from "react-redux";
+
 const ProtectedRouter = () => {
   return (
     <BrowserRouter>
@@ -20,7 +19,7 @@ const AuthRouter = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={HomeScreen} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Redirect to="/" />

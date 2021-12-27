@@ -22,8 +22,8 @@ export const Sites = () => {
   const history = useHistory();
 
   const {loading, error, data} = useSubscription(MY_FIRST_QUERY)
-
-
+  // const {loading, error, data} = useQuery(MY_SECOND_QUERY)
+;
 
   const handleClose = (doc: any) => {
     setSites([...sites, doc]);
@@ -34,7 +34,8 @@ export const Sites = () => {
       setSites(res.data.sites);
     });
     console.log(data);
-  }, [data]);
+    console.log(error);
+  }, [data, error]);
 
   return (
     <Container>
@@ -55,7 +56,7 @@ export const Sites = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data?.games?.map((game: any) => (
+            {data?.game?.map((game: any) => (
                 <TableRow
                   key={game.id}
                   hover

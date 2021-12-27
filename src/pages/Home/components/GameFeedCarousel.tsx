@@ -10,7 +10,6 @@ import MapDrawer from "../map/MapDrawer";
 import basketballCourts, { BasketballCourtT } from "../../../basketballCourts";
 import moment from "moment";
 
-
 const QuestionList = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const getTimeSlotsToday = (hours: any) => {
@@ -38,9 +37,13 @@ const QuestionList = () => {
     <>
       {isVisible && (
         <MapDrawer
-          text={"name"}
           isVisible={isVisible}
           onClose={() => setIsVisible(false)}
+          title={""}
+          description={""}
+          timing={""}
+          website={""}
+          imageUrl={""}
         />
       )}
       <Carousel
@@ -85,7 +88,13 @@ const QuestionList = () => {
                       <Text style={{ color: "#DA3E17" }}>$10 Entry Fee</Text>
                     </FlexDiv>
 
-                    <Text style={{ color: "black", fontWeight: "bold", fontSize: 16, }}>
+                    <Text
+                      style={{
+                        color: "black",
+                        fontWeight: "bold",
+                        fontSize: 16,
+                      }}
+                    >
                       {court.title}
                     </Text>
 
@@ -95,7 +104,12 @@ const QuestionList = () => {
                   </CardContent>
                   <CardActions>
                     <FlexDiv vert>
-                      <Button style={{ color: "#DA3E17", fontWeight: "bold", height: 40 }}
+                      <Button
+                        style={{
+                          color: "#DA3E17",
+                          fontWeight: "bold",
+                          height: 40,
+                        }}
                         label="Find a Game"
                         onClick={onVisible}
                       />
@@ -134,6 +148,5 @@ const responsive = {
     slidesToSlide: 1, // optional, default to 1.
   },
 };
-
 
 export default QuestionList;

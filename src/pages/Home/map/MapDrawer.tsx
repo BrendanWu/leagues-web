@@ -6,7 +6,6 @@ import courtImage from "../../../assets/court.jpg";
 import styled from "styled-components";
 import Button from "../../../react-design-system/Button";
 import { Link } from "react-router-dom";
-import { BasketballCourtT } from "../../../basketballCourts";
 import MUILink from '@material-ui/core/Link';
 
 const StyledImg = styled.img`
@@ -21,7 +20,6 @@ const MapDrawer = (props: {
   website: string;
   imageUrl: string;
   isVisible: boolean;
-  court?: BasketballCourtT;
   onClose: () => void;
 }) => {
   const { title, description, timing, website, imageUrl, isVisible, onClose } = props;
@@ -30,8 +28,8 @@ const MapDrawer = (props: {
     <Drawer anchor={"right"} open={isVisible} onClose={onClose}>
       <FlexDiv style={{ margin: 20 }} vert>
         <StyledImg src={courtImage} alt="Basket Court" />
-        <Text style={{ color: "gray" }}>Basketball</Text>
-        <Text style={{ color: "#DA3E17" }}>  Indoor Gym | Full-Court{" "}</Text>
+        <Text style={{ color: "gray", marginBottom:5 }}>{description}</Text>
+        <Text style={{ color: "#DA3E17", marginBottom:5 }}>$10 Entry Fee</Text>
         <Text
           style={{
             color: "black",
@@ -40,10 +38,27 @@ const MapDrawer = (props: {
             height: 10,
           }}
         >
-          {props?.court?.title}
+          {title}
         </Text>
-      
-       
+        {/* <Text
+          style={{
+            color: "#4695C6",
+            fontWeight: "lighter",
+            fontSize: 12,
+            height: 5,
+          }}
+        >
+          Indoor Gym | Full-Court{" "}
+        </Text>{" "} */}
+        {/* <Text
+          style={{
+            color: "#4695C6",
+            height: 5,
+            fontSize: `12px`,
+          }}
+        >
+          2/6 Players
+        </Text>{" "} */}
         <Text
           style={{
             color: "#4695C6",
@@ -52,17 +67,7 @@ const MapDrawer = (props: {
             marginBottom: 20
           }}
         >
-          TODO display availability today and all other metadata please
-        </Text>{" "}
-        <Text
-          style={{
-            color: "#4695C6",
-            height: 5,
-            fontSize: `12px`,
-            marginBottom: 30,
-          }}
-        >
-          
+          Today: {timing}
         </Text>
 
         {
