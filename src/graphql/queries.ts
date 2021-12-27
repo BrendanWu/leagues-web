@@ -6,6 +6,12 @@ subscription MyQuery {
     game {
       id
       status
+      timeslot_date
+      timeslot
+      basketballCourt{
+        title
+      }
+
     }
   }
   `;

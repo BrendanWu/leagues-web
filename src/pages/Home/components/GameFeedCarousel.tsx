@@ -110,7 +110,7 @@ const QuestionList = () => {
                           fontWeight: "bold",
                           height: 40,
                         }}
-                        label="Find a Game"
+                        label="Create a Game"
                         onClick={onVisible}
                       />
                     </FlexDiv>

@@ -22,6 +22,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import NavBar from "./components/Navbar";
 import { useSelector } from "react-redux";
 import { RootState } from "../../interfaces/redux/store";
+import { useHistory } from "react-router-dom";
 
 const BackgroundImage = styled.div`
   background-image: url(${hero});
@@ -79,7 +80,10 @@ const DetailText = styled(Text)`
 const Home = () => {
   const [selected, setSelected] = useState<string>("All");
   const isLoggedIn = useSelector<RootState>((state) => state?.auth?.isLoggedIn) as boolean;
-
+  const history = useHistory();
+  function goToLocker() {
+    history.push("/locker");
+  }
   return (
     <>
       <BackgroundImage>

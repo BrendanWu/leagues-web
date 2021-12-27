@@ -41,6 +41,7 @@ export const Sites = () => {
     <Container>
       <FlexDiv justify="space-between">
         <h3>Games</h3>
+        {/* This is the add games dialog */}
         <AddSiteDialog handleClose={handleClose} />
       </FlexDiv>
       {loading ? <Text>Loading</Text> : error ? <Text>Error</Text> : data?.games?.length}
@@ -65,8 +66,8 @@ export const Sites = () => {
                     history.push("/site/" + game.id);
                   }}
                 >
-                  <TableCell>{game.address}</TableCell>
-                  <TableCell align="right">{game.id}</TableCell>
+                  <TableCell>{game.basketballCourt.title}</TableCell>
+                  <TableCell align="right">{game.timeslot_date} @ {game.timeslot}</TableCell>
                   <TableCell align="right">{game.status}</TableCell>
                   <TableCell align="right">
                     <div

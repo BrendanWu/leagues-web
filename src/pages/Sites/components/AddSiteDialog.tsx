@@ -51,7 +51,7 @@ export default function FormDialog(props: any) {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add a site
+        Create game
       </Button>
       <Dialog
         open={open}
@@ -82,7 +82,7 @@ export default function FormDialog(props: any) {
             Cancel
           </Button>
           <Button onClick={submitSite} color="primary">
-            Add a site
+            Create a game
           </Button>
         </DialogActions>
       </Dialog>
