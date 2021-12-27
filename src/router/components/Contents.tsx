@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import UrbanTorontoListings from "../../components/UrbanTorontoListings";
 import { Home, Sites, Site, AdminDocs, Playgrounds } from "../../pages";
 import Posts from "../../pages/Docs/posts/Posts";
@@ -28,6 +28,7 @@ const Content = () => {
       <Route exact path="/sites" component={Sites} />
       <Route exact path="/playgrounds" component={Playgrounds} />
       <Route exact path="/site/:id" component={Site} />
+      <Redirect to="/" />
     </>
   );
 };
