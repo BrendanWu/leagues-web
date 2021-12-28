@@ -179,19 +179,23 @@ const TeamsComponent = () => {
 };
 
 const LobbyChat = () => {
-  const [message, setMessage] = React.useState<string[]>([]);
-  const handleMessageChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setMessage(e.target.value);
+  const [message, setMessage] = React.useState<string>('');
+  // const [hasuraGetMessagesFromLobby, errors] = useMutation();
+  // const [hasuraSendMessage, errors] = useMutation();
+  const handleMessageChange = (message: string) => {
+    // console.log(e);
+    setMessage(message);
   }
   const handleSendMessage = () => {
-
+    //mutation
   }
   return (
     <>
      
       <Text>Lobby chat</Text>
       <FlexDiv justify="space-between">
-      <Input altTheme placeholder="Message" onChange={handleMessageChange}/>
+       
+      <Input altTheme placeholder="Message" onChange={(e: React.ChangeEvent<HTMLInputElement>): void => handleMessageChange(e.target.value)}/>
       <Button label="Send" onClick={handleSendMessage} />
       </FlexDiv>
       <TableContainer component={Paper}>

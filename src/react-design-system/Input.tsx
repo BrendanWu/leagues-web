@@ -64,9 +64,8 @@ export const Input: React.FC<
     return <StyledTextArea {...props} />;
   }
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
+
       <StyledInput {...props} />
 
-    </div>
   );
 };
