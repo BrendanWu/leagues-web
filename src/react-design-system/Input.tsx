@@ -66,21 +66,7 @@ export const Input: React.FC<
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       <StyledInput {...props} />
-      {/* <input {...props}>{props.label}</input> */}
 
-      {props?.image ? (
-        <img
-          style={{
-            // borderRadius: 20,
-            // marginTop: 7,
-            // marginLeft: -30,
-            width: 30,
-            height: 30,
-            zIndex: 2,
-          }}
-          src={props?.image}
-        />
-      ) : null}
     </div>
   );
 };

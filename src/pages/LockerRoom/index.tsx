@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEventHandler, useEffect, useState } from "react";
 import { FlexDiv } from "../../react-design-system/FlexDiv";
 import { Text } from "../../react-design-system/Text";
 import Button from "../../react-design-system/Button";
@@ -20,6 +20,7 @@ import LeaguesTableMap from "../Home/map/LeaguesTableMap";
 import { IProfile } from "../../interfaces/pages/Auth";
 import { useSubscription } from "@apollo/client";
 import { MY_SECOND_QUERY } from "../../graphql/queries";
+import { Input } from "../../react-design-system/Input";
 const LockerRoom = (props: { court?: BasketballCourtT }) => {
   const [court, selectCourt] = React.useState<BasketballCourtT>();
   const [availableTimeSlots, setTimeSlots] = React.useState<string[]>([]);
@@ -169,18 +170,42 @@ const TeamsComponent = () => {
       </TableContainer>
         </Grid>
       </Grid>
+                <LobbyChat/>
+      <Text>
+        You will be able to arrange your teams after you check in on game day
+      </Text>
+    </>
+  );
+};
+
+const LobbyChat = () => {
+  const [message, setMessage] = React.useState<string[]>([]);
+  const handleMessageChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setMessage(e.target.value);
+  }
+  const handleSendMessage = () => {
+
+  }
+  return (
+    <>
+     
+      <Text>Lobby chat</Text>
+      <FlexDiv justify="space-between">
+      <Input altTheme placeholder="Message" onChange={handleMessageChange}/>
+      <Button label="Send" onClick={handleSendMessage} />
+      </FlexDiv>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Court</TableCell>
-              <TableCell align="right">Address</TableCell>
+              <TableCell>Player</TableCell>
+     
               <TableCell align="right"> Messages</TableCell>
-              <TableCell align="right"> Status</TableCell>
+
             </TableRow>
           </TableHead>
           <TableBody>
-            {data?.game_player?.map((game: any) => (
+            {[].map((game: any) => (
               <TableRow
                 key={game.id}
                 hover
@@ -190,10 +215,7 @@ const TeamsComponent = () => {
                 }}
               >
                 <TableCell>{game.players[0].name}</TableCell>
-                <TableCell align="right">
-                  {game.players[0].weight}
-                </TableCell>
-                <TableCell align="right">{game.players[0].height}</TableCell>
+                
                 <TableCell align="right">Point guard</TableCell>
       
               </TableRow>
@@ -201,11 +223,9 @@ const TeamsComponent = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Text>
-        You will be able to arrange your teams after you check in on game day
-      </Text>
     </>
-  );
-};
+  )
+}
+
 
 export { LockerRoom };
