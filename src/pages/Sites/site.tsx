@@ -36,7 +36,7 @@ const Site = () => {
     <Container>
       <div className={classes.root}>
         <FlexDiv justify="space-between">
-          <h3>My gateways</h3>
+          <h3>Game</h3>
           <AddGatewayDialog handleClose={handleClose} />
         </FlexDiv>
 

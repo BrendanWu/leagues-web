@@ -88,7 +88,6 @@ const LockerRoom = (props: { court?: BasketballCourtT }) => {
       </Grid>
       <TeamsComponent />
    
-        <Button alt label="Ready up"></Button>
       
     </>
   );
